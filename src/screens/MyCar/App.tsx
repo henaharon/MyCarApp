@@ -32,7 +32,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
- 
+ import MyMessages from '../MyMessages'
 
 const Drawer = createDrawerNavigator();
 function App(): JSX.Element {
@@ -41,6 +41,7 @@ function App(): JSX.Element {
       <Drawer.Navigator initialRouteName="Home" screenOptions={{drawerPosition: 'right'}} id="RightDrawer">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="MyMessages" component={MyMessages} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
