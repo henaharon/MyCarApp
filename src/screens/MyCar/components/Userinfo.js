@@ -1,19 +1,21 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {Title,Caption} from 'react-native-paper';
+import { translate } from '../../../locals/index';
+import {SideMenuIcons} from '../../../uiKit/icons';
 
 const Userinfo=()=> {
     return (
       <View style={styles.userInfoSection}>
         <View style={styles.profile}>
-          <View style={{ marginRight: 15, flexDirection: 'column', alignItems: 'flex-end' }}>
-            <Caption style={styles.caption}>{'שלום'}</Caption>
-            <Title style={styles.title}>{'רוני אביב'}</Title>
+          <View style={styles.UserInfo}>
+            <Caption style={styles.caption}>{translate('sideMenu.Shalom')}</Caption>
+            <Title style={styles.title}>{translate('sideMenu.Name')}</Title>
           </View>
           <Image
             style={styles.logo}
             resizeMode="contain"
-            source={require('../../../assets/icons/ProfilePhotoUser.png')}
+            source={SideMenuIcons.ProfilePhotoUser}
           />
         </View>
       </View>
@@ -40,6 +42,11 @@ const styles = StyleSheet.create({
         lineHeight: 14,
         color: 'white',
         fontFamily: 'Cochin'
+      },
+      UserInfo: {
+        marginRight: 15, 
+        flexDirection: 'column', 
+        alignItems: 'flex-end',
       },
       row:{
         marginTop: 20,

@@ -6,25 +6,26 @@ import LinearGradient from 'react-native-linear-gradient';
 import CommonCard from './components/commonCard';
 import Line from './components/Line';
 import Notifcaion from './components/Notifcaion';
-import data from '../../locals/data';
+import sideMenuMock from '../../mockData/sideMenuMock'
 import Footer from './components/Footer';
 import Userinfo from './components/Userinfo';
-const DrawerContent = (props) => {
+import { translate } from '../../locals/index';
 
+const DrawerContent = (props) => {
     return (
-      <View style={{ flex: 1 }}>
-      <LinearGradient
-        colors={['#E50075', '#F05C62']} // Replace with your desired gradient colors
-        start={{ x: 0, y: 0 }} // Start from the right side
-        end={{ x: 1, y: 0 }} // End at the left side
-        style={{ flex: 1 }}
-      >
+      <View style={styles.root}>
+        <LinearGradient
+          colors={['#E50075', '#F05C62']} // Replace with your desired gradient colors
+          start={{ x: 0, y: 0 }} // Start from the right side
+          end={{ x: 1, y: 0 }} // End at the left side
+          style={{ flex: 1 }}
+        >
         <DrawerContentScrollView {...props}>
           <View style={styles.drawerContent}>
             <Userinfo />
             <Notifcaion />
           </View>
-          {data.slice(0, 4).map((item, index) => (
+          {sideMenuMock.slice(0, 4).map((item, index) => (
             // Render CommonCard component for the first four items in the data array
             <CommonCard
               key={index}
@@ -53,10 +54,10 @@ const DrawerContent = (props) => {
           ))}
           <Line />
           <View style={styles.Txtpostion}>
-            <Text style={styles.textinfo}>{'צרו קשר איתנו'}</Text>
+            <Text style={styles.textinfo}>{translate('sideMenu.ConactUs')}</Text>
           </View>
-          <View style={{ marginTop: 15 }}>
-            {data.slice(4, 7).map((item, index) => (
+          <View style={styles.commoncard}>
+            {sideMenuMock.slice(4, 7).map((item, index) => (
               // Render CommonCard component for the next three items in the data array 
               <CommonCard
                 key={index}
@@ -89,9 +90,15 @@ const DrawerContent = (props) => {
     );
 };
 const styles = StyleSheet.create({
-  drawerContent :{
-    flex:1,
+    root :{
+      flex:1,
+    },
+    drawerContent :{
+      flex:1,
     marginTop: 20,
+    },
+    commoncard :{
+      marginTop: 15
     },
     title: {
       fontSize: 20,

@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text, Image,StyleSheet, TouchableOpacity } from 'react-native';
+import { translate } from '../../../locals/index';
+import {SideMenuIcons} from '../../../uiKit/icons';
 
 const Notifcaion = () => {
     const [counter, setCounter] = useState(1);
     const [counter2, setCounter2] = useState(3);
     return (
-      <View style={styles.mainnotification}>
+      <View style={styles.mainNotification}>
       <TouchableOpacity
         style={styles.SmS_notif}
         onPress={() => {
@@ -21,9 +23,9 @@ const Notifcaion = () => {
           <Image
             style={styles.GeneralMessage}
             resizeMode="contain"
-            source={require('../../../assets/icons/GeneralMessage.png')}
+            source={SideMenuIcons.GeneralMessage}
           />
-          <Text style={styles.TextMessage}>{'הודעת שלי'}</Text>
+          <Text style={styles.TextMessage}>{translate('sideMenu.MyMessage')}</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -41,13 +43,12 @@ const Notifcaion = () => {
           <Image
             style={styles.GeneralMessage}
             resizeMode="contain"
-            source={require('../../../assets/icons/ServiceIconsGeneral.png')}
+            source={SideMenuIcons.ServiceIconsGeneral}
           />
-          <Text style={styles.TextMessage}>{'הקריאות שלי'}</Text>
+          <Text style={styles.TextMessage}>{translate('sideMenu.MyReadings')}</Text>
         </View>
       </TouchableOpacity>
     </View>
-    
     );
 };
 const styles = StyleSheet.create({
@@ -71,7 +72,7 @@ notification: {
     fontSize: 15,
     fontWeight: 'bold',
   },
-  mainnotification: {
+  mainNotification: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
