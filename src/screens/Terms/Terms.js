@@ -12,7 +12,6 @@ import {
 // import CheckBox from 'react-native-check-box';
 import {RadioButton} from 'react-native-paper';
 import {loginIcons} from '../../uiKit/icons';
-// import lock_img from '../../assets/icons/locklogo.png';
 import {useTranslation} from 'react-i18next';
 
 const window_height = Dimensions.get('window').height;

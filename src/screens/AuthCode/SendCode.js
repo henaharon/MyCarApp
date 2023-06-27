@@ -13,6 +13,7 @@ import {
 import {authIcons} from '../../uiKit/authIcons';
 import {translate} from '../../locals/index';
 import {codes} from './moc_data';
+import DefaultModal from '../Modals/DefaultModal';
 import Terms from '../Terms/Terms';
 
 const window_height = Dimensions.get('window').height;
@@ -22,6 +23,19 @@ const SendCode = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [code, setCode] = useState('');
   const [timer, setTimer] = useState(new Date());
+  const [isExpired, setIsExpired] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openExpiredModal = () => {
+    setModalVisible(true);
+    setIsExpired(true);
+  };
+
+  const hideModal = () => {
+    setModalVisible(false);
+    setIsExpired(false);
+    navigation.navigate('AuthCode');
+  };
 
   const onchangecode = inputValue => {
     // Validate the input value to allow only numeric characters
@@ -45,53 +59,65 @@ const SendCode = ({navigation}) => {
         console.log('Checkin code:\t', codes[i].code);
         console.log('----------------------------\n');
         if (code === codes[i].code) {
-          Alert.alert('the code is in the databse');
+          Alert.alert('The code exists in the DB');
           navigation.navigate('Terms');
         } else {
-          console.log('the code is not in the data base');
+          console.log("the code doesn't exist in the DB");
         }
       }
     } else {
-      alert('the code is expires');
+      openExpiredModal();
     }
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.button_container}>
-        <Text style={styles.button_container_text}>
-          {translate('sendCode')}
-        </Text>
-      </View>
+    <>
+      {isExpired ? (
+        <DefaultModal
+          modalState={modalVisible}
+          modalTitle={'קוד אינו בתוקף'}
+          modalText={'הקוד שהוזן אינו בתוקף, האם לשלוח קוד התחברות חדש?'}
+          buttonText={'שלח קוד חדש'}
+          setModalVisible={setModalVisible}
+          hideModal={hideModal}
+        />
+      ) : (
+        <View style={styles.container}>
+          <View style={styles.button_container}>
+            <Text style={styles.button_container_text}>
+              {translate('sendCode')}
+            </Text>
+          </View>
 
-      <View style={styles.body}>
-        <Image style={styles.tinyLogo} source={authIcons.lock} />
-        <TextInput
-          style={styles.input}
-          placeholder={translate('authCode')}
-          value={code}
-          onChangeText={setCode}></TextInput>
-      </View>
-      <View style={styles.footer}>
-        <View style={styles.arrowCircle}>
-          <TouchableOpacity onPress={code_check}>
-            {/* <TouchableOpacity onPress={() => navigation.navigate('Terms')}> */}
-            <LinearGradient
-              colors={['#A9333A', '#E1578A', '#FAE98F']}
-              style={styles.gradient}
-              start={{x: 0, y: 0}}
-              end={{x: 1, y: 1}}>
-              <Image style={styles.arrow} source={authIcons.arrow} />
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.body}>
+            <Image style={styles.tinyLogo} source={authIcons.lock} />
+            <TextInput
+              style={styles.input}
+              placeholder={translate('authCode')}
+              value={code}
+              onChangeText={setCode}></TextInput>
+          </View>
+          <View style={styles.footer}>
+            <View style={styles.arrowCircle}>
+              <TouchableOpacity onPress={code_check}>
+                <LinearGradient
+                  colors={['#A9333A', '#E1578A', '#FAE98F']}
+                  style={styles.gradient}
+                  start={{x: 0, y: 0}}
+                  end={{x: 1, y: 1}}>
+                  <Image style={styles.arrow} source={authIcons.arrow} />
+                </LinearGradient>
+              </TouchableOpacity>
+            </View>
 
-        <View style={styles.text_input}>
-          <Text style={styles.help}>{translate('codeNotReceived')}</Text>
-          <Text style={styles.link_help}>{translate('sendCodeAgain')}</Text>
+            <View style={styles.text_input}>
+              <Text style={styles.help}>{translate('codeNotReceived')}</Text>
+              <Text style={styles.link_help}>{translate('sendCodeAgain')}</Text>
+            </View>
+          </View>
         </View>
-      </View>
-    </View>
+      )}
+    </>
   );
 };
 

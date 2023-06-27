@@ -20,7 +20,6 @@ const SliderWalkthrough = ({navigation}) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    console.log(`showModal: ${showModal}`);
     if (showModal) {
       // Wait for 2 seconds and then show the modal
       const timer = setTimeout(() => {
@@ -33,7 +32,6 @@ const SliderWalkthrough = ({navigation}) => {
   }, [showModal]);
 
   const hideModal = () => {
-    console.log('hide modal');
     setModalVisible(false);
     setShowModal(false);
     navigation.navigate('Login');
@@ -68,7 +66,6 @@ const SliderWalkthrough = ({navigation}) => {
         <DefaultModal
           modalState={modalVisible}
           modalTitle={'התחדשנו!'}
-          // modalText={translate('updateApp')}
           modalText={
             'על מנת להשתמש באפליקציה יש לעדכן את האפליקציה דרך חנות האפליקציות.'
           }
