@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import {sliderIcons} from '../../uiKit/sliderIcons';
+import {translate} from '../../locals/index';
 import {
   SafeAreaView,
   StyleSheet,
@@ -15,25 +17,32 @@ import DefaultModal from '../Modals/DefaultModal';
 const SliderWalkthrough = ({navigation}) => {
   const [hasCompletedWalkthrough, setHasCompletedWalkthrough] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [counter, setCounter] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
-  // Set timer before displaying to Update version Modal
-  // const timer = setTimeout(() => {
-  //   if (isOn) setCounter(preState => preState + 1);
-  // }, 2000);
+  useEffect(() => {
+    console.log(`showModal: ${showModal}`);
+    if (showModal) {
+      // Wait for 2 seconds and then show the modal
+      const timer = setTimeout(() => {
+        setModalVisible(true);
+      }, 500);
+
+      // Clean up the timer when the component unmounts or when showModal changes
+      return () => clearTimeout(timer);
+    }
+  }, [showModal]);
 
   const hideModal = () => {
     console.log('hide modal');
     setModalVisible(false);
-    setHasCompletedWalkthrough(false);
-    // navigation.navigate('Login');
+    setShowModal(false);
+    navigation.navigate('Login');
   };
 
   // When user clicks on 'Let's Start' button
   const handleGetStarted = () => {
-    console.log('open modal');
     setHasCompletedWalkthrough(true);
-    setModalVisible(true);
+    setShowModal(true);
   };
 
   const renderItem = ({item}) => {
@@ -55,10 +64,14 @@ const SliderWalkthrough = ({navigation}) => {
   return (
     <>
       {/* If user hasn't completed the walkthrough */}
-      {console.log(`line 58: ${modalVisible}`)}
       {hasCompletedWalkthrough ? (
         <DefaultModal
           modalState={modalVisible}
+          modalTitle={'התחדשנו!'}
+          // modalText={translate('updateApp')}
+          modalText={
+            'על מנת להשתמש באפליקציה יש לעדכן את האפליקציה דרך חנות האפליקציות.'
+          }
           buttonText={'עדכן גרסה'}
           setModalVisible={setModalVisible}
           hideModal={hideModal}></DefaultModal>

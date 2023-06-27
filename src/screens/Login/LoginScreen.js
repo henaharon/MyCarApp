@@ -15,6 +15,8 @@ import {
   Linking,
 } from 'react-native';
 import Header from './components/Header';
+import {translate} from '../../locals/index';
+import {loginIcons} from '../../uiKit/icons';
 
 const DismissKeyboard = ({children}) => (
   <TouchableWithoutFeedback
@@ -42,9 +44,7 @@ const LoginScreen = ({navigation}) => {
         <View style={styles.rootContainer}>
           <Header />
           <View style={styles.textPart}>
-            <Text>
-              להתחברות לאפליקציית אמדוקס אנא הזינו את מספר הטלפון והאימייל שלכם
-            </Text>
+            <Text>{translate('enterDetails')}</Text>
             <View>
               <View style={styles.container}>
                 <View style={styles.sectionStyle}>
@@ -54,7 +54,7 @@ const LoginScreen = ({navigation}) => {
                     value={text}
                   />
                   <Image
-                    source={require('../../assets/icons/callSquare.png')}
+                    source={loginIcons.callSquare}
                     style={styles.imageStyle}
                   />
                 </View>
@@ -66,26 +66,25 @@ const LoginScreen = ({navigation}) => {
                     keyboardType="numeric"
                   />
                   <Image
-                    source={require('../../assets/icons/messageSquare.png')}
+                    source={loginIcons.messageSquare}
                     style={styles.imageStyle}
                   />
                 </View>
               </View>
-              {/* </DismissKeyboard>  */}
             </View>
             <View style={styles.secondComponent}>
               <View>
-                <Text style={styles.help}>צריך עזרה?</Text>
+                <Text style={styles.help}>{translate('helpText')}</Text>
               </View>
               <TouchableHighlight
                 onPress={() => Linking.openURL('https://www.ynet.co.il')}>
                 <View>
-                  <Text style={styles.support}>יצירת קשר עם התמיכה</Text>
+                  <Text style={styles.support}>{translate('linkText')}</Text>
                 </View>
               </TouchableHighlight>
               <View style={styles.arrowCircle}>
                 <TouchableOpacity
-                  onPress={() => Linking.openURL('https://www.google.com')}>
+                  onPress={() => navigation.navigate('AuthCode')}>
                   <LinearGradient
                     colors={['#A9333A', '#E1578A', '#FAE98F']}
                     style={styles.gradient}
@@ -93,7 +92,7 @@ const LoginScreen = ({navigation}) => {
                     end={{x: 1, y: 1}}>
                     <Image
                       style={styles.arrow}
-                      source={require('../../assets/icons/login-button-arrow.png')}
+                      source={loginIcons.loginButtonArrow}
                     />
                   </LinearGradient>
                 </TouchableOpacity>

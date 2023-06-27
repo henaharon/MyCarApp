@@ -1,98 +1,29 @@
-import React, {useState} from 'react';
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './src/screens/Login';
 import TimerScreen from './src/screens/Timer';
-function App(): JSX.Element {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+import SliderWalkthrough from './src/screens/WalkThrough/SliderWalkthrough';
+import DefaultModal from './src/screens/Modals/DefaultModal';
+import SendCode from './src/screens/AuthCode/SendCode';
+import Terms from './src/screens/Terms/Terms';
 
+const Stack = createNativeStackNavigator();
+
+export default function App() {
   return (
-    <SafeAreaView style={styles.safeAreaViewBase}>
-      <View style={styles.rootContainer}>
-        <View style={styles.headerContainer}>
-          <View style={styles.logoContainer}>
-            <Image
-              style={styles.logo}
-              resizeMode={'contain'}
-              source={require('./src/assets/icons/logo.png')}
-            />
-          </View>
-          <Pressable
-            onPress={() => isAuthorized && setIsAuthorized(false)}
-            style={styles.headerTextContainer}>
-            <Text style={styles.logoText}>{'My Timer'}</Text>
-          </Pressable>
-          <View style={styles.rightContainer} />
-        </View>
-        <View style={styles.bodyContainer}>
-          {isAuthorized ? (
-            <TimerScreen />
-          ) : (
-            <LoginScreen setIsAuthorized={setIsAuthorized} />
-          )}
-        </View>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer> 
+      <Stack.Navigator
+      screenOptions={{
+        headerShown: false, // Hide the header/title for all screens
+      }}>
+    <Stack.Screen name="SliderWalkthrough" component={SliderWalkthrough} />
+    <Stack.Screen name="Modal" component={DefaultModal} />
+    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="AuthCode" component={SendCode} />
+    <Stack.Screen name="Terms" component={Terms} />
+    <Stack.Screen name="Timer" component={TimerScreen} />
+  </Stack.Navigator>
+  </NavigationContainer>
   );
 }
-
-const windowHeight = Dimensions.get('window').height;
-
-const styles = StyleSheet.create({
-  bodyContainer: {flex: 9},
-  safeAreaViewBase: {
-    flex: 1,
-  },
-  rootContainer: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  headerContainer: {
-    width: '100%',
-    height: windowHeight * 0.1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    borderColor: 'white',
-    backgroundColor: 'white',
-  },
-  headerTextContainer: {
-    flex: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  rightContainer: {
-    flex: 1,
-  },
-  logoText: {
-    color: 'black',
-    fontSize: 35,
-    fontWeight: '900',
-  },
-  logo: {
-    width: '100%',
-    height: '100%',
-  },
-  logoContainer: {
-    flex: 1,
-    width: 50,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default App;

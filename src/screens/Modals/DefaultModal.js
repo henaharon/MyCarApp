@@ -1,4 +1,4 @@
-import React, {Children, useState} from 'react';
+import React, {Children, useEffect, useState} from 'react';
 import {
   Alert,
   Modal,
@@ -13,6 +13,8 @@ import LinearGradient from 'react-native-linear-gradient';
 const DefaultModal = ({
   modalState,
   children,
+  modalTitle,
+  modalText,
   buttonText,
   hideModal,
   setModalVisible,
@@ -20,7 +22,6 @@ const DefaultModal = ({
 }) => {
   const closeModal = () => {
     hideModal();
-    // navigation.navigate('Walkthrough');
   };
 
   return (
@@ -32,17 +33,15 @@ const DefaultModal = ({
         onRequestClose={closeModal}>
         <View>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>התחדשנו!</Text>
-            <Text style={styles.modalInnerText}>
-              על מנת להשתמש באפליקציה יש לעדכן את האפליקציה דרך חנות האפליקציות.
-            </Text>
+            <Text style={styles.modalText}>{modalTitle}</Text>
+            <Text style={styles.modalInnerText}>{modalText}</Text>
             <LinearGradient
               colors={['#A9333A', '#E1578A', '#FAE98F']}
               style={styles.gradient}
               start={{x: 0, y: 0}}
               end={{x: 1, y: 1}}>
-              <Pressable style={[styles.button]} onPress={closeModal}>
-                <Text style={styles.textStyle}>עדכן גרסה</Text>
+              <Pressable style={[styles.button]} onPress={hideModal}>
+                <Text style={styles.textStyle}>{buttonText}</Text>
               </Pressable>
             </LinearGradient>
           </View>

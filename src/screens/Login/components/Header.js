@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, Image, View, Dimensions, StyleSheet} from 'react-native';
+import {loginIcons} from '../../../uiKit/icons';
 
 const windowHeight = Dimensions.get('window').height; //returns height of window
 
@@ -34,7 +35,7 @@ const Header = () => {
   return (
     <View style={styles.headerContainer}>
       <View style={styles.image}>
-        <Image source={require('../../../assets/icons/logoMyCar_sm.png')} />
+        <Image source={loginIcons.logo} />
       </View>
     </View>
   );

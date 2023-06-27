@@ -35,7 +35,7 @@ import {
  
 
 const Drawer = createDrawerNavigator();
-function App(): JSX.Element {
+function AppDrawer(): JSX.Element {
   return (
     <NavigationContainer >
       <Drawer.Navigator initialRouteName="Home" screenOptions={{drawerPosition: 'right'}} id="RightDrawer">
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default AppDrawer;
