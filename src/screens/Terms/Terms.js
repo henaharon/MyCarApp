@@ -19,7 +19,6 @@ const window_width = Dimensions.get('window').width;
 
 const Terms = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
-  const {t} = useTranslation();
 
   return (
     <View style={styles.container}>

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {authIcons} from '../../uiKit/authIcons';
 import {translate} from '../../locals/index';
-import Codes from './moc_data';
+import {codes} from './moc_data';
 import Terms from '../Terms/Terms';
 
 const window_height = Dimensions.get('window').height;
@@ -31,14 +31,24 @@ const SendCode = ({navigation}) => {
     }
   };
 
-  const Code_check = () => {
+  const code_check = () => {
     const current_time = new Date();
-    const min_diff = Math.abs(timer.getTime() - current_time.getTime());
+    const min_diff =
+      Math.abs(timer.getTime() - current_time.getTime()) / (1000 * 60);
+    console.log('min dif\t' + min_diff);
+    console.log(min_diff > 0);
     if (min_diff > 0) {
-      for (let i; i < Codes.length; i++) {
-        if (code === Codes[i].code) {
+      console.log('we pass the time check');
+      for (let i = 0; i < codes.length; i++) {
+        console.log('----------------------------');
+        console.log('Entered code:\t', code);
+        console.log('Checkin code:\t', codes[i].code);
+        console.log('----------------------------\n');
+        if (code === codes[i].code) {
           Alert.alert('the code is in the databse');
           navigation.navigate('Terms');
+        } else {
+          console.log('the code is not in the data base');
         }
       }
     } else {
@@ -62,10 +72,10 @@ const SendCode = ({navigation}) => {
           value={code}
           onChangeText={setCode}></TextInput>
       </View>
-
       <View style={styles.footer}>
         <View style={styles.arrowCircle}>
-          <TouchableOpacity onPress={() => navigation.navigate('Terms')}>
+          <TouchableOpacity onPress={code_check}>
+            {/* <TouchableOpacity onPress={() => navigation.navigate('Terms')}> */}
             <LinearGradient
               colors={['#A9333A', '#E1578A', '#FAE98F']}
               style={styles.gradient}
