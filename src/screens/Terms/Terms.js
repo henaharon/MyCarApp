@@ -9,42 +9,52 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-// import logo_img from '../../assets/icons/mycarlogo.png';
-// import lock_img from '../../assets/icons/locklogo.png';
+// import CheckBox from 'react-native-check-box';
+import {RadioButton} from 'react-native-paper';
 import {loginIcons} from '../../uiKit/icons';
-import {translate} from '../../locals/index';
+// import lock_img from '../../assets/icons/locklogo.png';
+import {useTranslation} from 'react-i18next';
 
 const window_height = Dimensions.get('window').height;
 const window_width = Dimensions.get('window').width;
 
 const Terms = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
+  const {t} = useTranslation();
+  const [addsCheck, setAddsCheck] = useState(false);
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image style={styles.tinyLogo} source={loginIcons.logo} />
+        <Text style={styles.text}>{t('terms')}</Text>
       </View>
 
       <View style={styles.body}>
-        <Image style={styles.tinyLogo} source={loginIcons.logo} />
-        <TextInput
-          style={styles.input}
-          placeholder={t('EneterCode')}
-          value={code}
-          onChangeText={setCode}></TextInput>
-      </View>
+        <View style={styles.Radio_b_section}>
+          <Text style={styles.Radio_b_section_link_Reporting_conditions}>
+            {t('Reportingconditions')}
+          </Text>
+          <Text style={styles.Radio_b_section_text}>{t('Givemethings')}</Text>
+          {/*<CheckBox*/}
+          {/*    value="first"*/}
+          {/*    status={ addsCheck ? 'checked' : 'unchecked' }*/}
+          {/*    style={addsCheck ? styles.checked : styles.unchecked}*/}
+          {/*    onPress={() => setAddsCheck(!addsCheck)}*/}
+          {/*/>*/}
+        </View>
 
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.start}>
-          <Text style={styles.arrow}>{arrow}</Text>
-        </TouchableOpacity>
-
-        <View style={styles.text_input}>
-          <Text style={styles.help}>{t('CodeCheck')}</Text>
-          <Text style={styles.link_help}>{t('SendCode')}</Text>
+        <View style={styles.Radio_b_section}>
+          <Text style={styles.Radio_b_section_text}>{t('Givemethings')}</Text>
+          {/*<CheckBox*/}
+          {/*    value="first"*/}
+          {/*    status={ addsCheck === 'first' ? 'checked' : 'unchecked' }*/}
+          {/*    onPress={() => setAddsCheck('first')}*/}
+          {/*/>*/}
         </View>
       </View>
+
+      <View style={styles.footer}></View>
     </View>
   );
 };
@@ -61,79 +71,83 @@ const styles = StyleSheet.create({
 
   header: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    height: window_height * 0.1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: window_height * 0.3,
     width: '100%',
     backgroundColor: '#ffffff',
   },
 
   tinyLogo: {
     marginRight: 5,
-    width: 40,
-    height: 40,
+    width: 120,
+    height: 100,
   },
 
   text: {
-    marginLeft: 100,
     justifyContent: 'center',
     alignItems: 'center',
     color: '#000000',
-    fontSize: 40,
+    fontWeight: 'bold',
     fontStyle: 'italic',
-  },
-
-  button_container_text: {
-    fontSize: 25,
+    fontSize: 40,
+    marginTop: 15,
   },
 
   body: {
-    width: '50%',
-    gap: 10,
+    display: 'flex',
+    flexDirection: 'column',
+    height: window_height * 0.6,
+    width: '100%',
+    backgroundColor: '#ffffff',
+    borderWidth: 3,
+    borderRadius: 1,
+    borderColor: '#335EFF',
   },
 
-  input: {
-    borderWidth: 1,
-    padding: 15,
+  Radio_b_section: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '100%',
+    height: window_height * 0.1,
+    borderWidth: 3,
+    borderRadius: 1,
+    borderColor: '#55FF33',
+    gap: 30,
+  },
+
+  Radio_b_section_text: {
+    fontSize: 20,
+  },
+
+  Radio_b_section_link_Reporting_conditions: {
+    fontSize: 15,
+    color: 'blue',
+    marginTop: 30,
+    marginRight: 0,
   },
 
   footer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     marginTop: 15,
     width: '100%',
     height: window_height * 0.2,
   },
 
-  start: {
-    width: 60,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    borderRadius: 100,
-    backgroundColor: 'orange',
+  checked: {
+    backgroundColor: 'blue',
   },
-  arrow: {
-    fontSize: 30,
-    color: '#fffafa',
-    alignItems: 'center',
-  },
-
-  text_input: {
-    height: 80,
-    width: '50%',
-    marginLeft: 100,
-  },
-
-  help: {
-    fontSize: 25,
-  },
-  link_help: {
-    fontSize: 15,
-    color: '#0000FF',
+  unchecked: {
+    backgroundColor: 'white',
   },
 });
 
 export default Terms;
+
+/*
+ <Text style={styles.Radio_b_section_text}>{t("Givemethings")}</Text>
+
+ */
