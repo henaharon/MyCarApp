@@ -7,15 +7,18 @@ import {
   Text,
   TextInput,
   View,
+  Modal
 } from 'react-native';
 import {PhotosGallery} from './PhotosGallery';
 import RadioButtons from './RadioButtons';
 import Signiture from './Signiture';
+import FormInput from './FormInput';
 import {FormSection, FormWizard, WizardSection} from './Wizard';
 import LinearGradient from 'react-native-linear-gradient';
+import { CameraButton } from './CameraButton';
 
 
-export default function Form() {
+export default function Form({startPage, closeForm}) {
   const [formData, setFormData] = useState(null);
 
   const setDate = data => {
@@ -54,9 +57,35 @@ export default function Form() {
     setFormData({...formData, signiture: data});
   };
 
+  const setIWasDrivingTrue = () => {
+    setFormData({...formData, iWasDriving: true});
+  };
+
+  const setIWasDrivingFalse = () => {
+    setFormData({...formData, iWasDriving: false});
+  };
+  const setWitnessTrue = () => {
+    setFormData({...formData, witness: true});
+  };
+
+  const setWitnessFalse = () => {
+    setFormData({...formData, witness: false});
+  };
+
+  const setHitTrue = () => {
+    setFormData({...formData, hit: true});
+  };
+
+  const setHitFalse = () => {
+    setFormData({...formData, hit: false});
+  };
+
+
+
   const onSubmit = () => {
     console.log(formData);
     setFormData(null)
+    closeForm()
 
   }
 
@@ -65,8 +94,9 @@ export default function Form() {
   }, [formData]);
 
   return (
-    <ScrollView>
-      <FormWizard>
+    <ScrollView style={styles.ScrollView}>
+      <FormWizard startPage={startPage}>
+
         <WizardSection>
           <View style={styles.wrapper}>
             <Text style={styles.header}>פרטים כלליים</Text>
@@ -114,7 +144,9 @@ export default function Form() {
               rightText={'כן, היתה'}
               leftText={'לא היתה'}
               rightPress={setPoliceTrue}
-              leftPress={setPoliceFalse}></RadioButtons>
+               leftPress={setPoliceFalse}
+               
+               ></RadioButtons>
             <Text style={styles.header}>פרטי המשטרה</Text>
             <View style={styles.inputWrppaer}>
               <TextInput
@@ -128,30 +160,196 @@ export default function Form() {
             </View>
           </View>
         </WizardSection>
+
         <WizardSection>
           <View style={styles.wrapper}>
             <Text style={styles.header}>מי נהג ברכב בזמן האירוע? </Text>
             <RadioButtons
               leftText={'נהג/ת אחר/ת'}
-              rightText={'אני נהגתי'}></RadioButtons>
+              rightText={'אני נהגתי'}
+              rightPress={setIWasDrivingTrue}
+              leftPress={setIWasDrivingFalse}
+              ></RadioButtons>
             <Text style={styles.header}> פרטי הנהג/ת</Text>
+             <FormInput label="שם הנהג" placeholder="אביב דניאל"></FormInput>
+             <FormInput label="מספר ת.ז" placeholder="055550555"></FormInput>
+             <FormInput label="מספר רשיון נהיגה" placeholder="662765"></FormInput>
+             <FormInput label="טלפון" placeholder="050-828-4537"></FormInput>
           </View>
         </WizardSection>
+
         <WizardSection>
+          <Text style={styles.header}> פרטי נהג צד ג׳</Text>
           <View style={styles.wrapper}>
-            <Text> Third Page</Text>
+          <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="שם בעל הרכב"></TextInput>
+            </View>
+
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="מספר ת.ז"></TextInput>
+            </View>
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="כתובת מייל"></TextInput>
+            </View>
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="כתובת מגורים"></TextInput>
+            </View>
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="טלפון"></TextInput>
+            </View>
+            <Text style={styles.header}> פרטי רכב צד ג׳</Text>
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="דגם רכב"></TextInput>
+            </View>
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="מספר רכב"></TextInput>
+            </View>
+
+            <Text style={styles.header}> פרטי ביטוח צד ג׳</Text>
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="שם חברת הביטוח"></TextInput>
+            </View>
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="מספר פוליסת ביטוח"></TextInput>
+            </View>
+            <Text style={styles.header}>מסמכים - נהג צד ג׳</Text>
+
+
           </View>
         </WizardSection>
+
         <WizardSection>
           <View style={styles.wrapper}>
-            <Text> Fourth Page</Text>
-          </View>
-        </WizardSection>
-        <WizardSection>
-          <View style={styles.wrapper}>
-            
+              <Text style={styles.header}>מסמכים - נהג צד ג׳</Text>
+              <RadioButtons
+              rightText={'כן, היו נפגעים'}
+              leftText={'לא היו נפגעים'}
+              rightPress={setHitTrue}
+               leftPress={setHitFalse}
+               
+               ></RadioButtons>
+
+              <Text style={styles.header}>מסמכים - נהג צד ג׳</Text>
+              <RadioButtons
+              rightText={'כן, היו עדים'}
+              leftText={'לא היו עדים'}
+              rightPress={setWitnessTrue}
+               leftPress={setWitnessFalse}
+               
+               ></RadioButtons>
+
+              <Text style={styles.header}>מסמכים - נהג צד ג׳</Text>
+              <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="שם עד"></TextInput>
+            </View>
+
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="מזפר ת.ז"></TextInput>
+            </View>
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="כתובת"></TextInput>
+            </View>
+
+            <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="במידה ויש עדים נוספים אנא עדכן כאן. יש להקפיד למלא את שמם המלא, תז , כתובת וטלפון של העדים הנוספים"></TextInput>
+            </View>
+           
+          
+
+            <Text style={styles.header}>
+              הוספת תמונות עדים
+            </Text>
+
+            <PhotosGallery></PhotosGallery>
+
 
             
+
+          </View>
+        </WizardSection>
+
+        <WizardSection>
+          <View style={styles.wrapper}>
+              <Text style={styles.header}>האם הרכב שלך ניזוק?</Text>
+              <RadioButtons
+              rightText={'כן, הרכב ניזוקם'}
+              leftText={'ברכב לר ניזוק'}
+              rightPress={setHitTrue}
+               leftPress={setHitFalse}
+               
+               ></RadioButtons>
+
+              <Text style={styles.header}>האם הרכב של צד ג׳ ניזוק?</Text>
+              <RadioButtons
+              rightText={'כן, הרכב ניזוקם'}
+              leftText={'ברכב לר ניזוק'}
+              rightPress={setHitTrue}
+               leftPress={setHitFalse}
+               
+               ></RadioButtons>
+
+              <Text style={styles.header}>פרטי הנזק לרכב צד ג׳</Text>
+              <View style={styles.inputWrppaer}>
+              <TextInput
+                onChangeText={location => setLocation(location)}
+                style={styles.Input}
+                placeholder="תיאור הנזק"></TextInput>
+            </View>
+
+            <Text style={styles.header}>
+              הוספת תמונות עדים
+            </Text>
+
+            <PhotosGallery></PhotosGallery>
+
+
+            
+
+          </View>
+        </WizardSection>
+
+        <WizardSection>
+          <View style={styles.wrapper}>
+
             <Text> שליחת דוח</Text>
             <TextInput
                 style={styles.Input}
@@ -188,6 +386,7 @@ export default function Form() {
         
           </View>
         </WizardSection>
+
       </FormWizard>
     </ScrollView>
   );
@@ -212,9 +411,11 @@ const styles = StyleSheet.create({
     margin: 3,
     height: 60,
     padding: 5,
+    borderWidth: 1,
+    borderColor: 'lightgray',
   },
   textArea: {
-    flex: 1,
+    flex: 2,
     backgroundColor: 'white',
     height: Dimensions.get('window').height / 4,
     textAlign: 'right',
@@ -252,5 +453,18 @@ const styles = StyleSheet.create({
     color:'white',
     fontWeight:'bold',
     fontSize:18,
+  },
+  header:{
+    fontWeight:'bold',
+    color:'black',
+    fontSize:18,
+    textAlign:'right',
+  },
+  ScrollView:{
+    backgroundColor:'white',
+    borderWidth:2,
+    height:Dimensions.get('window').height* 0.91,
+
   }
+
 });

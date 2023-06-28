@@ -6,9 +6,8 @@ const WizardSection = ({ children }) => {
   return <View style={styles.sectionContainer}>{children}</View>;
 };
 
-const FormWizard = ({ children }) => {
-  const [currentPage, setCurrentPage] = useState(0);
- 
+const FormWizard = ({ children, startPage }) => {
+  const [currentPage, setCurrentPage] = useState(startPage ? startPage : 0);
 
   const goToPreviousPage = () => {
     setCurrentPage(currentPage - 1);
@@ -16,9 +15,13 @@ const FormWizard = ({ children }) => {
 
   const goToNextPage = () => {
     console.log("got to next")
-    setCurrentPage(currentPage + 1);
+    if(currentPage < (children.length -1)) {
+      setCurrentPage(currentPage + 1);
+    }
+  
   };
  
+  const titles = ["פרטי האירוע", "פרטי הנהג/ת" , "צד ג׳","נפגעים ועדים", "נזקים" , "אישור פרטי הדוח"]
 
 
 
@@ -29,8 +32,8 @@ const FormWizard = ({ children }) => {
             <Image source={loginIcons.loginButtonArrow}></Image>
       </Pressable>
       <View>
-          <Text style={{color:'white'}}>
-            title
+          <Text style={{color:'white', textAlign:"center"}}>
+            {titles[currentPage]}
           </Text>   
           <View style={{flexDirection:'row-reverse', gap:5}}> 
             {
@@ -58,7 +61,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    
     backgroundColor:'white'
   },
   formContainer: {
@@ -66,7 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth:10,
-    backgroundColor:'red'
+    borderWidth:4,
+    backgroundColor:'white'
   },
   sectionContainer: {
     marginBottom: 16,
@@ -74,7 +77,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius:30,
     padding:10,
-    paddingTop:20
+    paddingTop:20,
+    
   },
   buttonContainer: {
     flexDirection: 'row',

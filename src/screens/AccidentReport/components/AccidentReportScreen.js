@@ -14,22 +14,31 @@ import {accidentReport} from '../../../uiKit/icons';
 import Form from './Form';
 import HelpModal from './HelpModal';
 import ImportantNote from './ImportantNote';
+import { isSearchBarAvailableForCurrentPlatform } from 'react-native-screens';
 
 export default AccidentReportScreen = () => {
   const [formOpen, setFormOpen] = useState(false);
+  const [startPage, setStartPage] = useState(0);
+
+  const closeForm = () => {
+    setFormOpen(false);
+  }
 
   const reportAccident = () => {
     console.log('report accident');
     setFormOpen(true);
   };
+
   const reportDamage = () => {
     console.log('report damage');
+    setFormOpen(true);
+    setStartPage(4);
   };
 
   return (
     <SafeAreaView>
       {formOpen ? (
-        <Form></Form>
+        <Form startPage={startPage} closeForm={closeForm}></Form>
       ) : (
         <ScrollView>
           <View style={styles.topContainer}>
