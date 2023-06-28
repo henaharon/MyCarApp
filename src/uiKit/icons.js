@@ -3,20 +3,21 @@ const loginIcons = {
 };
 
 const CarDetailsIcons = {
-  CarIcon: require('../assets/icons/CarDetailsIcons/carIcon.png'),
-  ColorCarIcon: require('../assets/icons/CarDetailsIcons/color.png'),
-  NumberCarIcon: require('../assets/icons/CarDetailsIcons/number.png'),
-  RepairCarIcon: require('../assets/icons/CarDetailsIcons/repair.png'),
-  RoutineCarIcon: require('../assets/icons/CarDetailsIcons/routine.png'),
-  TiresDownCarIcons: require('../assets/icons/CarDetailsIcons/tiresDown.png'),
-  TiresUpCarIcons: require('../assets/icons/CarDetailsIcons/tiresUp.png'),
-  ExitPageIcons: require('../assets/icons/CarDetailsIcons/exit.png'),
-  DocumentIcon: require('../assets/icons/CarDetailsIcons/document.png'),
-  CheckIcon: require('../assets/icons/CarDetailsIcons/check.png'),
-  PlusIcon: require('../assets/icons/CarDetailsIcons/plus.png'),
-  ShreIcon: require('../assets/icons/CarDetailsIcons/share.png'),
-  LightIcon: require('../assets/icons/CarDetailsIcons/light.png'),
-  Infocon: require('../assets/icons/CarDetailsIcons/info.png')
+  carIcon: require('../assets/icons/CarDetailsIcons/carIcon.png'),
+  colorCarIcon: require('../assets/icons/CarDetailsIcons/color.png'),
+  numberCarIcon: require('../assets/icons/CarDetailsIcons/number.png'),
+  repairCarIcon: require('../assets/icons/CarDetailsIcons/repair.png'),
+  routineCarIcon: require('../assets/icons/CarDetailsIcons/routine.png'),
+  tiresDownCarIcons: require('../assets/icons/CarDetailsIcons/tiresDown.png'),
+  tiresUpCarIcons: require('../assets/icons/CarDetailsIcons/tiresUp.png'),
+  exitPageIcons: require('../assets/icons/CarDetailsIcons/exit.png'),
+  documentIcon: require('../assets/icons/CarDetailsIcons/document.png'),
+  checkIcon: require('../assets/icons/CarDetailsIcons/check.png'),
+  plusIcon: require('../assets/icons/CarDetailsIcons/plus.png'),
+  shareIcon: require('../assets/icons/CarDetailsIcons/share.png'),
+  lightIcon: require('../assets/icons/CarDetailsIcons/light.png'),
+  infocon: require('../assets/icons/CarDetailsIcons/info.png'),
+  airPerssure: require('../assets/icons/CarDetailsIcons/airPerssure.jpeg')
 };
 
 

@@ -15,22 +15,22 @@ export const SecondCarDetails = ({carInfo}) => {
   //composition specific data from carInfo, send this data with a default text from he.json, get icons for every service from {translate}
     const data = [
       {
-        icons: '../../../assets/icons/CarDetailsIcons/repair.png',
+        icons: CarDetailsIcons.repairCarIcon,
         defualtText: translate('treatmentInterval'),
         dynamicText: carInfo.treatmentInterval
       },
       {
-        icons: '../../../assets/icons/CarDetailsIcons/repair.png',
+        icons: CarDetailsIcons.routineCarIcon,
         defualtText: translate('gettingOnRoad'),
         dynamicText: carInfo.gettingOnRoad
       },
       {
-        icons: CarDetailsIcons.TiresUpCarIcons,
+        icons: CarDetailsIcons.tiresUpCarIcons,
         defualtText: translate('tiresUp'),
         dynamicText: carInfo.tiresUp
       },
       {
-        icons: CarDetailsIcons.TiresDownCarIcons,
+        icons: CarDetailsIcons.tiresDownCarIcons,
         defualtText: translate('tiresDown'),
         dynamicText: carInfo.tiresDown
       }
@@ -47,7 +47,7 @@ export const SecondCarDetails = ({carInfo}) => {
           {carInfo.licensedDriver.map((driver, index) => (
             <View style={styles.CarPepoles} key={index}>
               <Text style={styles.Text}>{driver}</Text>
-              <Image style={styles.ImageProfile} source={CarDetailsIcons.CarIcon} />
+              <Image style={styles.ImageProfile} source={CarDetailsIcons.carIcon} />
             </View>
           ))}
           </ScrollView>

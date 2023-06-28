@@ -15,51 +15,51 @@ export const Documents = ({carInfo}) => {
 
         {/* first section of document part*/}
         <View style={styles.Document}>
-            <Text style={styles.BoldText}>מסמכים</Text>
+            <Text style={styles.BoldText}>{translate('document')}</Text>
             <View style={styles.ShareDocumentBtn}>
-                <Text style={styles.shareText}>שיתוף מסמכים</Text>
-                <Image style={styles.Image} source={CarDetailsIcons.ShreIcon}/>    
+                <Text style={styles.shareText}>{translate('shareDocument')}</Text>
+                <Image style={styles.Image} source={CarDetailsIcons.shareIcon}/>    
             </View>
         </View>
 
         <View style={styles.Document}>
             <View style={styles.ImageBorder}>
-                <Image style={styles.ImageDocument} source={CarDetailsIcons.DocumentIcon}/>
+                <Image style={styles.ImageDocument} source={CarDetailsIcons.documentIcon}/>
             </View>
             <View>
                 <Text style={styles.BoldText}>{translate('carLicense')}</Text>
-                <Text style={styles.Text}>עודכן 24.06.2020</Text>
+                <Text style={styles.checkText}>עודכן 24.06.2020</Text>
             </View>
-            <Image style={styles.Image} source={CarDetailsIcons.CheckIcon}/>
+            <Image style={styles.Image} source={CarDetailsIcons.checkIcon}/>
         </View>
 
         <View style={styles.Document}>
             <View style={styles.ImageBorder}>
-                <Image style={styles.ImageDocument} source={CarDetailsIcons.DocumentIcon}/>
+                <Image style={styles.ImageDocument} source={CarDetailsIcons.documentIcon}/>
             </View>
             <View>
-                <Text style={styles.BoldText}>צילום ספח ביטוח</Text>
-                <Text style={styles.Text}>הוסף צילום</Text>
+                <Text style={styles.BoldText}>{translate('photoInsuranceSupplement')}</Text>
+                <Text style={styles.Text}>{translate('addPhoto')}</Text>
             </View>
             <View style={styles.BorderImage}>
-                <Image style={styles.Image} source={CarDetailsIcons.PlusIcon}/>
+                <Image style={styles.Image} source={CarDetailsIcons.plusIcon}/>
             </View>
         </View>
 
         {/* Vertical line between 2 section in document part*/}
         <View style={styles.lineVertical}></View>
-
+        
         {/* get all the instructions message from carInfo, mapping the instructionsMSG to put every message inside View with 2 images(light,info)*/}
         {/* View for all the second section in document part*/}
         <View> 
-            <Text style={styles.BoldText}>מידע שימוש</Text>
-            <Text style={styles.Text}>לנוחיותך איגדנו מספר מדריכים לתפעול הרכב</Text>
+            <Text style={styles.BoldText}>{translate('usefulInfo')}</Text>
+            <Text style={styles.Text}>{translate('convenienceInfo')}</Text>
             <ScrollView horizontal={true}>
                 <View style={styles.AllInformation}>
                     {carInfo.instructionsMSG.map((message, index) => (
                         <View style={styles.Information}>
-                            <Image style={styles.infoIcons} source={CarDetailsIcons.Infocon} />
-                            <Image style={styles.LightIcons} source={CarDetailsIcons.LightIcon} />
+                            <Image style={styles.infoIcons} source={CarDetailsIcons.infocon} />
+                            <Image style={styles.LightIcons} source={CarDetailsIcons.lightIcon} />
                             <Text style={styles.Text}> {translate('instructions')}  </Text>
                             <Text style={styles.BoldText}>{message}</Text>
                         </View>
@@ -79,12 +79,12 @@ const styles = StyleSheet.create({
     },
     ShareDocumentBtn:{
         flexDirection:'row',
-        justifyContent:'space-evenly',
+        justifyContent:'space-around',
         alignItems:'center',
         backgroundColor:'#1961e6',
-        width:140,
+        width:120,
         height:30,
-        borderRadius:50
+        borderRadius:50,
     },
     shareText:{
         color:'white'
@@ -122,7 +122,9 @@ const styles = StyleSheet.create({
     },
     Text:{
         fontSize:12,
-        color:'black'
+    },
+    checkText:{
+        color:'green'
     },
     BoldText:{
         fontWeight:'bold',

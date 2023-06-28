@@ -3,7 +3,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { FirstCarDetails} from  './components/FirstCarDetails';
 import { SecondCarDetails} from './components/SecondCarDetails';
 import { Documents} from './components/documents';
-import Data from '../../locals/data.json';
+import myCarMock from '../../mockData/myCarMock';
 import {
     View,
     StyleSheet,
@@ -11,17 +11,17 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-const CarDetailsScreen = () => {
+const App = () => {
     return(
         <SafeAreaView style={styles.Container}>
             <ScrollView>
             <LinearGradient colors={['#E4166D','#E1376C','#ED4E61']} style={styles.gradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} >
                 <View>
-                    <FirstCarDetails carInfo={Data}/>
-                    <SecondCarDetails carInfo={Data}/>
+                    <FirstCarDetails carInfo={myCarMock.myCarMock}/>    
+                    <SecondCarDetails carInfo={myCarMock.myCarMock}/>
                 </View>        
                 <View style={styles.Footer}>
-                    <Documents carInfo={Data}/>
+                    <Documents carInfo={myCarMock.myCarMock}/>
                 </View> 
             </LinearGradient>
             </ScrollView>                
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default CarDetailsScreen;
+export default App;

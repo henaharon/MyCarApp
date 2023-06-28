@@ -16,10 +16,10 @@ export const Service = ({ data }) => {
     setAirPressureGuideVisible(true);
   };
 
-  const service = data.map(({ icon, defualtText, dynamicText }, index) => (
+  const service = data.map(({ icons, defualtText, dynamicText }, index) => (
     <View style={styles.serivceView} key={index}>
       <TouchableOpacity style={styles.touchableOpacity} onPress={index === 2 || index === 3  ? handleButtonPress : null}>
-        <Image style={styles.icons} source={icon} />
+        <Image style={styles.icons} source={icons} />
         <Text style={styles.defaultText}>{defualtText}</Text>
         <Text style={styles.dynamicText}>{dynamicText}</Text>
       </TouchableOpacity>

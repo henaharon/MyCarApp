@@ -10,9 +10,12 @@
   "tiresUp": "לחץ אוויר קדמי",
   "tiresDown":"לחץ אוויר אחורי",
   "airPressure":"לחץ אוויר",
-  "document":["מסמכים","שיתוף מסמכים"],
+  "document":"מסמכים",
+  "shareDocument":"שיתוף מסמכים",
   "carLicense":"צילום רישיון רכב",
-  "insuranceSupplement":["צילום ספח יטוח","הוסף צילום"],
-  "usefulInformation":["מידע שימושי","לנוחיותך איגדנו מספר מדריכים לתפעול הרכב"],
+  "photoInsuranceSupplement":"צילום ספח ביטוח",
+  "addPhoto":"הוסף צילום",
+  "usefulInfo":"מידע שימושי",
+  "convenienceInfo":"לנוחיותך איגדנו מספר מדריכים לתפעול הרכב",
   "instructions":"מדריך"
 }

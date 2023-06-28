@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 export const FirstCarDetails = ({carInfo}) => {
-
+  
   // get all the data and taked only some data what used here (type, color, number)
   const [type, setType] = useState("");
   const [color, setColor] = useState("");
@@ -29,16 +29,16 @@ export const FirstCarDetails = ({carInfo}) => {
       <View style={styles.Header}>
         <View style={styles.firstSection}>
           <Text style={styles.defaultText}>{translate('carDetails')}</Text>
-          <Image style={styles.exitBtn} source={CarDetailsIcons.ExitPageIcons}/> 
+          <Image style={styles.exitBtn} source={CarDetailsIcons.exitPageIcons}/> 
         </View>
-        <Image style={styles.ImageCar}  source={CarDetailsIcons.CarIcon}/>
+        <Image style={styles.ImageCar}  source={CarDetailsIcons.carIcon}/>
         <Text style={styles.carTypeText}>{type}</Text>
       </View>
 
       {/* section of car color */}
       <View style={styles.CarInformation}>
         <View style={styles.viewInfo}>
-          <Image style={styles.ImageIcons}  source={CarDetailsIcons.ColorCarIcon}/>
+          <Image style={styles.ImageIcons}  source={CarDetailsIcons.colorCarIcon}/>
           <Text style={styles.defaultText}>{translate('carColor')}</Text>
           <Text style={styles.dynamicText}>{color}</Text>
         </View>
@@ -48,7 +48,7 @@ export const FirstCarDetails = ({carInfo}) => {
 
         {/* section of car number */}
         <View style={styles.viewInfo}>
-          <Image style={styles.ImageIcons}  source={CarDetailsIcons.NumberCarIcon}/>
+          <Image style={styles.ImageIcons}  source={CarDetailsIcons.numberCarIcon}/>
           <Text style={styles.defaultText}>{translate('carNumber')}</Text>
           <Text style={styles.dynamicText}>{number}</Text>
         </View>
