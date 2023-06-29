@@ -9,51 +9,86 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-// import CheckBox from 'react-native-check-box';
 import {RadioButton} from 'react-native-paper';
 import {loginIcons} from '../../uiKit/icons';
 import {useTranslation} from 'react-i18next';
-
+import LinearGradient from 'react-native-linear-gradient';
 const window_height = Dimensions.get('window').height;
 const window_width = Dimensions.get('window').width;
 
 const Terms = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
   const {t} = useTranslation();
-  const [addsCheck, setAddsCheck] = useState(false);
+  const [addsCheck1, setAddsCheck] = useState(false);
+  const [addsCheck2, setAddsCheck2] = useState(false);
+  const move_to_term_use = () => {
+    navigation.navigate('TermofUseapp');
+  };
+
+  const move_to_term_divor = () => {
+    navigation.navigate('TermofDivor');
+  };
+
+  const move_to_Greetings = () => {
+    if (addsCheck1 && addsCheck2) {
+      navigation.navigate('Greeting');
+    } else {
+      console.log('you must check 2');
+    }
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image style={styles.tinyLogo} source={loginIcons.logo} />
         <Text style={styles.text}>{t('terms')}</Text>
+        <Text style={styles.text_approve}>{t('beforebegin')}</Text>
       </View>
 
       <View style={styles.body}>
         <View style={styles.Radio_b_section}>
-          <Text style={styles.Radio_b_section_link_Reporting_conditions}>
-            {t('Reportingconditions')}
-          </Text>
-          <Text style={styles.Radio_b_section_text}>{t('Givemethings')}</Text>
-          {/*<CheckBox*/}
-          {/*    value="first"*/}
-          {/*    status={ addsCheck ? 'checked' : 'unchecked' }*/}
-          {/*    style={addsCheck ? styles.checked : styles.unchecked}*/}
-          {/*    onPress={() => setAddsCheck(!addsCheck)}*/}
-          {/*/>*/}
+          <TouchableOpacity onPress={() => move_to_term_use()}>
+            <Text style={styles.Radio_b_section_link_Reporting_conditions}>
+              {t('Reportingconditions')}
+            </Text>
+          </TouchableOpacity>
+
+          <Text style={styles.Radio_b_section_text}> {t('Givemethings')}</Text>
+          <RadioButton
+            value={addsCheck1}
+            status={addsCheck1 ? 'checked' : 'unchecked'}
+            style={styles.rb_checked}
+            onPress={() => setAddsCheck(!addsCheck1)}
+          />
         </View>
 
         <View style={styles.Radio_b_section}>
-          <Text style={styles.Radio_b_section_text}>{t('Givemethings')}</Text>
-          {/*<CheckBox*/}
-          {/*    value="first"*/}
-          {/*    status={ addsCheck === 'first' ? 'checked' : 'unchecked' }*/}
-          {/*    onPress={() => setAddsCheck('first')}*/}
-          {/*/>*/}
+          <TouchableOpacity onPress={() => move_to_term_divor()}>
+            <Text style={styles.Radio_b_section_link_termuse}>
+              {t('termuse')}
+            </Text>
+          </TouchableOpacity>
+          <Text style={styles.Radio_b_section_text}>{t('Approve')}</Text>
+          <RadioButton
+            value={'first'}
+            status={addsCheck2 ? 'checked' : 'unchecked'}
+            style={addsCheck2 ? styles.checked : styles.unchecked}
+            onPress={() => setAddsCheck2(!addsCheck2)}
+          />
         </View>
       </View>
 
-      <View style={styles.footer}></View>
+      <View style={styles.footer}>
+        <LinearGradient
+          style={styles.gradient_op}
+          colors={['#A9333A', '#E1578A', '#FAE98F']}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}>
+          <TouchableOpacity onPress={() => move_to_Greetings()}>
+            <Text style={styles.text_appr_con}>{t('approveAndContinue')}</Text>
+          </TouchableOpacity>
+        </LinearGradient>
+      </View>
     </View>
   );
 };
@@ -66,6 +101,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#FDFEFE',
+    height: '100%',
   },
 
   header: {
@@ -74,13 +111,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: window_height * 0.3,
     width: '100%',
-    backgroundColor: '#ffffff',
   },
 
   tinyLogo: {
     marginRight: 5,
-    width: 120,
-    height: 100,
+    // width: 120,
+    // height: 120,
   },
 
   text: {
@@ -89,64 +125,79 @@ const styles = StyleSheet.create({
     color: '#000000',
     fontWeight: 'bold',
     fontStyle: 'italic',
-    fontSize: 40,
+    fontSize: 35,
     marginTop: 15,
+  },
+  text_approve: {
+    color: 'rgba(91,89,89,0.98)',
+    fontSize: 20,
   },
 
   body: {
     display: 'flex',
     flexDirection: 'column',
-    height: window_height * 0.6,
-    width: '100%',
+    height: window_height * 0.3,
     backgroundColor: '#ffffff',
-    borderWidth: 3,
-    borderRadius: 1,
-    borderColor: '#335EFF',
+    borderWidth: 4,
+    borderColor: '#ffffff',
+    marginTop: 20,
+    marginBottom: 20,
   },
 
   Radio_b_section: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    width: '100%',
     height: window_height * 0.1,
-    borderWidth: 3,
-    borderRadius: 1,
-    borderColor: '#55FF33',
-    gap: 30,
+    borderWidth: 1,
+    borderColor: '#DDE534',
   },
 
   Radio_b_section_text: {
-    fontSize: 20,
+    fontSize: 17,
   },
 
   Radio_b_section_link_Reporting_conditions: {
-    fontSize: 15,
+    fontSize: 20,
     color: 'blue',
+    textDecorationLine: 'underline',
     marginTop: 30,
     marginRight: 0,
   },
 
+  Radio_b_section_link_termuse: {
+    fontSize: 20,
+    color: 'blue',
+    textDecorationLine: 'underline',
+  },
   footer: {
     display: 'flex',
+    backgroundColor: '#ffffff',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginTop: 15,
-    width: '100%',
-    height: window_height * 0.2,
+    justifyContent: 'center',
+    alignContent: 'center',
   },
 
-  checked: {
-    backgroundColor: 'blue',
+  gradient_op: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 50,
+    width: '60%',
+    borderRadius: 20,
   },
-  unchecked: {
-    backgroundColor: 'white',
+
+  text_appr_con: {
+    fontSize: 18,
+    color: '#F7F9F9',
+  },
+
+  rb_checked: {
+    backgroundColor: '#2267E6',
+  },
+
+  rb_unchecked: {
+    backgroundColor: '#E54F34',
   },
 });
-
 export default Terms;
-
-/*
- <Text style={styles.Radio_b_section_text}>{t("Givemethings")}</Text>
-
- */

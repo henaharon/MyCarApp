@@ -6,6 +6,8 @@ import {
   Text,
   Pressable,
   Button,
+  Linking,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -18,10 +20,22 @@ const DefaultModal = ({
   buttonText,
   hideModal,
   setModalVisible,
+  modalSecondText,
+  close,
   navigation,
 }) => {
   const closeModal = () => {
     hideModal();
+  };
+
+  const openDialScreen = () => {
+    let phoneNumber = '';
+    if (Platform.OS === 'android') {
+      phoneNumber = 'tel:${+1234567890}';
+    } else {
+      phoneNumber = 'telprompt:${+1234567890}';
+    }
+    Linking.openURL(phoneNumber);
   };
 
   return (
@@ -35,15 +49,33 @@ const DefaultModal = ({
           <View style={styles.modalView}>
             <Text style={styles.modalText}>{modalTitle}</Text>
             <Text style={styles.modalInnerText}>{modalText}</Text>
+            {modalSecondText ? (
+              <Text style={styles.modalInnerText}>{modalSecondText}</Text>
+            ) : (
+              ''
+            )}
             <LinearGradient
               colors={['#A9333A', '#E1578A', '#FAE98F']}
               style={styles.gradient}
               start={{x: 0, y: 0}}
               end={{x: 1, y: 1}}>
-              <Pressable style={[styles.button]} onPress={hideModal}>
-                <Text style={styles.textStyle}>{buttonText}</Text>
-              </Pressable>
+              {buttonText === 'פנייה למוקד' ? (
+                <Pressable style={[styles.button]} onPress={openDialScreen}>
+                  <Text style={styles.textStyle}>{buttonText}</Text>
+                </Pressable>
+              ) : (
+                <Pressable style={[styles.button]} onPress={hideModal}>
+                  <Text style={styles.textStyle}>{buttonText}</Text>
+                </Pressable>
+              )}
             </LinearGradient>
+            {close ? (
+              <TouchableOpacity onPress={hideModal}>
+                <Text style={styles.closeText}>{close}</Text>
+              </TouchableOpacity>
+            ) : (
+              ''
+            )}
           </View>
         </View>
       </Modal>
@@ -104,6 +136,10 @@ const styles = StyleSheet.create({
   },
   gradient: {
     borderRadius: 30,
+  },
+  closeText: {
+    color: 'blue',
+    marginTop: 6,
   },
 });
 

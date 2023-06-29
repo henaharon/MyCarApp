@@ -7,6 +7,10 @@ import SliderWalkthrough from './src/screens/WalkThrough/SliderWalkthrough';
 import DefaultModal from './src/screens/Modals/DefaultModal';
 import SendCode from './src/screens/AuthCode/SendCode';
 import Terms from './src/screens/Terms/Terms';
+import TermsofDivor from './src/screens/Terms/TermofDivor';
+import TermsofUseapp from './src/screens/Terms/TermofUseapp';
+import Greeting from './src/screens/Register/Greeting';
+import RegisterForm from './src/screens/Register/RegisterForm';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +27,10 @@ export default function App() {
     <Stack.Screen name="AuthCode" component={SendCode} />
     <Stack.Screen name="Terms" component={Terms} />
     <Stack.Screen name="Timer" component={TimerScreen} />
+    <Stack.Screen name="TermofDivor" component={TermsofDivor} />
+    <Stack.Screen name="TermofUseapp" component={TermsofUseapp} />
+    <Stack.Screen name="Greeting" component={Greeting} />
+    <Stack.Screen name="Register" component={RegisterForm} />
   </Stack.Navigator>
   </NavigationContainer>
   );
