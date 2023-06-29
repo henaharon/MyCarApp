@@ -17,5 +17,7 @@
   "addPhoto":"הוסף צילום",
   "usefulInfo":"מידע שימושי",
   "convenienceInfo":"לנוחיותך איגדנו מספר מדריכים לתפעול הרכב",
-  "instructions":"מדריך"
+  "instructions":"מדריך",
+  "documentSent":"מסמכים נשלחו",
+  "documtSentInfo": "המסמכים נשלחו בהצלחה למייל OirS@gmail.com"
 }

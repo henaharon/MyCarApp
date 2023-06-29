@@ -2,7 +2,7 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import { FirstCarDetails} from  './components/FirstCarDetails';
 import { SecondCarDetails} from './components/SecondCarDetails';
-import { Documents} from './components/documents';
+import { Documents} from './components/Documents';
 import myCarMock from '../../mockData/myCarMock';
 import {
     View,
