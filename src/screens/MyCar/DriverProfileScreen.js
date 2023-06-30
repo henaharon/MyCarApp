@@ -299,11 +299,18 @@ const styles = StyleSheet.create({
     height: 12,
   },
   whiteButton: {
+    backgroundColor: 'transparent', // Set the background color to transparent
+    borderWidth: 1, // Add border width for the black border
+    borderColor: 'red', // Set the border color to black
     backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: 'red',
     borderRadius: 20,
     padding: 10,
+    elevation: 2,
+    marginBottom: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonIcon: {
     width: 24,
@@ -312,9 +319,13 @@ const styles = StyleSheet.create({
   buttonContent: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center', // Align content in the middle
   },
+  
   whiteButtonText: {
     color: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginLeft: 5,
     textAlign: 'center',
   },
