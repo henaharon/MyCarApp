@@ -69,17 +69,20 @@ const DriverProfileScreen = ({ navigation }) => {
         />
         <Pressable onPress={openSaveModal} style={styles.driverLicenceTypeButton}>
         <Text style={styles.texttitleProfileStyle}>שׁמירה</Text>
-            </Pressable>
+        </Pressable>
         <Image
           source={require('./components/images/componentsNavBarXButtonsRoundedWhiteAlpha3x.png')}
           style={styles.profileXImage}
         />
         <Text style={styles.texttitleProfileStyle}>הפרופיל שלי</Text>
-        <Image
+        <Pressable onPress={openAddFilesModal} style={styles.driverLicenceTypeButton}>
+          <Image
           source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
           style={styles.profileImage}
           resizeMode="contain"
         />
+        </Pressable>
+      
         <Text style={styles.textMainProfileStyle}>אביב שרון</Text>
         <Text style={styles.textSubProfileStyle}>מספר עובד: 537 221</Text>
       </View>
@@ -128,15 +131,9 @@ const DriverProfileScreen = ({ navigation }) => {
           <Text style={styles.documentText}>צילום רישיון נהיגה</Text>
         </View>
 
-        <Text style={styles.textStyle}>קבצים שנוספו:</Text>
+        <Text>קבצים שנוספו:</Text>
         <View>
-          {/* Display the uploaded files */}
-          {uploadedFiles.map((file, index) => (
-            <Text key={index}>{file.name}</Text>
-            // Replace this with your desired display logic for the uploaded files
-          ))}
 
-          {/* Modal for adding files */}
           <AddFilesModal visible={addFilesModalVisible} onClose={closeAddFilesModal} onFilesAdded={handleFilesAdded} />
         </View>
       </View>
