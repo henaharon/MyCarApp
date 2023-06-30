@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, Image, StyleSheet } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ImageField = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -43,7 +44,6 @@ const ImageField = () => {
 
   return (
     <View style={styles.container}>
-      
       {selectedImage ? (
         <Image source={{ uri: selectedImage }} style={styles.image} />
       ) : (
@@ -51,8 +51,18 @@ const ImageField = () => {
       )}
       {!selectedImage && (
         <View style={styles.buttonContainer}>
-          <Button title="Select Image" onPress={handleSelectImage} />
-          <Button title="Capture Image" onPress={handleCaptureImage} />
+          <Button
+            title="Select Image"
+            onPress={handleSelectImage}
+            icon={<Icon name="photo" size={20} color="black" />}
+            color="#007bff"
+          />
+          <Button
+            title="Capture Image"
+            onPress={handleCaptureImage}
+            icon={<Icon name="camera" size={20} color="white" />}
+            color="#007bff"
+          />
         </View>
       )}
     </View>
@@ -63,10 +73,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     marginBottom: 20,
-  },
-  label: {
-    fontSize: 18,
-    marginBottom: 10,
   },
   image: {
     width: 200,
@@ -80,6 +86,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });
 

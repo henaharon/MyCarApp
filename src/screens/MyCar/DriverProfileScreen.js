@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Dimensions, View, Button, Pressable, StyleSheet, Text, ScrollView } from 'react-native';
+import { Dimensions, View, Button, Pressable, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import ModalPopup from './components/ModalPopup';
-import DocumentField from './components/DocumentField';
 import InputField from './components/InputField';
 import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
 import AddFilesModal from './components/AddFilesModal';
+
 
 const DriverProfileScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -42,7 +42,11 @@ const DriverProfileScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <Button onPress={() => navigation.navigate('Home')} title="Go to Home" />
+        <Image
+          source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
+          style={styles.profileImage}
+          resizeMode="contain"
+        />
       </View>
       <View style={styles.mainContainer}>
         <Text style={styles.textStyle}>פרטים כלליים</Text>
@@ -61,21 +65,23 @@ const DriverProfileScreen = ({ navigation }) => {
         <View style={styles.inputContainer}>
           <InputField label="מספר רישיון נהיגה" placeholder="84277081" />
           <InputField label="תוקף רישיון נהיגה" placeholder="23.05.2025" />
-          
+
           <Pressable style={[styles.button, styles.buttonOpen]} onPress={openDriverLicenceTypeModal}>
-          <InputField label="סוג רשיון נהיגה" placeholder={driverLicenceTypes.join(', ')} />
+            <InputField label="סוג רשיון נהיגה" placeholder={driverLicenceTypes.join(', ')} />
           </Pressable>
         </View>
-      
+
         <Text style={styles.textStyle}>מסמכים</Text>
         <Text>צילום רישיון נהיגה</Text>
-      
+
         <Pressable style={[styles.button, styles.buttonOpen]} onPress={openAddFilesModal}>
-          </Pressable>
+       
+          <Text style={styles.buttonText}>Add Files</Text>
+        </Pressable>
       </View>
-      <AddFilesModal 
-      visible={AddFilesModalVisible}
-      onClose={closeAddFilesModal}
+      <AddFilesModal
+        visible={AddFilesModalVisible}
+        onClose={closeAddFilesModal}
       />
       <DriverLicenceTypeModal
         visible={driverLicenceTypeModalVisible}
@@ -112,6 +118,11 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginBottom: 10,
   },
+  profileImage: {
+    width: '100%',
+    height: undefined,
+    aspectRatio: 1, // Adjust the aspect ratio as needed
+  },
   textStyle: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -119,21 +130,17 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F194FF',
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  selectedOptionsText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'right',
     marginBottom: 10,
+  },
+  buttonText: {
+    color: 'white',
+    marginLeft: 5,
   },
 });
 
