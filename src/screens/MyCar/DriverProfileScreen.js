@@ -291,11 +291,13 @@ const styles = StyleSheet.create({
   whiteButton: {
     backgroundColor: 'transparent', // Set the background color to transparent
     borderWidth: 1, // Add border width for the black border
-    borderColor: 'black', // Set the border color to black
+    borderColor: 'red', // Set the border color to black
     borderRadius: 20,
     padding: 10,
     elevation: 2,
     marginBottom: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonContent: {
     flexDirection: 'row',
@@ -309,7 +311,7 @@ const styles = StyleSheet.create({
     height: 20, // Set the desired height for the icon
   },
   whiteButtonText: {
-    color: 'black',
+    color: 'red',
     alignItems: 'center',
     justifyContent: 'center',
   },
