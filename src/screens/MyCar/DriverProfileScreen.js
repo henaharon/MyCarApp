@@ -123,6 +123,7 @@ const DriverProfileScreen = ({ navigation }) => {
               source={require('./components/images/elements24PxIconsNavigationIcHeaderLeftSmall3x.png')}
               style={styles.addDocumentIconStyle}
             />
+            
           </Pressable>
           <Text style={styles.documentText}>צילום רישיון נהיגה</Text>
         </View>
@@ -148,9 +149,11 @@ const DriverProfileScreen = ({ navigation }) => {
 
       <ModalPopup visible={modalVisible} onClose={closeModal} />
       <SaveModal visible={saveModalVisible} onClose={closeSaveModal} />
-      <Pressable style={[styles.button, styles.buttonOpen, styles.fullWidthButton]} onPress={openModal}>
-        <Image source={require('./components/images/elements24PxIconsExit3x.png')} />
-        <Text style={styles.textStyle}>התנתק</Text>
+      <Pressable style={[styles.button, styles.buttonOpen, styles.fullWidthButton, styles.whiteButton]} onPress={openModal}>
+        <View style={styles.buttonContent}>
+          <Image source={require('./components/images/elements24PxIconsExit3x.png')} style={styles.buttonIcon} />
+          <Text style={[styles.textStyle, styles.whiteButtonText]}>התנתק</Text>
+        </View>
       </Pressable>
     </ScrollView>
   );
@@ -284,6 +287,31 @@ const styles = StyleSheet.create({
   OpenDriverLicenceTypeButton: {
     width: 12,
     height: 12,
+  },
+  whiteButton: {
+    backgroundColor: 'transparent', // Set the background color to transparent
+    borderWidth: 1, // Add border width for the black border
+    borderColor: 'black', // Set the border color to black
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginBottom: 10,
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonIcon: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 20, // Set the desired width for the icon
+    height: 20, // Set the desired height for the icon
+  },
+  whiteButtonText: {
+    color: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
