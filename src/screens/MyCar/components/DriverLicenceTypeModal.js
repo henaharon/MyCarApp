@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, View, TouchableOpacity, Text, StyleSheet, ScrollView } from 'react-native';
 
-const DriverLicenceTypeModal = ({ visible, onClose }) => {
+const DriverLicenceTypeModal = ({ visible, onClose, onSelect }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleOptionPress = (option) => {
@@ -26,6 +26,11 @@ const DriverLicenceTypeModal = ({ visible, onClose }) => {
     );
   };
 
+  const handleClose = () => {
+    onSelect(selectedOptions);
+    onClose();
+  };
+
   return (
     <Modal visible={visible} animationType="slide" transparent>
       <View style={styles.modalContainer}>
@@ -37,8 +42,8 @@ const DriverLicenceTypeModal = ({ visible, onClose }) => {
             {renderOption('Option 2')}
             {renderOption('Option 3')}
           </ScrollView>
-          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Text style={styles.closeButtonText}>Close</Text>
+          <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
+            <Text style={styles.closeButtonText}>סגירה</Text>
           </TouchableOpacity>
         </View>
       </View>

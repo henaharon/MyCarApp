@@ -8,6 +8,7 @@ import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
 const DriverProfileScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [driverLicenceTypeModalVisible, setDriverLicenceTypeModalVisible] = useState(false);
+  const [driverLicenceTypes, setDriverLicenceTypes] = useState([]);
 
   const openDriverLicenceTypeModal = () => {
     setDriverLicenceTypeModalVisible(true);
@@ -23,6 +24,10 @@ const DriverProfileScreen = ({ navigation }) => {
 
   const closeModal = () => {
     setModalVisible(false);
+  };
+
+  const handleDriverLicenceTypesSelect = (selectedTypes) => {
+    setDriverLicenceTypes(selectedTypes);
   };
 
   return (
@@ -47,16 +52,24 @@ const DriverProfileScreen = ({ navigation }) => {
         <View style={styles.inputContainer}>
           <InputField label="מספר רישיון נהיגה" placeholder="84277081" />
           <InputField label="תוקף רישיון נהיגה" placeholder="23.05.2025" />
+          <Text style={styles.selectedOptionsText}>
+            Selected Driver's License Types: 
+            {driverLicenceTypes.join(', ')}
+          </Text>
           <Pressable style={[styles.button, styles.buttonOpen]} onPress={openDriverLicenceTypeModal}>
             <Text style={styles.textStyle}>Open Modal</Text>
           </Pressable>
         </View>
       
-        <Text style={styles.textStyle}>מסמסכים</Text>
+        <Text style={styles.textStyle}>מסמכים</Text>
         <Text>צילום רישיון נהיגה</Text>
         <DocumentField />
       </View>
-      <DriverLicenceTypeModal visible={driverLicenceTypeModalVisible} onClose={closeDriverLicenceTypeModal} />
+      <DriverLicenceTypeModal
+        visible={driverLicenceTypeModalVisible}
+        onClose={closeDriverLicenceTypeModal}
+        onSelect={handleDriverLicenceTypesSelect}
+      />
       <ModalPopup visible={modalVisible} onClose={closeModal} />
       <Pressable style={[styles.button, styles.buttonOpen]} onPress={openModal}>
         <Text style={styles.textStyle}>התנתק</Text>
@@ -103,6 +116,12 @@ const styles = StyleSheet.create({
   },
   buttonClose: {
     backgroundColor: '#2196F3',
+  },
+  selectedOptionsText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'right',
+    marginBottom: 10,
   },
 });
 
