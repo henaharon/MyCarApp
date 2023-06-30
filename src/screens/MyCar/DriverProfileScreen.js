@@ -42,11 +42,14 @@ const DriverProfileScreen = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
+        <Text style={styles.texttitleProfileStyle}>הפרופיל שלי </Text>
         <Image
           source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
           style={styles.profileImage}
           resizeMode="contain"
         />
+        <Text style={styles.textMainProfileStyle}>אביב שרון</Text>
+        <Text style={styles.textSubProfileStyle}>מספר עובד : 537 221</Text>
       </View>
       <View style={styles.mainContainer}>
         <Text style={styles.textStyle}>פרטים כלליים</Text>
@@ -106,7 +109,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   header: {
-    alignSelf: 'flex-start',
+    alignSelf: 'center',
     marginLeft: 10,
     marginTop: 10,
     marginBottom: 20,
@@ -142,6 +145,20 @@ const styles = StyleSheet.create({
     color: 'white',
     marginLeft: 5,
   },
+  texttitleProfileStyle: {
+    alignSelf: 'center',
+  },
+  textMainProfileStyle: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  textSubProfileStyle: {
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  
 });
 
 export default DriverProfileScreen;
