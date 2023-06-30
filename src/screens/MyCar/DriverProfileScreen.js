@@ -4,12 +4,21 @@ import ModalPopup from './components/ModalPopup';
 import DocumentField from './components/DocumentField';
 import InputField from './components/InputField';
 import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
+import AddFilesModal from './components/AddFilesModal';
 
 const DriverProfileScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [driverLicenceTypeModalVisible, setDriverLicenceTypeModalVisible] = useState(false);
+  const [AddFilesModalVisible, setAddFilesModalVisible] = useState(false);
   const [driverLicenceTypes, setDriverLicenceTypes] = useState([]);
 
+  const openAddFilesModal = () => {
+    setAddFilesModalVisible(true);
+  };
+
+  const closeAddFilesModal = () => {
+    setAddFilesModalVisible(false);
+  };
   const openDriverLicenceTypeModal = () => {
     setDriverLicenceTypeModalVisible(true);
   };
@@ -60,8 +69,14 @@ const DriverProfileScreen = ({ navigation }) => {
       
         <Text style={styles.textStyle}>מסמכים</Text>
         <Text>צילום רישיון נהיגה</Text>
-        <DocumentField />
+      
+        <Pressable style={[styles.button, styles.buttonOpen]} onPress={openAddFilesModal}>
+          </Pressable>
       </View>
+      <AddFilesModal 
+      visible={AddFilesModalVisible}
+      onClose={closeAddFilesModal}
+      />
       <DriverLicenceTypeModal
         visible={driverLicenceTypeModalVisible}
         onClose={closeDriverLicenceTypeModal}
