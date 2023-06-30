@@ -146,7 +146,7 @@ const DriverProfileScreen = ({ navigation }) => {
         onSelect={handleDriverLicenceTypesSelect}
       />
 
-      <ModalPopup visible={modalVisible} onClose={closeSaveModal} />
+      <ModalPopup visible={modalVisible} onClose={closeModal} />
       <SaveModal visible={saveModalVisible} onClose={closeSaveModal} />
       <Pressable style={[styles.button, styles.buttonOpen, styles.fullWidthButton]} onPress={openModal}>
         <Image source={require('./components/images/elements24PxIconsExit3x.png')} />
