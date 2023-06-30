@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import DocumentField from './DocumentField';
-
+import ImageField from './ImageField';
 const AddFilesModal = ({ visible, onClose }) => {
   return (
     <Modal
@@ -15,7 +15,9 @@ const AddFilesModal = ({ visible, onClose }) => {
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
+        <Text style={styles.label}>צילום רישיון נהיגה</Text>
           <DocumentField />
+          <ImageField/>
           <Pressable style={[styles.button, styles.buttonClose]} onPress={onClose}>
             <Text style={styles.textStyle}>סגור</Text>
           </Pressable>
