@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { View, Button, Pressable, StyleSheet, Text, ScrollView } from 'react-native';
+import { Dimensions, View, Button, Pressable, StyleSheet, Text, ScrollView } from 'react-native';
 import ModalPopup from './components/ModalPopup';
 import DocumentField from './components/DocumentField';
 import InputField from './components/InputField';
+import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
 
 const DriverProfileScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
+
   const openModal = () => {
     setModalVisible(true);
   };
+
   const closeModal = () => {
     setModalVisible(false);
   };
@@ -35,13 +38,16 @@ const DriverProfileScreen = ({ navigation }) => {
         <View style={styles.inputContainer}>
           <InputField label="מספר רישיון נהיגה" placeholder="84277081" />
           <InputField label="תוקף רישיון נהיגה" placeholder="23.05.2025" />
+          <Pressable style={[styles.button, styles.buttonOpen]} onPress={openModal}>
+            <Text style={styles.textStyle}>Open Modal</Text>
+          </Pressable>
         </View>
-
+      
         <Text style={styles.textStyle}>מסמסכים</Text>
         <Text>צילום רישיון נהיגה</Text>
         <DocumentField />
       </View>
-      <ModalPopup visible={modalVisible} onClose={closeModal} />
+      <DriverLicenceTypeModal visible={modalVisible} onClose={closeModal} />
       <Pressable style={[styles.button, styles.buttonOpen]} onPress={openModal}>
         <Text style={styles.textStyle}>התנתק</Text>
       </Pressable>
@@ -49,11 +55,14 @@ const DriverProfileScreen = ({ navigation }) => {
   );
 };
 
+const windowsHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'center',
+    paddingHorizontal: 20,
   },
   header: {
     alignSelf: 'flex-start',
@@ -63,7 +72,6 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     alignItems: 'flex-end',
-    paddingHorizontal: 20,
     marginBottom: 20,
   },
   inputContainer: {
