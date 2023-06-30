@@ -7,10 +7,36 @@ import {
   Image,
   Dimensions,
   Text,
+  FlatList,
 } from 'react-native';
 import DriversHomeScreenText from '../../assets/DriversHomeScreenText';
 
+const Card = ({title, image}) => {
+  return (
+    <View style={styles.card}>
+      <Image source={image} style={styles.cardImage} resizeMode="contain" />
+      <Text style={styles.cardTitle}>{title}</Text>
+    </View>
+  );
+};
+
+const galleryData = [
+  {
+    id: '1',
+    title: 'Card 1',
+    image: require('../../assets/B1-assets/elementsServiceIconsChat.png'),
+  },
+  {
+    id: '2',
+    title: 'Card 2',
+    image: require('../../assets/B1-assets/elementsServiceIconsRoadsideAssistance.png'),
+  },
+  // Add more card data as needed
+];
+
 const DriversHomeScreen = ({navigation}) => {
+  const renderCard = ({item}) => <Card title={item.title} image={item.image} />;
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.backgroundContainer}>
@@ -30,7 +56,7 @@ const DriversHomeScreen = ({navigation}) => {
             resizeMode="contain"
           />
         </View>
-        {/* Text Content */}
+        {/* services title and description */}
         <View style={styles.textContainer}>
           <Text style={styles.heading}>
             {DriversHomeScreenText.servicesTitle}
@@ -47,6 +73,16 @@ const DriversHomeScreen = ({navigation}) => {
           />
         </View>
         {/* Add your custom content for the Drivers Home Page */}
+        <View style={styles.cardGalleryContainer}>
+          <FlatList
+            data={galleryData}
+            renderItem={renderCard}
+            keyExtractor={item => item.id}
+            horizontal={false}
+            numColumns={2}
+            contentContainerStyle={styles.cardGallery}
+          />
+        </View>
       </View>
     </ScrollView>
   );
@@ -80,7 +116,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     position: 'absolute',
-    top: '50%',
+    top: '30%',
     left: '50%',
     transform: [{translateX: -50}, {translateY: -50}],
     alignItems: 'center',
@@ -93,7 +129,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     position: 'absolute',
-    top: '50%',
+    top: '30%',
     right: 20, // Adjust the right margin as needed
     transform: [{translateY: 100}], // Adjust the translateY value to position the text vertically
     alignItems: 'flex-end',
@@ -110,7 +146,7 @@ const styles = StyleSheet.create({
   },
   leftShapeContainer: {
     position: 'absolute',
-    top: '50%',
+    top: '30%',
     left: 0,
     transform: [{translateY: -50}],
     alignItems: 'flex-start',
@@ -120,6 +156,30 @@ const styles = StyleSheet.create({
     width: 125,
     height: 290,
     opacity: 0.8,
+  },
+  cardGalleryContainer: {
+    marginTop: 320,
+    alignItems: 'center',
+  },
+  cardGallery: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    margin: 10,
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cardImage: {
+    width: 120,
+    height: 120,
+    marginBottom: 10,
+  },
+  cardTitle: {
+    textAlign: 'center',
   },
 });
 
