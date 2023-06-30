@@ -10,32 +10,13 @@ import {
   FlatList,
 } from 'react-native';
 import DriversHomeScreenText from '../../assets/DriversHomeScreenText';
-
-const Card = ({title, image}) => {
-  return (
-    <View style={styles.card}>
-      <Image source={image} style={styles.cardImage} resizeMode="contain" />
-      <Text style={styles.cardTitle}>{title}</Text>
-    </View>
-  );
-};
-
-const galleryData = [
-  {
-    id: '1',
-    title: 'Card 1',
-    image: require('../../assets/B1-assets/elementsServiceIconsChat.png'),
-  },
-  {
-    id: '2',
-    title: 'Card 2',
-    image: require('../../assets/B1-assets/elementsServiceIconsRoadsideAssistance.png'),
-  },
-  // Add more card data as needed
-];
+import galleryData from '../../assets/serviceGalleryData';
+import ServiceCard from './Components/serviceCard';
 
 const DriversHomeScreen = ({navigation}) => {
-  const renderCard = ({item}) => <Card title={item.title} image={item.image} />;
+  const renderCard = ({item}) => (
+    <ServiceCard title={item.title} image={item.image} />
+  );
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -72,14 +53,17 @@ const DriversHomeScreen = ({navigation}) => {
             style={styles.leftShape}
           />
         </View>
-        {/* Add your custom content for the Drivers Home Page */}
+        {/* service vertical scroll gallery */}
         <View style={styles.cardGalleryContainer}>
           <FlatList
             data={galleryData}
             renderItem={renderCard}
             keyExtractor={item => item.id}
-            horizontal={false}
-            numColumns={2}
+            horizontal={true}
+            numColumns={1}
+            pagingEnabled
+            snapToAlignment="center"
+            decelerationRate="fast"
             contentContainerStyle={styles.cardGallery}
           />
         </View>
@@ -112,7 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
     width: '100%',
     paddingVertical: 20,
-    paddingHorizontal: 10,
+    //    paddingHorizontal: 0,
   },
   logoContainer: {
     position: 'absolute',
@@ -130,8 +114,8 @@ const styles = StyleSheet.create({
   textContainer: {
     position: 'absolute',
     top: '30%',
-    right: 20, // Adjust the right margin as needed
-    transform: [{translateY: 100}], // Adjust the translateY value to position the text vertically
+    right: 20,
+    transform: [{translateY: 100}],
     alignItems: 'flex-end',
     justifyContent: 'flex-start',
   },
@@ -164,22 +148,6 @@ const styles = StyleSheet.create({
   cardGallery: {
     paddingHorizontal: 20,
     paddingVertical: 10,
-  },
-  card: {
-    backgroundColor: 'white',
-    borderRadius: 10,
-    margin: 10,
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  cardImage: {
-    width: 120,
-    height: 120,
-    marginBottom: 10,
-  },
-  cardTitle: {
-    textAlign: 'center',
   },
 });
 
