@@ -34,7 +34,7 @@ const AddFilesModal = ({ visible, onClose, onFilesAdded }) => {
       <TouchableWithoutFeedback onPress={handleOverlayPress}>
         <View style={styles.centeredView}>
           <View style={[styles.modalView, { width: windowWidth - 40 }]}>
-            <Text style={styles.label}>צילום רישיון נהיגה</Text>
+            
             <DocumentField onFileUpload={handleFileUpload} />
             <ImageField onFileUpload={handleFileUpload} />
             <Pressable style={[styles.button, styles.buttonClose]} onPress={handleCloseModal}>
