@@ -4,7 +4,7 @@ import ModalPopup from './components/ModalPopup';
 import InputField from './components/InputField';
 import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
 import AddFilesModal from './components/AddFilesModal';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 const DriverProfileScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -41,17 +41,25 @@ const DriverProfileScreen = ({ navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.texttitleProfileStyle}>הפרופיל שלי </Text>
-        <Image
-          source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
-          style={styles.profileImage}
-          resizeMode="contain"
-        />
-        <Text style={styles.textMainProfileStyle}>אביב שרון</Text>
-        <Text style={styles.textSubProfileStyle}>מספר עובד : 537 221</Text>
-      </View>
-      <View style={styles.mainContainer}>
+    <View style={styles.header}>
+    <LinearGradient
+  colors={['#E50075', '#F05C62']} // Replace with your desired gradient colors
+  start={{ x: 0, y: 0 }} // Start from the right side
+  end={{ x: 1, y: 0 }} 
+  style={styles.headerGradient}
+/>
+<Image source={require('./components/images/componentsNavBarXButtonsRoundedWhiteAlpha3x.png')}
+style={styles.profileXImage}/>
+      <Text style={styles.texttitleProfileStyle}>הפרופיל שלי </Text>
+      <Image
+        source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
+        style={styles.profileImage}
+        resizeMode="contain"
+      />
+      <Text style={styles.textMainProfileStyle}>אביב שרון</Text>
+      <Text style={styles.textSubProfileStyle}>מספר עובד : 537 221</Text>
+    </View>
+    <View style={styles.mainContainer}>
         <Text style={styles.textStyle}>פרטים כלליים</Text>
         <View style={styles.inputContainer}>
           <InputField label="שם פרטי" placeholder="אביב" />
@@ -111,22 +119,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   header: {
+    position: 'relative',
     alignSelf: 'center',
-    marginLeft: 10,
-    marginTop: 10,
     marginBottom: 20,
+  },
+  headerGradient: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 10,
   },
   mainContainer: {
     alignItems: 'flex-end',
     marginBottom: 20,
   },
-  inputContainer: {
-    marginBottom: 10,
-  },
   profileImage: {
     width: '100%',
     height: undefined,
-    aspectRatio: 1, // Adjust the aspect ratio as needed
+    aspectRatio: 2, // Adjust the aspect ratio as needed
   },
   textStyle: {
     fontSize: 20,
@@ -153,15 +165,18 @@ const styles = StyleSheet.create({
   },
   texttitleProfileStyle: {
     alignSelf: 'center',
+    color: 'white',
   },
   textMainProfileStyle: {
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: 'white',
   },
   textSubProfileStyle: {
     textAlign: 'center',
+    color: 'white',
     fontSize: 16,
   },
   fullWidthButton: {
@@ -169,6 +184,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
   },
+  profileXImage: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 24,
+    height: 24,
+  },
+
 });
 
 export default DriverProfileScreen;
