@@ -13,11 +13,17 @@ const ModalPopup = ({ visible, onClose }) => {
       }}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalText}>Hello World!</Text>
+          <Text style={styles.modalText}>התנתק</Text>
+          <Text style={styles.modalText}>האם ברצונך להתנתק?</Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
             onPress={onClose}>
-            <Text style={styles.textStyle}>Hide Modal</Text>
+            <Text style={styles.textStyle}>התנתק</Text>
+          </Pressable>
+          <Pressable
+            style={[styles.button, styles.buttonClose]}
+            onPress={onClose}>
+            <Text style={styles.textStyle}>סגור</Text>
           </Pressable>
         </View>
       </View>
@@ -51,9 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
+    marginVertical: 5,
   },
   buttonClose: {
     backgroundColor: '#2196F3',
