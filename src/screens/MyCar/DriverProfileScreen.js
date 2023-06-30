@@ -204,7 +204,9 @@ const styles = StyleSheet.create({
   },
   SavebuttonText: {
     color: 'white',
-    marginLeft: 5,
+    marginLeft: 15,
+    paddingTop: 10,
+    
     
   },
   centeredText: {
@@ -213,6 +215,9 @@ const styles = StyleSheet.create({
   textTitleProfileStyle: {
     alignSelf: 'center',
     color: 'white',
+    paddingBottom: 10,
+    marginBottom: 3,
+    
   },
   textMainProfileStyle: {
     textAlign: 'center',
