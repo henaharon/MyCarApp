@@ -8,6 +8,10 @@ const HomeScreen=({ navigation })=> {
           onPress={() => navigation.navigate('Notifications')}
           title="Go to notifications"
         />
+        <Button
+            onPress={() => navigation.navigate('DriversHomeScreen')}
+            title="Go to Drivers Home Screen"
+        />
       </View>
     );
   }
