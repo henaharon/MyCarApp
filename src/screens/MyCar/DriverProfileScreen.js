@@ -6,6 +6,7 @@ import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
 import AddFilesModal from './components/AddFilesModal';
 import LinearGradient from 'react-native-linear-gradient';
 import SaveModal from './components/SaveModal';
+
 const DriverProfileScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [saveModalVisible, setSaveModalVisible] = useState(false);
@@ -22,6 +23,7 @@ const DriverProfileScreen = ({ navigation }) => {
   const closeAddFilesModal = () => {
     setAddFilesModalVisible(false);
   };
+
   const openSaveModal = () => {
     setSaveModalVisible(true);
   };
@@ -67,22 +69,21 @@ const DriverProfileScreen = ({ navigation }) => {
           end={{ x: 1, y: 0 }}
           style={styles.headerGradient}
         />
-        <Pressable onPress={openSaveModal} style={styles.driverLicenceTypeButton}>
-        <Text style={styles.texttitleProfileStyle}>שׁמירה</Text>
+        <Pressable onPress={openSaveModal} style={styles.saveButton}>
+          <Text style={styles.SavebuttonText}>שׁמירה</Text>
         </Pressable>
         <Image
           source={require('./components/images/componentsNavBarXButtonsRoundedWhiteAlpha3x.png')}
           style={styles.profileXImage}
         />
-        <Text style={styles.texttitleProfileStyle}>הפרופיל שלי</Text>
-        <Pressable onPress={openAddFilesModal} style={styles.driverLicenceTypeButton}>
+        <Text style={styles.textTitleProfileStyle}>הפרופיל שלי</Text>
+        <Pressable onPress={openAddFilesModal} style={styles.profileImageContainer}>
           <Image
-          source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
-          style={styles.profileImage}
-          resizeMode="contain"
-        />
+            source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
+            style={styles.profileImage}
+            resizeMode="contain"
+          />
         </Pressable>
-      
         <Text style={styles.textMainProfileStyle}>אביב שרון</Text>
         <Text style={styles.textSubProfileStyle}>מספר עובד: 537 221</Text>
       </View>
@@ -111,10 +112,10 @@ const DriverProfileScreen = ({ navigation }) => {
             <Pressable onPress={openDriverLicenceTypeModal} style={styles.driverLicenceTypeButton}>
               <Image
                 source={require('./components/images/elements24PxIconsNavigationIcHeaderLeftSmall3x.png')}
-                style={styles.OpenDriverLicenceTypeButton}
+                style={styles.openDriverLicenceTypeButton}
               />
             </Pressable>
-            <Text style={styles.DriverLicenceTypetextStyle}>{driverLicenceTypes.join(', ')}</Text>
+            <Text style={styles.driverLicenceTypeTextStyle}>{driverLicenceTypes.join(', ')}</Text>
             <Text style={styles.textStyle}>סוג רשיון נהיגה</Text>
           </View>
         </View>
@@ -124,16 +125,14 @@ const DriverProfileScreen = ({ navigation }) => {
           <Pressable style={styles.addDocumentButton} onPress={openAddFilesModal}>
             <Image
               source={require('./components/images/elements24PxIconsNavigationIcHeaderLeftSmall3x.png')}
-              style={styles.addDocumentIconStyle}
+              style={styles.documentIcon}
             />
-            
           </Pressable>
           <Text style={styles.documentText}>צילום רישיון נהיגה</Text>
         </View>
 
         <Text>קבצים שנוספו:</Text>
         <View>
-
           <AddFilesModal visible={addFilesModalVisible} onClose={closeAddFilesModal} onFilesAdded={handleFilesAdded} />
         </View>
       </View>
@@ -146,7 +145,8 @@ const DriverProfileScreen = ({ navigation }) => {
 
       <ModalPopup visible={modalVisible} onClose={closeModal} />
       <SaveModal visible={saveModalVisible} onClose={closeSaveModal} />
-      <Pressable style={[styles.button, styles.buttonOpen, styles.fullWidthButton, styles.whiteButton]} onPress={openModal}>
+
+      <Pressable style={[styles.button, styles.fullWidthButton, styles.whiteButton]} onPress={openModal}>
         <View style={styles.buttonContent}>
           <Image source={require('./components/images/elements24PxIconsExit3x.png')} style={styles.buttonIcon} />
           <Text style={[styles.textStyle, styles.whiteButtonText]}>התנתק</Text>
@@ -156,7 +156,7 @@ const DriverProfileScreen = ({ navigation }) => {
   );
 };
 
-const windowsHeight = Dimensions.get('window').height;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
@@ -202,15 +202,15 @@ const styles = StyleSheet.create({
     elevation: 2,
     marginBottom: 10,
   },
-  buttonText: {
+  SavebuttonText: {
     color: 'white',
     marginLeft: 5,
-    textAlign: 'center',
+    
   },
   centeredText: {
     textAlign: 'center',
   },
-  texttitleProfileStyle: {
+  textTitleProfileStyle: {
     alignSelf: 'center',
     color: 'white',
   },
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
     width: 12,
     height: 12,
   },
-  OpenDriverLicenceTypeButton: {
+  openDriverLicenceTypeButton: {
     padding: 1,
     borderRadius: 1,
   },
@@ -277,40 +277,33 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
   },
-  DriverLicenceTypetextStyle: {
+  driverLicenceTypeTextStyle: {
     fontSize: 16,
     marginRight: 10,
   },
-  OpenDriverLicenceTypeButton: {
+  openDriverLicenceTypeButton: {
     width: 12,
     height: 12,
   },
   whiteButton: {
-    backgroundColor: 'transparent', // Set the background color to transparent
-    borderWidth: 1, // Add border width for the black border
-    borderColor: 'red', // Set the border color to black
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: 'red',
     borderRadius: 20,
     padding: 10,
-    elevation: 2,
-    marginBottom: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  buttonIcon: {
+    width: 24,
+    height: 24,
   },
   buttonContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonIcon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 20, // Set the desired width for the icon
-    height: 20, // Set the desired height for the icon
   },
   whiteButtonText: {
     color: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginLeft: 5,
+    textAlign: 'center',
   },
 });
 
