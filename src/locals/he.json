@@ -1,3 +1,40 @@
 {
-  "enterSubtitle": "להתחברות לאפליקציית טיימר אנא הזינו את"
+  "enterSubtitle": "להתחברות לאפליקציית טיימר אנא הזינו את",
+  "myMessages": {
+    "item1": {
+      "title" :"דעתך חשובה לנו",
+      "paragraph": "פסקה ראשונה",
+      "video": null,
+      "secondImage": "",
+      "subtitle" :"כותרת ראשית",
+      "subparagraph": "פסקה ראשונה"
+      
+    },
+    "item2": {
+      "title" :"כותרת ראשית",
+      "paragraph": "פסקה ראשונה",
+      "video": "",
+      "secondImage": "",
+      "subtitle" :"כותרת ראשית",
+      "subparagraph": "פסקה ראשונה"
+
+    },
+    "item3": {
+      "title" :"עמדות האעינה החדשות כבר מוכנות לשירותכם",
+      "paragraph": "פסקה ראשונה",
+      "video": null,
+      "secondImage": "",
+      "subtitle" :"כותרת ראשית",
+      "subparagraph": "פסקה ראשונה"
+      
+    },
+    "item4": {
+      "title" :"כותרת ראשית",
+      "paragraph": "פסקה ראשונה",
+      "video": null,
+      "secondImage": "",
+      "subtitle" :"כותרת ראשית",
+      "subparagraph": "פסקה ראשונה"
+    }
+  }
 }
