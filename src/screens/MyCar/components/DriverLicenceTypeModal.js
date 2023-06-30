@@ -1,23 +1,50 @@
-import React from 'react';
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
+import React, { useState } from 'react';
+import { Modal, View, TouchableOpacity, Text, StyleSheet, ScrollView } from 'react-native';
 
 const DriverLicenceTypeModal = ({ visible, onClose }) => {
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleOptionPress = (option) => {
+    if (selectedOptions.includes(option)) {
+      setSelectedOptions(selectedOptions.filter((selectedOption) => selectedOption !== option));
+    } else {
+      setSelectedOptions([...selectedOptions, option]);
+    }
+  };
+
+  const renderOption = (option) => {
+    const isSelected = selectedOptions.includes(option);
+
+    return (
+      <TouchableOpacity
+        key={option}
+        style={[styles.option, isSelected && styles.selectedOption]}
+        onPress={() => handleOptionPress(option)}
+      >
+        <Text style={styles.optionText}>{option}</Text>
+      </TouchableOpacity>
+    );
+  };
+
   return (
-    <Modal
-      animationType="slide"
-      transparent={true}
-      visible={visible}
-      onRequestClose={() => {
-        Alert.alert('Modal has been closed.');
-        onClose();
-      }}
-    >
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-          <Text style={styles.modalText}>DriverLicenceTypeModal</Text>
-          <Pressable style={[styles.button, styles.buttonClose]} onPress={onClose}>
-            <Text style={styles.textStyle}>סגור</Text>
-          </Pressable>
+    <Modal visible={visible} animationType="slide" transparent>
+      <View style={styles.modalContainer}>
+        <View style={styles.modalContent}>
+          <Text style={styles.title}>Select Driver's License Types</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.optionsContainer}>
+            {renderOption('Option 1')}
+            {renderOption('Option 2')}
+            {renderOption('Option 3')}
+            {renderOption('Option 1')}
+            {renderOption('Option 2')}
+            {renderOption('Option 3')}
+            {renderOption('Option 1')}
+            {renderOption('Option 2')}
+            {renderOption('Option 3')}
+          </ScrollView>
+          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+            <Text style={styles.closeButtonText}>Close</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
@@ -25,43 +52,50 @@ const DriverLicenceTypeModal = ({ visible, onClose }) => {
 };
 
 const styles = StyleSheet.create({
-  centeredView: {
+  modalContainer: {
     flex: 1,
-    justifyContent: 'flex-end', // Align the modal at the bottom
+    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 22,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  modalView: {
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+  modalContent: {
+    backgroundColor: '#FFF',
+    padding: 20,
+    borderRadius: 10,
+    width: '80%',
   },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-    marginVertical: 5,
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
+  title: {
+    fontSize: 18,
     fontWeight: 'bold',
+    marginBottom: 10,
     textAlign: 'center',
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
+  optionsContainer: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  option: {
+    backgroundColor: '#EAEAEA',
+    borderRadius: 50,
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 5,
+  },
+  selectedOption: {
+    backgroundColor: '#3498DB',
+  },
+  optionText: {
+    fontSize: 14,
+    color: '#000',
+  },
+  closeButton: {
+    alignSelf: 'center',
+  },
+  closeButtonText: {
+    fontSize: 16,
+    color: '#3498DB',
   },
 });
 
