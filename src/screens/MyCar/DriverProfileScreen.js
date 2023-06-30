@@ -206,9 +206,17 @@ const styles = StyleSheet.create({
     color: 'white',
     marginLeft: 15,
     paddingTop: 10,
-    
-    
+   
   },
+  saveButton: {
+    borderRadius: 20,
+    elevation: 2,
+    marginVertical: 5,
+    backgroundColor: 'blue',
+    alignSelf: 'flex-start',
+    paddingRight: 10, // Add margin to the right
+  },
+  
   centeredText: {
     textAlign: 'center',
   },
