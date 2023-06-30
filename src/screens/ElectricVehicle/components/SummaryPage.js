@@ -49,7 +49,9 @@ const SummaryPage = () => {
                 text2="עמדת טעינה בשער המערבי"           
               />
               <View style={styles.newSectionBackground}>
-                <Image source={require('../assets/icons/mark.png')} style={styles.newSectionImage} />
+                <View style={styles.newSectionImageContainer}>
+                  <Image source={require('../assets/icons/mark.png')} style={styles.newSectionImage} />
+                </View>
                 <View style={styles.newSectionContent}>
                   <Text style={styles.newSectionHeadline}>לידיעך</Text>
                   <Text style={styles.newSectionText}>
@@ -166,17 +168,21 @@ const styles = StyleSheet.create({
   newSectionBackground: {
     flexDirection: 'row-reverse',
     alignItems: 'center',
-    backgroundColor: '#FFE37F',
+    backgroundColor: 'rgba(255, 227, 127, 0.3)',
     borderRadius: 15,
     marginTop: 15,
     padding: 10,
   },
-  newSectionImage: {
-    width: 40,
-    height: 40,
-    marginRight: 10,
+  newSectionImageContainer: {
     backgroundColor: '#FFD700',
     borderRadius: 100,
+    padding: 15,
+    marginBottom: 60,
+    marginLeft: 5,
+  },
+  newSectionImage: {
+    width: 25,
+    height: 25,
   },
   newSectionContent: {
     flex: 1,
@@ -187,14 +193,12 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     color: 'black',
     textAlign: 'right',
-    marginRight: 15,
   },
   newSectionText: {
     color: 'gray',
     fontSize: 16,
     letterSpacing: 0.5,
     textAlign: 'right',
-    marginRight: 15,
   },
   buttonContainer: {
     marginTop: 25,
