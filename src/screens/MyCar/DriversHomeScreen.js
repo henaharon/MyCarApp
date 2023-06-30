@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, StyleSheet, ScrollView, Image} from 'react-native';
+import {View, Button, StyleSheet, ScrollView, Image, Dimensions} from 'react-native';
 
 const DriversHomeScreen = ({navigation}) => {
   return (
@@ -34,6 +34,7 @@ const DriversHomeScreen = ({navigation}) => {
   );
 };
 
+const windowsHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
@@ -50,11 +51,11 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     width: '100%',
-    height: undefined,
-    aspectRatio: 1, // Adjust this aspect ratio based on your image's dimensions
+    height: windowsHeight,
+    aspectRatio: 1,
   },
   content: {
-    marginTop: 100, // Adjust this margin to position the content below the background image
+    marginTop: 100,
     width: '100%',
     paddingVertical: 20,
     paddingHorizontal: 10,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 150,
     height: 150,
-    opacity: 0.8, // Adjust this opacity as needed
+    opacity: 0.8,
   },
   leftShapeContainer: {
     position: 'absolute',
@@ -84,7 +85,6 @@ const styles = StyleSheet.create({
     width: 125,
     height: 290, // Adjust the height to match the logo's height
     opacity: 0.8, // Adjust this opacity as needed
-    resizeMode: 'cover',
   },
 });
 
