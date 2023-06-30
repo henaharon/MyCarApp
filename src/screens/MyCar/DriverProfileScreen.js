@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Button, Pressable, StyleSheet, Text} from 'react-native';
 import ModalPopup from './components/ModalPopup';
 import DocumentField from './components/DocumentField';
-
+import InputField from './components/InputField';
 const DriverProfileScreen=({ navigation })=> {
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,6 +20,17 @@ const DriverProfileScreen=({ navigation })=> {
           onPress={() => navigation.navigate('Home')}
           title="Go to Home"
         />
+      <Text style={styles.textStyle}>פרטים כלליים</Text>
+      <InputField label ="שם פרטי" placeholder="sameer"/>
+      <InputField label ="שם משפחה" placeholder="sameer"/>
+      <InputField label ="מספר עובד" placeholder="sameer"/>
+      <InputField label ="תאריך לידה" placeholder="sameer"/>
+      <Text style={styles.textStyle}>פרטי תקשורת</Text>
+      <InputField label ="כתובת מייל" placeholder="sameer"/>
+      <InputField label ="טלפון" placeholder="sameer"/> 
+      <Text style={styles.textStyle}>פרטי רישיון נהיגה</Text>     
+      <InputField label ="מספר רישיון נהיגה" placeholder="sameer"/>
+      <InputField label ="תוקף רישיון נהיגה" placeholder="sameer"/>
      <Text style={styles.textStyle}>מסמסכים</Text>
      <DocumentField/>
      <ModalPopup visible={modalVisible} onClose={closeModal} />
