@@ -7,6 +7,15 @@ import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
 
 const DriverProfileScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [driverLicenceTypeModalVisible, setDriverLicenceTypeModalVisible] = useState(false);
+
+  const openDriverLicenceTypeModal = () => {
+    setDriverLicenceTypeModalVisible(true);
+  };
+
+  const closeDriverLicenceTypeModal = () => {
+    setDriverLicenceTypeModalVisible(false);
+  };
 
   const openModal = () => {
     setModalVisible(true);
@@ -38,7 +47,7 @@ const DriverProfileScreen = ({ navigation }) => {
         <View style={styles.inputContainer}>
           <InputField label="מספר רישיון נהיגה" placeholder="84277081" />
           <InputField label="תוקף רישיון נהיגה" placeholder="23.05.2025" />
-          <Pressable style={[styles.button, styles.buttonOpen]} onPress={openModal}>
+          <Pressable style={[styles.button, styles.buttonOpen]} onPress={openDriverLicenceTypeModal}>
             <Text style={styles.textStyle}>Open Modal</Text>
           </Pressable>
         </View>
@@ -47,7 +56,8 @@ const DriverProfileScreen = ({ navigation }) => {
         <Text>צילום רישיון נהיגה</Text>
         <DocumentField />
       </View>
-      <DriverLicenceTypeModal visible={modalVisible} onClose={closeModal} />
+      <DriverLicenceTypeModal visible={driverLicenceTypeModalVisible} onClose={closeDriverLicenceTypeModal} />
+      <ModalPopup visible={modalVisible} onClose={closeModal} />
       <Pressable style={[styles.button, styles.buttonOpen]} onPress={openModal}>
         <Text style={styles.textStyle}>התנתק</Text>
       </Pressable>
