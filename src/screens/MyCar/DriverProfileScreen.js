@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   textStyle: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
     textAlign: 'right',

@@ -30,14 +30,9 @@ const DriverLicenceTypeModal = ({ visible, onClose }) => {
     <Modal visible={visible} animationType="slide" transparent>
       <View style={styles.modalContainer}>
         <View style={styles.modalContent}>
-          <Text style={styles.title}>Select Driver's License Types</Text>
+          <Text style={styles.title}>סוג רישיון נהיגה</Text>
+          <Text style={styles.subtitle}>בחרו את סוג רישיון הנהיגה שברשותכם</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.optionsContainer}>
-            {renderOption('Option 1')}
-            {renderOption('Option 2')}
-            {renderOption('Option 3')}
-            {renderOption('Option 1')}
-            {renderOption('Option 2')}
-            {renderOption('Option 3')}
             {renderOption('Option 1')}
             {renderOption('Option 2')}
             {renderOption('Option 3')}
@@ -54,7 +49,7 @@ const DriverLicenceTypeModal = ({ visible, onClose }) => {
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
@@ -62,13 +57,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     padding: 20,
     borderRadius: 10,
-    width: '80%',
+    width: '100%',
   },
   title: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-    textAlign: 'center',
+    textAlign: 'right',
+  },
+  subtitle: {
+    fontSize: 18,
+    marginBottom: 10,
+    textAlign: 'right',
   },
   optionsContainer: {
     flexDirection: 'row',
