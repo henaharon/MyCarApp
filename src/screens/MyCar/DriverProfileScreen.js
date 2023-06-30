@@ -52,12 +52,9 @@ const DriverProfileScreen = ({ navigation }) => {
         <View style={styles.inputContainer}>
           <InputField label="מספר רישיון נהיגה" placeholder="84277081" />
           <InputField label="תוקף רישיון נהיגה" placeholder="23.05.2025" />
-          <Text style={styles.selectedOptionsText}>
-            Selected Driver's License Types: 
-            {driverLicenceTypes.join(', ')}
-          </Text>
+          
           <Pressable style={[styles.button, styles.buttonOpen]} onPress={openDriverLicenceTypeModal}>
-            <Text style={styles.textStyle}>Open Modal</Text>
+          <InputField label="סוג רשיון נהיגה" placeholder={driverLicenceTypes.join(', ')} />
           </Pressable>
         </View>
       

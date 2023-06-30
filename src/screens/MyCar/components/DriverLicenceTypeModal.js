@@ -38,9 +38,18 @@ const DriverLicenceTypeModal = ({ visible, onClose, onSelect }) => {
           <Text style={styles.title}>סוג רישיון נהיגה</Text>
           <Text style={styles.subtitle}>בחרו את סוג רישיון הנהיגה שברשותכם</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.optionsContainer}>
-            {renderOption('Option 1')}
-            {renderOption('Option 2')}
-            {renderOption('Option 3')}
+            {renderOption('A2')}
+            {renderOption('A1')}
+            {renderOption('A')}
+            {renderOption('B')}
+            {renderOption('C1')}
+            {renderOption('C')}
+            {renderOption('D')}
+            {renderOption('D1')}
+            {renderOption('D2')}
+            {renderOption('D3')}
+            {renderOption('E')}
+            {renderOption('1')}
           </ScrollView>
           <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
             <Text style={styles.closeButtonText}>סגירה</Text>
