@@ -77,9 +77,8 @@ const DriverProfileScreen = ({ navigation }) => {
         <Text style={styles.textStyle}>מסמכים</Text>
         <Text>צילום רישיון נהיגה</Text>
 
-        <Pressable style={[styles.button, styles.buttonOpen]} onPress={openAddFilesModal}>
-       
-          <Text style={styles.buttonText}>Add Files</Text>
+        <Pressable style={[styles.button, styles.fullWidthButton]} onPress={openAddFilesModal}>
+          <Text style={[styles.buttonText, styles.centeredText]}>Add Files</Text>
         </Pressable>
       </View>
       <AddFilesModal
@@ -92,7 +91,10 @@ const DriverProfileScreen = ({ navigation }) => {
         onSelect={handleDriverLicenceTypesSelect}
       />
       <ModalPopup visible={modalVisible} onClose={closeModal} />
-      <Pressable style={[styles.button, styles.buttonOpen]} onPress={openModal}>
+      <Pressable style={[styles.button, styles.buttonOpen, styles.fullWidthButton]} onPress={openModal}>
+        <Image
+          source={require('./components/images/elements24PxIconsExit3x.png')}
+        />
         <Text style={styles.textStyle}>התנתק</Text>
       </Pressable>
     </ScrollView>
@@ -144,6 +146,10 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     marginLeft: 5,
+    textAlign: 'center',
+  },
+  centeredText: {
+    textAlign: 'center',
   },
   texttitleProfileStyle: {
     alignSelf: 'center',
@@ -158,7 +164,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
   },
-  
+  fullWidthButton: {
+    width: '100%',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
 });
 
 export default DriverProfileScreen;
