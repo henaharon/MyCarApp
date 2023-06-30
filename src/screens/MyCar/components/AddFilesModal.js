@@ -1,11 +1,29 @@
-import React from 'react';
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import DocumentField from './DocumentField';
 import ImageField from './ImageField';
-const AddFilesModal = ({ visible, onClose }) => {
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+const AddFilesModal = ({ visible, onClose, onFilesAdded }) => {
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  const handleOverlayPress = () => {
+    onClose();
+  };
+
+  const handleFileUpload = (file) => {
+    setUploadedFiles([...uploadedFiles, file]);
+  };
+
+  const handleCloseModal = () => {
+    onFilesAdded(uploadedFiles);
+    onClose();
+  };
+
   return (
     <Modal
-      animationType="slide"
       transparent={true}
       visible={visible}
       onRequestClose={() => {
@@ -13,16 +31,18 @@ const AddFilesModal = ({ visible, onClose }) => {
         onClose();
       }}
     >
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-        <Text style={styles.label}>צילום רישיון נהיגה</Text>
-          <DocumentField />
-          <ImageField/>
-          <Pressable style={[styles.button, styles.buttonClose]} onPress={onClose}>
-            <Text style={styles.textStyle}>סגור</Text>
-          </Pressable>
+      <TouchableWithoutFeedback onPress={handleOverlayPress}>
+        <View style={styles.centeredView}>
+          <View style={[styles.modalView, { width: windowWidth - 40 }]}>
+            <Text style={styles.label}>צילום רישיון נהיגה</Text>
+            <DocumentField onFileUpload={handleFileUpload} />
+            <ImageField onFileUpload={handleFileUpload} />
+            <Pressable style={[styles.button, styles.buttonClose]} onPress={handleCloseModal}>
+              <Text style={styles.textStyle}>סגור</Text>
+            </Pressable>
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 };
@@ -30,15 +50,13 @@ const AddFilesModal = ({ visible, onClose }) => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    marginTop: 22,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalView: {
-    margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 35,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -48,6 +66,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    marginVertical: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
   button: {
     borderRadius: 20,
