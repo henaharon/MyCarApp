@@ -1,5 +1,14 @@
 import React from 'react';
-import {View, Button, StyleSheet, ScrollView, Image, Dimensions} from 'react-native';
+import {
+  View,
+  Button,
+  StyleSheet,
+  ScrollView,
+  Image,
+  Dimensions,
+  Text,
+} from 'react-native';
+import DriversHomeScreenText from '../../assets/DriversHomeScreenText';
 
 const DriversHomeScreen = ({navigation}) => {
   return (
@@ -20,6 +29,15 @@ const DriversHomeScreen = ({navigation}) => {
             style={styles.logo}
             resizeMode="contain"
           />
+        </View>
+        {/* Text Content */}
+        <View style={styles.textContainer}>
+          <Text style={styles.heading}>
+            {DriversHomeScreenText.servicesTitle}
+          </Text>
+          <Text style={styles.paragraph}>
+            {DriversHomeScreenText.servicesDescription}
+          </Text>
         </View>
         {/* left shape */}
         <View style={styles.leftShapeContainer}>
@@ -73,6 +91,23 @@ const styles = StyleSheet.create({
     height: 150,
     opacity: 0.8,
   },
+  textContainer: {
+    position: 'absolute',
+    top: '50%',
+    right: 20, // Adjust the right margin as needed
+    transform: [{translateY: 100}], // Adjust the translateY value to position the text vertically
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
+  },
+  heading: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  paragraph: {
+    fontSize: 16,
+    textAlign: 'right',
+  },
   leftShapeContainer: {
     position: 'absolute',
     top: '50%',
@@ -83,8 +118,8 @@ const styles = StyleSheet.create({
   },
   leftShape: {
     width: 125,
-    height: 290, // Adjust the height to match the logo's height
-    opacity: 0.8, // Adjust this opacity as needed
+    height: 290,
+    opacity: 0.8,
   },
 });
 
