@@ -12,7 +12,6 @@ import {
 import BaseView from '../../uiKit/BaseView';
 import {myMessagesIcons} from '../../uiKit/icons';
 import {myMessages} from '../../locals/he.json';
-import Video from 'react-native-video';
 import ExpandCard from './ExpandCard';
 import UpdateCard from './UpdateCard';
 const MyMessages = () => {
@@ -32,7 +31,7 @@ const MyMessages = () => {
         <UpdateCard
           image={myMessagesIcons.image1}
           subtitle={myMessages.item1.title}
-          text={'test test'}
+          text={myMessages.item1.paragraph}
           onPress={() =>
             handleCardPress({
               mainImage: myMessagesIcons.image1,
@@ -48,7 +47,7 @@ const MyMessages = () => {
         <UpdateCard
           image={myMessagesIcons.image2}
           subtitle={myMessages.item2.title}
-          text={'test test'}
+          text={myMessages.item2.paragraph}
           onPress={() =>
             handleCardPress({
               mainImage: myMessagesIcons.image7,
@@ -64,7 +63,7 @@ const MyMessages = () => {
         <UpdateCard
           image={myMessagesIcons.image3}
           subtitle={myMessages.item3.title}
-          text={'test test'}
+          text={myMessages.item3.paragraph}
           onPress={() =>
             handleCardPress({
               mainImage: myMessagesIcons.image3,
@@ -80,7 +79,7 @@ const MyMessages = () => {
         <UpdateCard
           image={myMessagesIcons.image4}
           subtitle={myMessages.item4.title}
-          text={'test test'}
+          text={myMessages.item4.paragraph}
           onPress={() =>
             handleCardPress({
               mainImage: myMessagesIcons.image4,
