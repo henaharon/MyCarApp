@@ -165,7 +165,6 @@ const styles = StyleSheet.create({
     marginTop: 100,
     width: '100%',
     paddingVertical: 20,
-    //    paddingHorizontal: 0,
   },
   logoContainer: {
     position: 'absolute',
