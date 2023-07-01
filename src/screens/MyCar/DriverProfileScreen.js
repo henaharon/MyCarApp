@@ -148,8 +148,8 @@ const DriverProfileScreen = ({ navigation }) => {
 
       <Pressable style={[styles.button, styles.fullWidthButton, styles.whiteButton]} onPress={openModal}>
         <View style={styles.buttonContent}>
+        <Text style={[styles.textStyle, styles.whiteButtonText]}>התנתק</Text>
           <Image source={require('./components/images/elements24PxIconsExit3x.png')} style={styles.buttonIcon} />
-          <Text style={[styles.textStyle, styles.whiteButtonText]}>התנתק</Text>
         </View>
       </Pressable>
     </ScrollView>
@@ -315,6 +315,7 @@ const styles = StyleSheet.create({
   buttonIcon: {
     width: 24,
     height: 24,
+    marginLeft: 5,
   },
   buttonContent: {
     flexDirection: 'row',
