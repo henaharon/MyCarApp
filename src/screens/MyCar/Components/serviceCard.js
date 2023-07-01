@@ -1,12 +1,22 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text} from 'react-native';
+import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 
-const ServiceCard = ({title, image}) => {
+const ServiceCard = ({title, image, goToPath = null}) => {
+  const handlePress = () => {
+    if (goToPath) {
+      //      navigation.navigate(goToPath);
+    } else {
+      // Stay in the same page
+    }
+  };
+
   return (
-    <View style={styles.card}>
-      <Image source={image} style={styles.cardImage} resizeMode="contain" />
-      <Text style={styles.cardTitle}>{title}</Text>
-    </View>
+    <TouchableOpacity onPress={handlePress} activeOpacity={0.8}>
+      <View style={styles.card}>
+        <Image source={image} style={styles.cardImage} resizeMode="contain" />
+        <Text style={styles.cardTitle}>{title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 

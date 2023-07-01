@@ -1,29 +1,39 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-const BigServiceCard = ({title, imagePath}) => {
+const BigServiceCard = ({title, imagePath, goToPath = null}) => {
+  const handlePress = () => {
+    if (goToPath) {
+      //      navigation.navigate(goToPath);
+    } else {
+      // Stay in the same page
+    }
+  };
+
   return (
-    <View style={styles.cardContainer}>
-      {/* Top Row */}
-      <View style={styles.topRow}>
-        {/* Left Column */}
-        <View style={styles.leftColumn}>
-          <Image
-            source={require('../../../assets/B1-assets/elements24PxIconsNavigationIcHeaderLeft2.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          />
+    <TouchableOpacity onPress={handlePress} activeOpacity={0.8}>
+      <View style={styles.cardContainer}>
+        {/* Top Row */}
+        <View style={styles.topRow}>
+          {/* Left Column */}
+          <View style={styles.leftColumn}>
+            <Image
+              source={require('../../../assets/B1-assets/elements24PxIconsNavigationIcHeaderLeft2.png')}
+              style={styles.logo}
+              resizeMode="contain"
+            />
+          </View>
+          {/* Right Column */}
+          <View style={styles.rightColumn}>
+            <Text style={styles.title}>{title}</Text>
+          </View>
         </View>
-        {/* Right Column */}
-        <View style={styles.rightColumn}>
-          <Text style={styles.title}>{title}</Text>
+        {/* Bottom Row */}
+        <View style={styles.bottomRow}>
+          <Image source={imagePath} style={styles.image} resizeMode="cover" />
         </View>
       </View>
-      {/* Bottom Row */}
-      <View style={styles.bottomRow}>
-        <Image source={imagePath} style={styles.image} resizeMode="cover" />
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -31,41 +41,45 @@ const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: '#FFFFFF',
     width: '80%',
-    aspectRatio: 1,
+    aspectRatio: 16 / 12,
     borderRadius: 10,
     overflow: 'hidden',
+    marginTop: 20,
+    marginBottom: 20,
   },
   topRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
   },
   leftColumn: {
     marginRight: 10,
   },
   logo: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
   },
   rightColumn: {
     flex: 1,
     alignItems: 'flex-end',
   },
   title: {
-    fontSize: 16,
+    fontSize: 20,
+    color: '#000',
     fontWeight: 'bold',
     textAlign: 'right',
   },
   bottomRow: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
+    //    backgroundColor:'yellow',
   },
   image: {
-    width: '100%',
-    height: '100%',
+    width: '90%',
+    height: '90%',
     borderRadius: 10,
   },
 });

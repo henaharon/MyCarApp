@@ -89,6 +89,7 @@ const DriversHomeScreen = ({navigation}) => {
               title={DriversHomeScreenText.CarRental}
               imagePath={require('../../assets/B1-assets/photosCarPerDay.png')}
             />
+            <View style={styles.sectionDivider} />
             <BigServiceCard
               title={DriversHomeScreenText.AccidentsAndEmergency}
               imagePath={require('../../assets/B1-assets/photosAccident.png')}
