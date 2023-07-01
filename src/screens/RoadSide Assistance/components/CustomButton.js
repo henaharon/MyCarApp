@@ -47,8 +47,16 @@ const ButtonContainer = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <View style={styles.centeredView}>
-        <View style={styles.buttonRow}>{renderButtons()}</View>
+      <View style={styles.container}>
+        <Image
+          source={require('../../../assets/icons/carService.png')}
+          style={styles.headerImage}
+        />
+        <View style={styles.buttonsAndTitles}>
+          <Text style={styles.text}>איך אפשר לעזור לך?</Text>
+          <Text style={styles.secondaryText}>אנא בחר שירות</Text>
+          <View style={styles.buttonRow}>{renderButtons()}</View>
+        </View>
       </View>
     </ScrollView>
   );
@@ -58,10 +66,38 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
   },
-  centeredView: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     marginLeft: 10,
+    borderRadius: 20,
+    overflow: 'hidden',
+  },
+  headerImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+  },
+  text: {
+    flex: 1,
+    marginLeft: 'auto',
+    paddingRight: 20,
+    paddingTop: 15,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  secondaryText: {
+    flex: 1,
+    marginLeft: 'auto',
+    paddingRight: 20,
+    paddingTop: 5,
+    fontSize: 14,
+    color: 'gray',
+  },
+  buttonsAndTitles: {
+    backgroundColor: 'white',
+    borderRadius: 20,
+    marginTop: -20,
   },
   buttonRow: {
     flexDirection: 'row',
@@ -77,7 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: 'lightgray',
-    borderRadius: 5,
+    borderRadius: 15,
     borderWidth: 1,
   },
   lastButton: {
