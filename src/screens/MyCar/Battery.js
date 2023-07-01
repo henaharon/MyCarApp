@@ -12,16 +12,23 @@ import {
   Dimensions,
 } from 'react-native';
 
+import Summary from './Summary';
+
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker'; // TODO
+
 const Battery = ({modalVisible, setModalVisible}) => {
   const [notesInputValue, setNotesInputValue] = React.useState('');
   const [locationInputValue, setLocationInputValue] = React.useState('');
   const [imageUris, setImageUris] = React.useState([]);
+  const [summaryModalVisible, setSummaryModalVisible] = React.useState(false);
 
   const handleUploadImage = () => {
     // Simulating image upload by generating a random image URL
     const randomImageUrl = `https://picsum.photos/200/300?random=${Math.random()}`;
     setImageUris([...imageUris, randomImageUrl]);
   };
+
+  const imagePlaceholder = require('./../../assets/icons/placeholder-image.png');
 
   const closeModal = () => {
     setModalVisible(false);
@@ -40,7 +47,7 @@ const Battery = ({modalVisible, setModalVisible}) => {
           <View style={styles.blackBackground} />
 
           <View style={styles.header}>
-            <TouchableOpacity onPress={closeModal}>
+            <TouchableOpacity onPress={() => setSummaryModalVisible(true)}>
               <Image
                 source={require('./../../assets/icons/arrow-left.png')}
                 style={styles.arrowIcon}
@@ -71,11 +78,11 @@ const Battery = ({modalVisible, setModalVisible}) => {
               style={styles.textArea}
             />
 
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={handleUploadImage}
               style={styles.uploadButton}>
               <Text style={styles.buttonText}>Upload Images</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <ScrollView horizontal={true} style={styles.imageContainer}>
               {imageUris.map((uri, index) => (
@@ -83,6 +90,12 @@ const Battery = ({modalVisible, setModalVisible}) => {
                   <Image source={{uri}} style={styles.image} />
                 </View>
               ))}
+              <TouchableOpacity onPress={handleUploadImage}>
+                <Image
+                  source={imagePlaceholder}
+                  style={styles.imageCardUpload}
+                />
+              </TouchableOpacity>
             </ScrollView>
 
             <MaterialTextInput
@@ -95,6 +108,16 @@ const Battery = ({modalVisible, setModalVisible}) => {
           </View>
         </View>
       </View>
+
+      {summaryModalVisible && (
+        <Summary
+          summaryModalVisible={summaryModalVisible}
+          setSummaryModalVisible={setSummaryModalVisible}
+          imageUris={imageUris}
+          locationInputValue={locationInputValue}
+          notesInputValue={notesInputValue}
+        />
+      )}
     </Modal>
   );
 };
@@ -180,14 +203,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     maxHeight: 120,
     marginBottom: 16,
+    transform: [{scaleX: -1}],
   },
   imageCard: {
-    marginRight: 8,
+    marginLeft: 8,
+    marginTop: 6,
+    transform: [{ scaleX: -1 }]
+  },
+  imageCardUpload: {
+    marginLeft: 8,
+    width: 80,
+    height: 100,
+    marginTop: 6,
   },
   image: {
-    width: 100,
+    width: 80,
     height: 100,
-    borderRadius: 4,
+    borderRadius: 6,
   },
 });
 
