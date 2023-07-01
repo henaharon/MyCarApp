@@ -13,9 +13,7 @@ const BigServiceCard = ({title, imagePath, goToPath = null}) => {
   return (
     <TouchableOpacity onPress={handlePress} activeOpacity={0.8}>
       <View style={styles.cardContainer}>
-        {/* Top Row */}
         <View style={styles.topRow}>
-          {/* Left Column */}
           <View style={styles.leftColumn}>
             <Image
               source={require('../../../assets/B1-assets/elements24PxIconsNavigationIcHeaderLeft2.png')}
@@ -23,12 +21,10 @@ const BigServiceCard = ({title, imagePath, goToPath = null}) => {
               resizeMode="contain"
             />
           </View>
-          {/* Right Column */}
           <View style={styles.rightColumn}>
             <Text style={styles.title}>{title}</Text>
           </View>
         </View>
-        {/* Bottom Row */}
         <View style={styles.bottomRow}>
           <Image source={imagePath} style={styles.image} resizeMode="cover" />
         </View>
@@ -75,7 +71,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    //    backgroundColor:'yellow',
   },
   image: {
     width: '90%',
