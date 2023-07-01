@@ -1,19 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import { View, Text, Image,StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { translate } from '../../../locals/index';
-import {SideMenuIcons} from '../../../uiKit/icons';
+import { SideMenuIcons } from '../../../uiKit/icons';
 
 const Notifcaion = () => {
-    const [counter, setCounter] = useState(1);
-    const [counter2, setCounter2] = useState(3);
-    return (
-      <View style={styles.mainNotification}>
-      <TouchableOpacity
-        style={styles.SmS_notif}
-        onPress={() => {
-          // Handle onPress action for the first component
-        }}
-      >
+  const [counter, setCounter] = useState(1);
+  const [counter2, setCounter2] = useState(3);
+
+  const handleFirstComponentPress = useCallback(() => {
+    // Handle onPress action for the first component
+  }, []);
+
+  const handleSecondComponentPress = useCallback(() => {
+    // Handle onPress action for the second component
+  }, []);
+
+  return (
+    <View style={styles.mainNotification}>
+      <TouchableOpacity style={styles.SmS_notif} onPress={handleFirstComponentPress}>
         <View style={styles.notification}>
           <View style={styles.notificationContainer}>
             <Text style={styles.notificationText}>{counter}</Text>
@@ -28,12 +32,7 @@ const Notifcaion = () => {
           <Text style={styles.TextMessage}>{translate('sideMenu.MyMessage')}</Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.SmS_notif}
-        onPress={() => {
-          // Handle onPress action for the second component
-        }}
-      >
+      <TouchableOpacity style={styles.SmS_notif} onPress={handleSecondComponentPress}>
         <View style={styles.notification}>
           <View style={styles.notificationContainer}>
             <Text style={styles.notificationText}>{counter2}</Text>
@@ -49,10 +48,11 @@ const Notifcaion = () => {
         </View>
       </TouchableOpacity>
     </View>
-    );
+  );
 };
+
 const styles = StyleSheet.create({
-notification: {
+  notification: {
     width: 25,
     height: 25,
     textAlign: 'center',
@@ -60,7 +60,7 @@ notification: {
     margin: 4,
     backgroundColor: 'blue',
     borderRadius: 25 / 2,
-  },    
+  },
   notificationContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -87,21 +87,21 @@ notification: {
     borderRadius: 8,
     backgroundColor: 'rgba(246, 232, 232, 0.5)',
   },
-  
-  imagepostion:{
-  alignItems: 'center',
 
+  imagepostion: {
+    alignItems: 'center',
   },
   GeneralMessage: {
     width: 40,
     height: 40,
     tintColor: 'white',
   },
-  
-  TextMessage :{
-  marginTop: 5,
-  fontSize: 15,
-  color:'white'
+
+  TextMessage: {
+    marginTop: 5,
+    fontSize: 15,
+    color: 'white',
   },
-}); 
+});
+
 export default Notifcaion;

@@ -1,55 +1,68 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { StyleSheet, View} from 'react-native';
-import {Text } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+import { Text } from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
 import CommonCard from './components/commonCard';
 import Line from './components/Line';
 import Notifcaion from './components/Notifcaion';
-import sideMenuMock from '../../mockData/sideMenuMock'
+import sideMenuMock from '../../mockData/sideMenuMock';
 import Footer from './components/Footer';
 import Userinfo from './components/Userinfo';
 import { translate } from '../../locals/index';
 
 const DrawerContent = (props) => {
-    return (
-      <View style={styles.root}>
-        <LinearGradient
-          colors={['#E50075', '#F05C62']} // Replace with your desired gradient colors
-          start={{ x: 0, y: 0 }} // Start from the right side
-          end={{ x: 1, y: 0 }} // End at the left side
-          style={{ flex: 1 }}
-        >
+  const handleClick = useCallback(
+    (index) => {
+      switch (index) {
+        case 0:
+          props.navigation.navigate('Home');
+          break;
+        case 1:
+          props.navigation.navigate('Notifications');
+          break;
+        case 2:
+          props.navigation.closeDrawer();
+          break;
+        case 3:
+          props.navigation.closeDrawer();
+          break;
+        case 4:
+          props.navigation.navigate('Home');
+          break;
+        case 5:
+          props.navigation.navigate('Notifications');
+          break;
+        case 6:
+          props.navigation.closeDrawer();
+          break;
+        default:
+          break;
+      }
+    },
+    [props.navigation]
+  );
+
+  return (
+    <View style={styles.root}>
+      <LinearGradient
+        colors={['#E50075', '#F05C62']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={{ flex: 1 }}
+      >
         <DrawerContentScrollView {...props}>
           <View style={styles.drawerContent}>
             <Userinfo />
             <Notifcaion />
           </View>
           {sideMenuMock.slice(0, 4).map((item, index) => (
-            // Render CommonCard component for the first four items in the data array
             <CommonCard
               key={index}
               title={item.title}
               icon={item.icon}
               count={item.count}
-              onClick={() => {
-                switch (index) {
-                  case 0:
-                    props.navigation.navigate('Home');
-                    break;
-                  case 1:
-                    props.navigation.navigate('Notifications');
-                    break;
-                  case 2:
-                    props.navigation.closeDrawer();
-                    break;
-                  case 3:
-                    props.navigation.closeDrawer();
-                    break;
-                  default:
-                    break;
-                }
-              }}
+              onClick={useCallback(() => handleClick(index), [handleClick, index])}
             />
           ))}
           <Line />
@@ -58,28 +71,12 @@ const DrawerContent = (props) => {
           </View>
           <View style={styles.commoncard}>
             {sideMenuMock.slice(4, 7).map((item, index) => (
-              // Render CommonCard component for the next three items in the data array 
               <CommonCard
                 key={index}
                 title={item.title}
                 icon={item.icon}
                 count={item.count}
-                onClick={() => {
-                  switch (index + 4) {
-                    case 4:
-                      props.navigation.navigate('Home');
-                      break;
-                    case 5:
-                      props.navigation.navigate('Notifications');
-                      break;
-                    case 6:
-                      props.navigation.closeDrawer();
-                      break;
-                    default:
-                      break;
-                  }
-                  //alert('title: ' + item.title);
-                }}
+                onClick={useCallback(() => handleClick(index + 4), [handleClick, index])}
               />
             ))}
           </View>
@@ -87,7 +84,7 @@ const DrawerContent = (props) => {
         </DrawerContentScrollView>
       </LinearGradient>
     </View>
-    );
+  );
 };
 const styles = StyleSheet.create({
     root :{

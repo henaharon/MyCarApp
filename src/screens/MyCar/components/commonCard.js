@@ -1,5 +1,5 @@
-import { View, Text, Image, TouchableOpacity,StyleSheet } from 'react-native';
-import React from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useCallback } from 'react';
 
 const CommonCard = ({
   isNew,
@@ -10,32 +10,29 @@ const CommonCard = ({
   bgColor,
   onClick,
 }) => {
+  const handleClick = useCallback(() => {
+    onClick();
+  }, [onClick]);
+
   return (
     <View style={styles.RootCommondCard}>
       <TouchableOpacity
         style={styles.TouchCommonCard}
-        onPress={() => {
-          onClick();
-        }}>
-          {count !== undefined && (
-              <View style={styles.CountPostion}>
-                {count !== 0 ? (
-                  <View style={styles.CountPostionCycle}>
-                    <Text style={styles.CountSize}>
-                      {count}
-                    </Text>
-                  </View>
-                ) : (
-                  <View/>
-                )}
+        onPress={handleClick}>
+        {count !== undefined && (
+          <View style={styles.CountPostion}>
+            {count !== 0 ? (
+              <View style={styles.CountPostionCycle}>
+                <Text style={styles.CountSize}>{count}</Text>
               </View>
+            ) : (
+              <View />
             )}
+          </View>
+        )}
         <View style={styles.Icon_Postion_Text}>
           {title && (
-            <Text
-              style={styles.TextAttribute}>
-              {title}
-            </Text>
+            <Text style={styles.TextAttribute}>{title}</Text>
           )}
           {icon && (
             <Image
