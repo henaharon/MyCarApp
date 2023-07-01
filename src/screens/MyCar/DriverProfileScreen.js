@@ -77,13 +77,20 @@ const DriverProfileScreen = ({ navigation }) => {
           style={styles.profileXImage}
         />
         <Text style={styles.textTitleProfileStyle}>הפרופיל שלי</Text>
-        <Pressable onPress={openAddFilesModal} style={styles.profileImageContainer}>
+        <View style={styles.profileImageContainer}>
+  <Pressable onPress={openAddFilesModal} style={styles.profileEditButton}>
+    <Image
+      source={require('./components/images/ImagePlaceholder.png')}
+      style={styles.profileEditPhoto}
+    />
+  </Pressable>
+</View>
           <Image
             source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
             style={styles.profileImage}
             resizeMode="contain"
           />
-        </Pressable>
+        
         <Text style={styles.textMainProfileStyle}>אביב שרון</Text>
         <Text style={styles.textSubProfileStyle}>מספר עובד: 537 221</Text>
       </View>
@@ -330,6 +337,25 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     textAlign: 'center',
   },
+  profileImageContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+   
+  },
+  profileEditButton: {
+    backgroundColor: 'blue',
+    borderRadius: 10,
+    padding: 5,
+    marginRight: 130 , // Add margin to the left
+    
+  },
+  profileEditPhoto: {
+    width: 24,
+    height: 24,
+    
+  },
+  
+  
 });
 
 export default DriverProfileScreen;
