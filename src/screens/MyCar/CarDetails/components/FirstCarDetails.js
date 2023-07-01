@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import {CarDetailsIcons} from '../../../uiKit/icons';
-import {translate} from '../../../locals/index';
+import {CarDetailsIcons} from '../../../../uiKit/icons';
+import {translate} from '../../../../locals/index';
 import {
   StyleSheet,
   Text,
@@ -8,7 +8,7 @@ import {
   Image
 } from 'react-native';
 
-export const FirstCarDetails = ({carInfo}) => {
+const FirstCarDetails = ({carInfo}) => {
   
   // get all the data and taked only some data what used here (type, color, number)
   const [type, setType] = useState("");
@@ -132,3 +132,5 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 });
+
+export default FirstCarDetails;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {AirPressureGuide} from './AirPressureGuide';
+import AirPressureGuide from './AirPressureGuide';
 import {
   StyleSheet, 
   Text, 
@@ -8,12 +8,13 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-export const Service = ({ data }) => {
+const Service = ({ data }) => {
   
   const [airPressureGuideVisible, setAirPressureGuideVisible] = useState(false);
 
   const handleButtonPress = () => {
-    setAirPressureGuideVisible(true);
+    // setAirPressureGuideVisible(true);
+    console.log("Go to AirPressureGuide component");
   };
 
   const service = data.map(({ icons, defualtText, dynamicText }, index) => (
@@ -29,7 +30,6 @@ export const Service = ({ data }) => {
   return (
     <View style={styles.DetailsContainer}>
       {service}
-      {airPressureGuideVisible && <AirPressureGuide />}
     </View>
   );
 };
@@ -73,3 +73,5 @@ const styles = StyleSheet.create({
     fontSize:12
   }
 });
+
+export default Service;

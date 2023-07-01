@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {CarDetailsIcons} from '../../uiKit/icons';
-import {translate} from '../../../locals/index';
+import {translate} from '../../../../locals/index';
 import LinearGradient from 'react-native-linear-gradient';
 import {
     StyleSheet, 
@@ -12,7 +12,7 @@ import {
     
 } from 'react-native';
 
-export const SelectDocuments = () => {
+const SelectDocuments = () => {
 
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
@@ -72,7 +72,7 @@ export const SelectDocuments = () => {
                     onChangeText={handleEmailChange}
                     onBlur={validateEmail}
                 />
-                <TouchableOpacity style={styles.button} onPress={() => console.log('Button pressed')}>
+                <TouchableOpacity style={styles.button} onPress={() => console.log('Go to DocumentSent component')}>
                     <LinearGradient
                         colors={['#E4166D','#E1376C','#ED4E61']}
                         start={{ x: 0, y: 0 }}
@@ -184,3 +184,4 @@ const styles = StyleSheet.create({
     },
 });
 
+export default SelectDocuments;

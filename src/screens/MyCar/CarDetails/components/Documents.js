@@ -1,5 +1,5 @@
-import {CarDetailsIcons} from '../../../uiKit/icons';
-import {translate} from '../../../locals/index';
+import {CarDetailsIcons} from '../../../../uiKit/icons';
+import {translate} from '../../../../locals/index';
 import {
     StyleSheet, 
     Text, 
@@ -9,15 +9,18 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-export const Documents = ({carInfo}) => {
+const Documents = ({carInfo}) => {
 
+    const handleShareDocumentPress = () => {
+        console.log('Go to SelectDocuments component');
+    };
+    
   return (
     <View style={styles.DetailsContainer}>
-
         {/* first section of document part*/}
         <View style={styles.Document}>
             <Text style={styles.BoldText}>{translate('document')}</Text>
-            <TouchableOpacity style={styles.ShareDocumentBtn}>
+            <TouchableOpacity style={styles.ShareDocumentBtn} onPress={handleShareDocumentPress}>
                 <Text style={styles.shareText}>{translate('shareDocument')}</Text>
                 <Image style={styles.Image} source={CarDetailsIcons.shareIcon}/>    
             </TouchableOpacity>
@@ -68,7 +71,6 @@ export const Documents = ({carInfo}) => {
                 </View>
             </ScrollView>
         </View>
-
     </View>
   );
 };
@@ -165,3 +167,5 @@ const styles = StyleSheet.create({
         height:40
     }
 });
+
+export default Documents;

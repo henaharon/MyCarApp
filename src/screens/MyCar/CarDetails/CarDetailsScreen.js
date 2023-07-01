@@ -1,9 +1,9 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { FirstCarDetails} from  './components/FirstCarDetails';
-import { SecondCarDetails} from './components/SecondCarDetails';
-import { Documents} from './components/Documents';
-import myCarMock from '../../mockData/myCarMock';
+import FirstCarDetails from  './components/FirstCarDetails';
+import SecondCarDetails from './components/SecondCarDetails';
+import Documents from './components/Documents';
+import myCarMock from '../../../mockData/myCarMock';
 import {
     View,
     StyleSheet,
@@ -11,7 +11,7 @@ import {
     SafeAreaView,
 } from 'react-native';
 
-export const CarDetailsScreen = () => {
+const CarDetailsScreen = () => {
     return(
         <SafeAreaView style={styles.Container}>
             <ScrollView>
@@ -50,3 +50,5 @@ const styles = StyleSheet.create({
     }
 
 });
+
+export default CarDetailsScreen;

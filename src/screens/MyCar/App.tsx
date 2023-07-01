@@ -25,14 +25,14 @@ import { NavigationContainer } from '@react-navigation/native';
 //import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './HomeScreen.js';
 import NotificationsScreen from './NotificationsScreen.js';
+import CarDetailsScreen from './CarDetails/CarDetailsScreen.js'
 import {
   Colors,
   DebugInstructions,
   Header,
   LearnMoreLinks,
   ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
- 
+} from 'react-native/Libraries/NewAppScreen'; 
 
 const Drawer = createDrawerNavigator();
 function App(): JSX.Element {
@@ -41,6 +41,7 @@ function App(): JSX.Element {
       <Drawer.Navigator initialRouteName="Home" screenOptions={{drawerPosition: 'right'}} id="RightDrawer">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="CarDetails" component={CarDetailsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

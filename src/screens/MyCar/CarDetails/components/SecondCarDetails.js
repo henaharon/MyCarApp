@@ -1,6 +1,6 @@
-import {CarDetailsIcons} from '../../../uiKit/icons';
-import {translate} from '../../../locals/index';
-import {Service} from './Service';
+import {CarDetailsIcons} from '../../../../uiKit/icons';
+import {translate} from '../../../../locals/index';
+import Service from './Service';
 import {
   StyleSheet,
   Text, 
@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 // M1b component, with compnent for(מרווח טיפולים, עליה לביש ,לחץ אוויר קדמי, לחץ אוויר אחורי)
-export const SecondCarDetails = ({carInfo}) => {
+const SecondCarDetails = ({carInfo}) => {
   
   //composition specific data from carInfo, send this data with a default text from he.json, get icons for every service from {translate}
     const data = [
@@ -100,3 +100,5 @@ const styles = StyleSheet.create({
     color:'white',
   }
 });
+
+export default SecondCarDetails;

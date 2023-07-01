@@ -1,5 +1,5 @@
-import {CarDetailsIcons} from '../../../uiKit/icons';
-import {translate} from '../../../locals/index';
+import {CarDetailsIcons} from '../../../../uiKit/icons';
+import {translate} from '../../../../locals/index';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   StyleSheet, 
@@ -9,7 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-export const AirPressureGuide = () => {
+const AirPressureGuide = () => {
   return (
     <View style={styles.Container}>
         <View style={styles.ImageView}>
@@ -84,3 +84,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
       },
 });
+
+export default AirPressureGuide;

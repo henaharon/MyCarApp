@@ -7,7 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-export const DocumentSent = () => {
+const DocumentSent = () => {
   return (
     <View style={styles.Container}>
         <Text style={styles.titleText}>{translate('documentSent')}</Text>
@@ -72,3 +72,5 @@ const styles = StyleSheet.create({
         textDecorationLine: 'none',
     },
 });
+
+export default DocumentSent;
