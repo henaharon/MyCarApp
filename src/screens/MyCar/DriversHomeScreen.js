@@ -14,10 +14,20 @@ import DriversHomeScreenText from '../../assets/DriversHomeScreenText';
 import galleryData from '../../assets/serviceGalleryData';
 import ServiceCard from './Components/serviceCard';
 import BigServiceCard from './Components/BigServiceCard';
+import MessageCard from './Components/MessageCard';
+import messagesGalleryData from '../../assets/messagesGalleryData';
 
 const DriversHomeScreen = ({navigation}) => {
   const renderCard = ({item}) => (
     <ServiceCard title={item.title} image={item.image} />
+  );
+
+  const renderMessageCard = ({item}) => (
+    <MessageCard
+      title={item.title}
+      description={item.description}
+      image={item.image}
+    />
   );
 
   return (
@@ -83,6 +93,21 @@ const DriversHomeScreen = ({navigation}) => {
               </Text>
             </TouchableOpacity>
           </View>
+          {/* Messages scroll gallery */}
+          <View style={styles.messagesContainer}>
+            <FlatList
+              data={messagesGalleryData}
+              renderItem={renderMessageCard}
+              keyExtractor={item => item.id}
+              horizontal={true}
+              numColumns={1}
+              pagingEnabled
+              snapToAlignment="center"
+              decelerationRate="fast"
+              contentContainerStyle={styles.messagesCardGallery}
+            />
+          </View>
+          <View style={styles.sectionDivider} />
           {/* Big Service Cards */}
           <View style={styles.bigServiceCardsContainer}>
             <BigServiceCard
@@ -208,6 +233,14 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     fontSize: 20,
     paddingHorizontal: 10,
+  },
+  messagesContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  messagesCardGallery: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
   },
   bigServiceCardsContainer: {
     marginTop: 20,
