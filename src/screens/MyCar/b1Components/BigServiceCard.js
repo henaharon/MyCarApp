@@ -4,7 +4,7 @@ import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 const BigServiceCard = ({title, imagePath, goToPath = null}) => {
   const handlePress = () => {
     if (goToPath) {
-      //      navigation.navigate(goToPath);
+      navigation.navigate(goToPath);
     } else {
       // Stay in the same page
     }

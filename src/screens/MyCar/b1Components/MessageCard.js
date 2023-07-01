@@ -15,7 +15,7 @@ const MessageCard = ({title, description, image = null, goToPath = null}) => {
   };
   const handlePress = () => {
     if (goToPath) {
-      //      navigation.navigate(goToPath);
+      navigation.navigate(goToPath);
     } else {
       // Stay in the same page
     }
