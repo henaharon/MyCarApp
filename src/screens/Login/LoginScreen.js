@@ -27,8 +27,9 @@ const DismissKeyboard = ({children}) => (
 );
 
 const LoginScreen = ({navigation}) => {
-  const [text, setText] = useState('כתובת מייל');
-  const [number, setNumber] = useState('מספר טלפון');
+  const [text, setText] = useState('');
+  const [number, setNumber] = useState('');
+  const [inputError, setInputError] = useState(null);
 
   const onChangeNumber = inputValue => {
     // Validate the input value to allow only numeric characters
@@ -36,6 +37,29 @@ const LoginScreen = ({navigation}) => {
     if (regex.test(inputValue) || inputValue === '') {
       setNumber(inputValue);
     }
+  };
+
+  const onChangeText = text => {
+    setText(text);
+  };
+
+  const handleButtonPress = () => {
+    if (text.trim() === '' || number.trim() === '') {
+      setInputError('All fields are required.');
+    } else {
+      setInputError(null);
+      navigation.navigate('AuthCode');
+    }
+  };
+
+  const openDialScreen = () => {
+    let phoneNumber = '';
+    if (Platform.OS === 'android') {
+      phoneNumber = 'tel:${+1234567890}';
+    } else {
+      phoneNumber = 'telprompt:${+1234567890}';
+    }
+    Linking.openURL(phoneNumber);
   };
 
   return (
@@ -49,8 +73,9 @@ const LoginScreen = ({navigation}) => {
               <View style={styles.container}>
                 <View style={styles.sectionStyle}>
                   <TextInput
+                    placeholder="כתובת מייל"
                     style={styles.input}
-                    onChangeText={setText}
+                    onChangeText={onChangeText}
                     value={text}
                   />
                   <Image
@@ -60,6 +85,7 @@ const LoginScreen = ({navigation}) => {
                 </View>
                 <View style={styles.sectionStyle}>
                   <TextInput
+                    placeholder="מספר טלפון"
                     style={styles.input}
                     onChangeText={onChangeNumber}
                     value={number}
@@ -72,19 +98,22 @@ const LoginScreen = ({navigation}) => {
                 </View>
               </View>
             </View>
+            <View>
+              {!!inputError && (
+                <Text style={styles.errorText}>{inputError}</Text>
+              )}
+            </View>
             <View style={styles.secondComponent}>
               <View>
                 <Text style={styles.help}>{translate('helpText')}</Text>
               </View>
-              <TouchableHighlight
-                onPress={() => Linking.openURL('https://www.ynet.co.il')}>
+              <TouchableHighlight onPress={openDialScreen}>
                 <View>
                   <Text style={styles.support}>{translate('linkText')}</Text>
                 </View>
               </TouchableHighlight>
               <View style={styles.arrowCircle}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('AuthCode')}>
+                <TouchableOpacity onPress={handleButtonPress}>
                   <LinearGradient
                     colors={['#A9333A', '#E1578A', '#FAE98F']}
                     style={styles.gradient}
@@ -214,6 +243,11 @@ const styles = StyleSheet.create({
     width: 25,
     resizeMode: 'stretch',
     alignItems: 'center',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
 

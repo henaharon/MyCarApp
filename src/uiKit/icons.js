@@ -3,6 +3,7 @@ const loginIcons = {
   callSquare: require('../assets/icons/callSquare.png'),
   messageSquare: require('../assets/icons/messageSquare.png'),
   logo: require('../assets/icons/logoMyCar_sm.png'),
+  logoSmall: require('../assets/icons/logo_xsmall.png'),
 };
 
 export {loginIcons};
