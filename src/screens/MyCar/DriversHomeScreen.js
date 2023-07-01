@@ -18,6 +18,7 @@ import MessageCard from './Components/MessageCard';
 import messagesGalleryData from '../../assets/messagesGalleryData';
 
 const DriversHomeScreen = ({navigation}) => {
+
   const renderCard = ({item}) => (
     <ServiceCard title={item.title} image={item.image} />
   );
