@@ -13,6 +13,7 @@ import {
 import DriversHomeScreenText from '../../assets/DriversHomeScreenText';
 import galleryData from '../../assets/serviceGalleryData';
 import ServiceCard from './Components/serviceCard';
+import BigServiceCard from './Components/BigServiceCard';
 
 const DriversHomeScreen = ({navigation}) => {
   const renderCard = ({item}) => (
@@ -20,7 +21,7 @@ const DriversHomeScreen = ({navigation}) => {
   );
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       <View style={styles.backgroundContainer}>
         {/* Background Image */}
         <Image
@@ -29,66 +30,82 @@ const DriversHomeScreen = ({navigation}) => {
           resizeMode="cover"
         />
       </View>
-      <View style={styles.content}>
-        {/* Transparent Logo */}
-        <View style={styles.logoContainer}>
-          <Image
-            source={require('../../assets/B1-assets/elementsLogosMyCarFullVerticalColorBlack.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-        </View>
-        {/* services title and description */}
-        <View style={styles.textContainer}>
-          <Text style={styles.heading}>
-            {DriversHomeScreenText.servicesTitle}
-          </Text>
-          <Text style={styles.paragraph}>
-            {DriversHomeScreenText.servicesDescription}
-          </Text>
-        </View>
-        {/* left shape */}
-        <View style={styles.leftShapeContainer}>
-          <Image
-            source={require('../../assets/B1-assets/backgroundShape1.png')}
-            style={styles.leftShape}
-          />
-        </View>
-        {/* service vertical scroll gallery */}
-        <View style={styles.cardGalleryContainer}>
-          <FlatList
-            data={galleryData}
-            renderItem={renderCard}
-            keyExtractor={item => item.id}
-            horizontal={true}
-            numColumns={1}
-            pagingEnabled
-            snapToAlignment="center"
-            decelerationRate="fast"
-            contentContainerStyle={styles.cardGallery}
-          />
-        </View>
-        <View style={styles.sectionDivider} />
-        {/* Submit Button */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.buttonUpdateAndNews}
-            onPress={() => {
-              // Handle button press
-            }}>
-            <Text style={styles.buttonText}>
-              {DriversHomeScreenText.updateAndNews}
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.content}>
+          {/* Transparent Logo */}
+          <View style={styles.logoContainer}>
+            <Image
+              source={require('../../assets/B1-assets/elementsLogosMyCarFullVerticalColorBlack.png')}
+              style={styles.logo}
+              resizeMode="contain"
+            />
+          </View>
+          {/* services title and description */}
+          <View style={styles.textContainer}>
+            <Text style={styles.heading}>
+              {DriversHomeScreenText.servicesTitle}
             </Text>
-          </TouchableOpacity>
+            <Text style={styles.paragraph}>
+              {DriversHomeScreenText.servicesDescription}
+            </Text>
+          </View>
+          {/* left shape */}
+          <View style={styles.leftShapeContainer}>
+            <Image
+              source={require('../../assets/B1-assets/backgroundShape1.png')}
+              style={styles.leftShape}
+            />
+          </View>
+          {/* service vertical scroll gallery */}
+          <View style={styles.cardGalleryContainer}>
+            <FlatList
+              data={galleryData}
+              renderItem={renderCard}
+              keyExtractor={item => item.id}
+              horizontal={true}
+              numColumns={1}
+              pagingEnabled
+              snapToAlignment="center"
+              decelerationRate="fast"
+              contentContainerStyle={styles.cardGallery}
+            />
+          </View>
+          <View style={styles.sectionDivider} />
+          {/* Submit Button */}
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={styles.buttonUpdateAndNews}
+              onPress={() => {
+                // Handle button press
+              }}>
+              <Text style={styles.buttonText}>
+                {DriversHomeScreenText.updateAndNews}
+              </Text>
+            </TouchableOpacity>
+          </View>
+          {/* Big Service Cards */}
+          <View style={styles.bigServiceCardsContainer}>
+            <BigServiceCard
+              title={DriversHomeScreenText.CarRental}
+              imagePath={require('../../assets/B1-assets/photosCarPerDay.png')}
+            />
+            <BigServiceCard
+              title={DriversHomeScreenText.AccidentsAndEmergency}
+              imagePath={require('../../assets/B1-assets/photosAccident.png')}
+            />
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 const windowsHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  scrollContainer: {
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -114,7 +131,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     position: 'absolute',
-    top: '30%',
+    top: '10%',
     left: '50%',
     transform: [{translateX: -50}, {translateY: -50}],
     alignItems: 'center',
@@ -127,7 +144,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     position: 'absolute',
-    top: '30%',
+    top: '10%',
     right: 20,
     transform: [{translateY: 100}],
     alignItems: 'flex-end',
@@ -144,7 +161,7 @@ const styles = StyleSheet.create({
   },
   leftShapeContainer: {
     position: 'absolute',
-    top: '30%',
+    top: '10%',
     left: 0,
     transform: [{translateY: -50}],
     alignItems: 'flex-start',
@@ -189,6 +206,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'right',
     fontSize: 20,
+    paddingHorizontal: 10,
+  },
+  bigServiceCardsContainer: {
+    marginTop: 20,
+    width: '100%',
+    alignItems: 'center',
   },
 });
 
