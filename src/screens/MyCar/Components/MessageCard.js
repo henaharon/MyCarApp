@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text} from 'react-native';
+import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 
-const MessageCard = ({title, description, image = NULL}) => {
-  const MAX_DESCRIPTION_WORDS = 10;
+const MessageCard = ({title, description, image = null, goToPath = null}) => {
+  const MAX_DESCRIPTION_WORDS = 6;
   const DEFAULT_IMAGE = require('../../../assets/B1-assets/elementsLogosMyCarFullVerticalColorBlack.png');
 
   const truncateDescription = text => {
@@ -13,25 +13,34 @@ const MessageCard = ({title, description, image = NULL}) => {
     }
     return text;
   };
+  const handlePress = () => {
+    if (goToPath) {
+      //      navigation.navigate(goToPath);
+    } else {
+      // Stay in the same page
+    }
+  };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>
-        {image ? (
-          <Image source={image} style={styles.image} resizeMode="cover" />
-        ) : (
-          <Image
-            source={DEFAULT_IMAGE}
-            style={styles.image}
-            resizeMode="cover"
-          />
-        )}
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>
-          {truncateDescription(description)}
-        </Text>
+    <TouchableOpacity onPress={handlePress} activeOpacity={0.8}>
+      <View style={styles.container}>
+        <View style={styles.card}>
+          {image ? (
+            <Image source={image} style={styles.image} resizeMode="cover" />
+          ) : (
+            <Image
+              source={DEFAULT_IMAGE}
+              style={styles.image}
+              resizeMode="cover"
+            />
+          )}
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.description}>
+            {truncateDescription(description)}
+          </Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -43,11 +52,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 10,
-    width: 200, // Adjust the width as per your design
+    width: 300,
+    height: 250,
   },
   image: {
     width: '100%',
-    height: 100, // Adjust the height as per your design
+    height: 150,
     borderRadius: 10,
     marginBottom: 10,
   },

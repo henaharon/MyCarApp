@@ -120,6 +120,14 @@ const DriversHomeScreen = ({navigation}) => {
               imagePath={require('../../assets/B1-assets/photosAccident.png')}
             />
           </View>
+          {/* Image at the bottom left corner */}
+          <View style={styles.bottomLeftImageContainer}>
+            <Image
+              source={require('../../assets/B1-assets/backgroundShape2.png')}
+              style={styles.bottomLeftImage}
+              resizeMode="contain"
+            />
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -246,6 +254,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: '100%',
     alignItems: 'center',
+  },
+  bottomLeftImageContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    zIndex: -1,
+  },
+  bottomLeftImage: {
+    width: 200,
+    height: 200,
   },
 });
 
