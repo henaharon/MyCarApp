@@ -8,6 +8,7 @@ import {
   Dimensions,
   Text,
   FlatList,
+  TouchableOpacity,
 } from 'react-native';
 import DriversHomeScreenText from '../../assets/DriversHomeScreenText';
 import galleryData from '../../assets/serviceGalleryData';
@@ -66,6 +67,19 @@ const DriversHomeScreen = ({navigation}) => {
             decelerationRate="fast"
             contentContainerStyle={styles.cardGallery}
           />
+        </View>
+        <View style={styles.sectionDivider} />
+        {/* Submit Button */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.buttonUpdateAndNews}
+            onPress={() => {
+              // Handle button press
+            }}>
+            <Text style={styles.buttonText}>
+              {DriversHomeScreenText.updateAndNews}
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -148,6 +162,33 @@ const styles = StyleSheet.create({
   cardGallery: {
     paddingHorizontal: 20,
     paddingVertical: 10,
+  },
+  sectionDivider: {
+    borderBottomWidth: 2,
+    borderBottomColor: '#D3D3D3',
+    width: '90%',
+    marginTop: 10,
+    opacity: 0.8,
+    alignSelf: 'center',
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: 20,
+    width: '80%',
+  },
+  buttonUpdateAndNews: {
+    backgroundColor: '#FFFFFF',
+    height: 50,
+    width: '100%',
+    borderRadius: 10,
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: '#000000',
+    fontWeight: 'bold',
+    textAlign: 'right',
+    fontSize: 20,
   },
 });
 
