@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import TextBox from '../components/TextBox';
 import ChargerImage from '../components/ChargerImage';
 import ItemWithIcon from '../components/ItemWithIcon';
@@ -7,6 +8,12 @@ import CustomButton from '../components/CustomButton';
 
 const SummaryPage = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
+
+  const handleButtonPress = () => {
+    setModalVisible(false);
+    navigation.navigate('Home');
+  };
 
   const openModal = () => {
     setModalVisible(true);
@@ -72,8 +79,8 @@ const SummaryPage = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalHeadline}>תודה</Text>
             <Text style={styles.modalText}>קריאה נשלחה בהצלחה!</Text>
-            <CustomButton text="צפיה בסטטוס הקריאה" onPress={closeModal} />
-            <Text style={styles.modalLink}>אישור</Text>
+            <CustomButton text="צפיה בסטטוס הקריאה" onPress={handleButtonPress} />
+            <Text style={styles.modalLink} onPress={handleButtonPress}>אישור</Text>
           </View>
         </View>
       </Modal>
