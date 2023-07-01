@@ -88,15 +88,8 @@ const SendCode = ({navigation}) => {
     const current_time = new Date();
     const min_diff =
       Math.abs(timer.getTime() - current_time.getTime()) / (1000 * 60);
-    // console.log('min dif\t' + min_diff);
-    // console.log(min_diff > 0);
     if (min_diff > 0) {
-      // console.log('we pass the time check');
       for (let i = 0; i < codes.length; i++) {
-        // console.log('----------------------------');
-        // console.log('Entered code:\t', code);
-        // console.log('Checkin code:\t', codes[i].code);
-        // console.log('----------------------------\n');
         if (code === codes[i].code) {
           navigation.navigate('Terms');
         } else {

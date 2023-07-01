@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import {loginIcons} from '../../uiKit/icons';
+import {termsIcons} from '../../uiKit/termsIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import ModalT from '../Modals/ModalT';
 import {translate} from '../../locals';
@@ -55,6 +56,7 @@ const Terms = ({navigation}) => {
     <View style={styles.container}>
       {modal}
       <View style={styles.header}>
+        <Image style={styles.closeImg} source={termsIcons.close} />
         <Image style={styles.tinyLogo} source={loginIcons.logo} />
         <Text style={styles.text}>{translate('terms')}</Text>
         <View style={styles.gray_line}></View>
@@ -132,6 +134,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: window_height * 0.5,
     width: '100%',
+  },
+
+  closeImg: {
+    width: 40,
+    height: 40,
+    marginLeft: 280,
+    marginBottom: 50,
   },
 
   tinyLogo: {

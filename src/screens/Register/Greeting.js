@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {RadioButton} from 'react-native-paper';
 import {welcomeIcons} from '../../uiKit/welcomeIcons';
+import {termsIcons} from '../../uiKit/termsIcons';
 import {translate} from '../../locals';
 import LinearGradient from 'react-native-linear-gradient';
 const window_height = Dimensions.get('window').height;
@@ -43,6 +44,7 @@ const Greeting = ({navigation}) => {
         locations={[0.3, 0.995]}>
         <View style={styles.headerStyle}>
           <View style={styles.header}>
+            <Image style={styles.closeImg} source={termsIcons.close} />
             <Image style={styles.tinyLogo} source={welcomeIcons.welcome} />
             <Text style={styles.text}>{translate('nicetomeetyou')}</Text>
           </View>
@@ -144,6 +146,13 @@ const styles = StyleSheet.create({
   text_appr_con: {
     fontSize: 20,
     color: '#F7F9F9',
+  },
+
+  closeImg: {
+    width: 40,
+    height: 40,
+    marginLeft: 280,
+    marginBottom: 20,
   },
 });
 

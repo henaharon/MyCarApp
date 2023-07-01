@@ -27,7 +27,6 @@ const DefaultModal = ({
   close,
   navigation,
 }) => {
-  console.log(headerImage);
   const closeModal = () => {
     hideModal();
   };

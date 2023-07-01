@@ -104,7 +104,6 @@ const RegisterForm = ({modalState, navigation}) => {
   return (
     <View style={styles.centeredView}>
       {/* Render Experience Modal on Submit */}
-      {console.log(modalVisible)}
       {modalVisible ? (
         <DefaultModal
           headerImage={true}
