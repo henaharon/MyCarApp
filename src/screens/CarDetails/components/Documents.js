@@ -5,8 +5,7 @@ import {
     Text, 
     View, 
     Image,
-    ScrollView,
-    TouchableOpacity
+    ScrollView
 } from 'react-native';
 
 export const Documents = ({carInfo}) => {
@@ -17,10 +16,10 @@ export const Documents = ({carInfo}) => {
         {/* first section of document part*/}
         <View style={styles.Document}>
             <Text style={styles.BoldText}>{translate('document')}</Text>
-            <TouchableOpacity style={styles.ShareDocumentBtn}>
+            <View style={styles.ShareDocumentBtn}>
                 <Text style={styles.shareText}>{translate('shareDocument')}</Text>
                 <Image style={styles.Image} source={CarDetailsIcons.shareIcon}/>    
-            </TouchableOpacity>
+            </View>
         </View>
 
         <View style={styles.Document}>

@@ -72,3 +72,5 @@ const styles = StyleSheet.create({
         textDecorationLine: 'none',
     },
 });
+
+export default DocumentSent;
