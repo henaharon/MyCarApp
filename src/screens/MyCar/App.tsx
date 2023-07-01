@@ -32,6 +32,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import RoadSideScreen from '../RoadSide Assistance/index.js';
  
 
 const Drawer = createDrawerNavigator();
@@ -41,6 +42,7 @@ function App(): JSX.Element {
       <Drawer.Navigator initialRouteName="Home" screenOptions={{drawerPosition: 'right'}} id="RightDrawer">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Roadside Assistance" component={RoadSideScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );
