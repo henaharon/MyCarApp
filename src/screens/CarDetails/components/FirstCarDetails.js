@@ -132,5 +132,3 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 });
-
-export default FirstCarDetails;

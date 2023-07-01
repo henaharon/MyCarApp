@@ -73,5 +73,3 @@ const styles = StyleSheet.create({
     fontSize:12
   }
 });
-
-export default Service;
