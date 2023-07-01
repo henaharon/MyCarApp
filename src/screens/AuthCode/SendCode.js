@@ -79,22 +79,25 @@ const SendCode = ({navigation}) => {
     }
   };
 
+  const back_to_login = () => {
+    navigation.navigate('Login');
+  };
+
   // Check if code has been active for more than 15 min.
   const codeCheck = () => {
     const current_time = new Date();
     const min_diff =
       Math.abs(timer.getTime() - current_time.getTime()) / (1000 * 60);
-    console.log('min dif\t' + min_diff);
-    console.log(min_diff > 0);
+    // console.log('min dif\t' + min_diff);
+    // console.log(min_diff > 0);
     if (min_diff > 0) {
       // console.log('we pass the time check');
       for (let i = 0; i < codes.length; i++) {
-        console.log('----------------------------');
-        console.log('Entered code:\t', code);
-        console.log('Checkin code:\t', codes[i].code);
-        console.log('----------------------------\n');
+        // console.log('----------------------------');
+        // console.log('Entered code:\t', code);
+        // console.log('Checkin code:\t', codes[i].code);
+        // console.log('----------------------------\n');
         if (code === codes[i].code) {
-          Alert.alert('The code exists in the DB');
           navigation.navigate('Terms');
         } else {
           // If code does not exist in moc_data file - it's invalid
@@ -135,18 +138,20 @@ const SendCode = ({navigation}) => {
       ) : (
         <SafeAreaView>
           <View style={styles.container}>
+            <View style={styles.header}>
+              <TouchableOpacity
+                style={styles.back_arrow}
+                onPress={() => back_to_login()}>
+                <Image source={authIcons.backArrow} />
+              </TouchableOpacity>
+            </View>
             <View style={styles.codeContainer}>
               <Text style={styles.codeContainerText}>
                 {translate('sendCode')}
               </Text>
             </View>
             <View style={styles.sectionStyle}>
-              {console.log('numbers')}
               <TextInput
-                // style={styles.codeInput}
-                // onChangeText={onChangeNumber}
-                // value={number}
-                // keyboardType="numeric"
                 style={styles.codeInput}
                 placeholder={translate('authCode')}
                 value={code}
@@ -197,11 +202,19 @@ const styles = StyleSheet.create({
 
   header: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     alignItems: 'flex-end',
-    height: window_height * 0.1,
-    width: '100%',
-    backgroundColor: '#ffffff',
+    height: window_height * 0.2,
+    width: '80%',
+  },
+
+  back_arrow: {
+    width: 30,
+    height: 30,
+    marginRight: 4,
+    display: 'flex',
+    alignItems: 'center',
+    marginTop: 30,
   },
 
   tinyLogo: {
@@ -220,10 +233,8 @@ const styles = StyleSheet.create({
   },
 
   codeContainer: {
-    marginTop: 30,
     display: 'flex',
     justifyContent: 'center',
-    height: window_height * 0.23,
     width: '80%',
   },
 
@@ -297,6 +308,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
+    marginTop: 50,
+    width: '90%',
   },
 
   arrowCircle: {
@@ -310,6 +323,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
+    marginLeft: 30,
   },
 
   arrow: {

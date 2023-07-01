@@ -4,6 +4,7 @@ import {
   Modal,
   StyleSheet,
   Text,
+  Image,
   Pressable,
   Button,
   Linking,
@@ -11,10 +12,12 @@ import {
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {loginIcons} from '../../uiKit/icons';
 
 const DefaultModal = ({
   modalState,
   children,
+  headerImage,
   modalTitle,
   modalText,
   buttonText,
@@ -24,6 +27,7 @@ const DefaultModal = ({
   close,
   navigation,
 }) => {
+  console.log(headerImage);
   const closeModal = () => {
     hideModal();
   };
@@ -47,6 +51,16 @@ const DefaultModal = ({
         onRequestClose={closeModal}>
         <View>
           <View style={styles.modalView}>
+            {headerImage ? (
+              <View style={styles.logoBg}>
+                <Image
+                  style={styles.headerImageStyle}
+                  source={loginIcons.logoSmall}
+                />
+              </View>
+            ) : (
+              ''
+            )}
             <Text style={styles.modalText}>{modalTitle}</Text>
             <Text style={styles.modalInnerText}>{modalText}</Text>
             {modalSecondText ? (
@@ -108,6 +122,10 @@ const styles = StyleSheet.create({
     width: 300,
     elevation: 5,
   },
+  logoBg: {
+    margin: 10,
+  },
+  headerImageStyle: {},
   button: {
     padding: 10,
     width: 150,

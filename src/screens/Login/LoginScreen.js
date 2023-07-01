@@ -52,6 +52,16 @@ const LoginScreen = ({navigation}) => {
     }
   };
 
+  const openDialScreen = () => {
+    let phoneNumber = '';
+    if (Platform.OS === 'android') {
+      phoneNumber = 'tel:${+1234567890}';
+    } else {
+      phoneNumber = 'telprompt:${+1234567890}';
+    }
+    Linking.openURL(phoneNumber);
+  };
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <DismissKeyboard>
@@ -97,8 +107,7 @@ const LoginScreen = ({navigation}) => {
               <View>
                 <Text style={styles.help}>{translate('helpText')}</Text>
               </View>
-              <TouchableHighlight
-                onPress={() => Linking.openURL('https://www.ynet.co.il')}>
+              <TouchableHighlight onPress={openDialScreen}>
                 <View>
                   <Text style={styles.support}>{translate('linkText')}</Text>
                 </View>

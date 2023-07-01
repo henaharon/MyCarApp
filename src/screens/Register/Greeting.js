@@ -41,9 +41,11 @@ const Greeting = ({navigation}) => {
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         locations={[0.3, 0.995]}>
-        <View style={styles.header}>
-          <Image style={styles.tinyLogo} source={welcomeIcons.welcome} />
-          <Text style={styles.text}>{translate('nicetomeetyou')}</Text>
+        <View style={styles.headerStyle}>
+          <View style={styles.header}>
+            <Image style={styles.tinyLogo} source={welcomeIcons.welcome} />
+            <Text style={styles.text}>{translate('nicetomeetyou')}</Text>
+          </View>
         </View>
 
         <View style={styles.body}>
@@ -72,18 +74,28 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 
+  headerStyle: {
+    height: window_height * 0.4,
+  },
+
   header: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: window_height * 0.3,
     width: '100%',
+    height: '100%',
+    marginTop: 30,
   },
 
   tinyLogo: {
     marginRight: 5,
-    width: 120,
-    height: 120,
+    width: 180,
+    height: 180,
+  },
+
+  gradient_op: {
+    height: window_height,
+    width: '100%',
   },
 
   text: {
@@ -91,7 +103,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     color: '#ffffff',
     fontWeight: 'bold',
-    fontStyle: 'italic',
     fontSize: 40,
     marginTop: 15,
   },
@@ -101,12 +112,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: window_height * 0.6,
-    width: '100%',
+    height: window_height * 0.3,
+    marginTop: 40,
+    marginLeft: 10,
+    width: '90%',
   },
 
   text_app: {
-    fontSize: 24,
+    fontSize: 18,
     color: '#ffffff',
   },
 
@@ -115,9 +128,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignContent: 'center',
+    marginTop: 50,
   },
-
-  gradient_op: {},
 
   button: {
     alignSelf: 'center',
@@ -126,7 +138,6 @@ const styles = StyleSheet.create({
     height: 50,
     width: 250,
     borderRadius: 30,
-    marginBottom: 45,
     backgroundColor: 'blue',
   },
 

@@ -11,6 +11,9 @@ import TermsofDivor from './src/screens/Terms/TermofDivor';
 import TermsofUseapp from './src/screens/Terms/TermofUseapp';
 import Greeting from './src/screens/Register/Greeting';
 import RegisterForm from './src/screens/Register/RegisterForm';
+import { I18nManager } from 'react-native';
+I18nManager.forceRTL(false);
+
 
 const Stack = createNativeStackNavigator();
 
