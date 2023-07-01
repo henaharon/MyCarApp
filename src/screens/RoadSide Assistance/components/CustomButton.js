@@ -65,13 +65,12 @@ const ButtonContainer = () => {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
+    overflow: 'scroll',
   },
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginLeft: 10,
     borderRadius: 20,
-    overflow: 'hidden',
   },
   headerImage: {
     width: '100%',
@@ -95,11 +94,14 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
   buttonsAndTitles: {
+    flex: 1,
+    alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 20,
-    marginTop: -20,
+    marginTop: -30,
   },
   buttonRow: {
+    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
