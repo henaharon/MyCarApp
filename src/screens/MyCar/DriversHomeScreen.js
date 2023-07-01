@@ -50,7 +50,7 @@ const DriversHomeScreen = ({navigation}) => {
               resizeMode="contain"
             />
           </View>
-          {/* services title and description */}
+          {/* Page title and description */}
           <View style={styles.textContainer}>
             <Text style={styles.heading}>
               {DriversHomeScreenText.servicesTitle}
@@ -81,7 +81,7 @@ const DriversHomeScreen = ({navigation}) => {
             />
           </View>
           <View style={styles.sectionDivider} />
-          {/* Submit Button */}
+          {/* Updates and News Button */}
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.buttonUpdateAndNews}
@@ -94,25 +94,29 @@ const DriversHomeScreen = ({navigation}) => {
             </TouchableOpacity>
           </View>
           {/* Messages scroll gallery */}
-          <View style={styles.messagesContainer}>
-            <FlatList
-              data={messagesGalleryData}
-              renderItem={renderMessageCard}
-              keyExtractor={item => item.id}
-              horizontal={true}
-              numColumns={1}
-              pagingEnabled
-              snapToAlignment="center"
-              decelerationRate="fast"
-              contentContainerStyle={styles.messagesCardGallery}
-            />
-          </View>
-          <View style={styles.sectionDivider} />
+          {messagesGalleryData && (
+            <>
+              <View style={styles.messagesContainer}>
+                <FlatList
+                  data={messagesGalleryData}
+                  renderItem={renderMessageCard}
+                  keyExtractor={item => item.id}
+                  horizontal={true}
+                  numColumns={1}
+                  pagingEnabled
+                  snapToAlignment="center"
+                  decelerationRate="fast"
+                  contentContainerStyle={styles.messagesCardGallery}
+                />
+              </View>
+              <View style={styles.sectionDivider} />
+            </>
+          )}
           {/* Big Service Cards */}
           <View style={styles.bigServiceCardsContainer}>
             <BigServiceCard
               title={DriversHomeScreenText.CarRental}
-              imagePath={require('../../assets/B1-assets/photosCarPerDay.png')}
+              imagePath={require('../../assets/B1-assets/photosCarPerDayCombined.png')}
             />
             <View style={styles.sectionDivider} />
             <BigServiceCard
