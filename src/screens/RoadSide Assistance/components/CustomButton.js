@@ -6,7 +6,9 @@ import {
   Image,
   Text,
   ScrollView,
+  Modal,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const ButtonContainer = () => {
   const buttonNames = [
@@ -24,23 +26,37 @@ const ButtonContainer = () => {
       logo: require('../../../assets/icons/Other.png'),
     },
   ];
+  const navigation = useNavigation();
 
   const [clickedButtons, setClickedButtons] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleButtonClick = index => {
     const updatedClickedButtons = [...clickedButtons];
     updatedClickedButtons[index] = !updatedClickedButtons[index];
     setClickedButtons(updatedClickedButtons);
+    setModalVisible(true);
   };
+  const getButtonStyle = index => {
+    return [
+      styles.button,
+      clickedButtons[index] ? styles.buttonClicked : styles.buttonUnclick,
+    ];
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleClose = () => {
+    navigation.goBack(); // Navigate back to the previous screen
+  }; // closing our part of the project and returns to the main screen.
 
   const renderButtons = () => {
     return buttonNames.map((button, index) => (
       <TouchableOpacity
         key={index}
-        style={[
-          styles.button,
-          clickedButtons[index] && styles.lastButton && styles.buttonClicked,
-        ]}
+        style={[styles.button, getButtonStyle(index)]}
         onPress={() => handleButtonClick(index)}>
         <Image source={button.logo} style={styles.logo} />
         <Text style={styles.buttonText}>{button.name}</Text>
@@ -50,6 +66,12 @@ const ButtonContainer = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
+        <Image
+          source={require('../../../assets/icons/XButton.png')}
+          style={styles.exitPhoto}
+        />
+      </TouchableOpacity>
       <View style={styles.container}>
         <Image
           source={require('../../../assets/icons/carService.png')}
@@ -61,6 +83,18 @@ const ButtonContainer = () => {
           <View style={styles.buttonRow}>{renderButtons()}</View>
         </View>
       </View>
+      <Modal visible={modalVisible} onRequestClose={closeModal}>
+        <View style={styles.modalContainer}>
+          <Text style={styles.explanationText}>{}</Text>
+
+          <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
+            <Image
+              source={require('../../../assets/icons/XButton.png')}
+              style={styles.exitPhoto}
+            />
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </ScrollView>
   );
 };
@@ -70,6 +104,10 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     overflow: 'scroll',
   },
+  closeButton: {
+    borderRadius: 5,
+  },
+
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -83,7 +121,6 @@ const styles = StyleSheet.create({
   },
   headerImage: {
     width: '100%',
-    height: 200,
     resizeMode: 'cover',
   },
   text: {
@@ -134,6 +171,18 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     resizeMode: 'contain',
+  },
+  modalContainer: {
+    flex: 1,
+  },
+  exitPhoto: {
+    height: 30,
+    width: 30,
+    marginLeft: 'auto',
+    marginRight: 15,
+  },
+  modalButton: {
+    marginTop: 40,
   },
 });
 
