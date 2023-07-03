@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -25,24 +25,27 @@ const ButtonContainer = () => {
     },
   ];
 
+  const [clickedButtons, setClickedButtons] = useState([]);
+
+  const handleButtonClick = index => {
+    const updatedClickedButtons = [...clickedButtons];
+    updatedClickedButtons[index] = !updatedClickedButtons[index];
+    setClickedButtons(updatedClickedButtons);
+  };
+
   const renderButtons = () => {
     return buttonNames.map((button, index) => (
       <TouchableOpacity
         key={index}
         style={[
           styles.button,
-          index === buttonNames.length - 1 && styles.lastButton,
+          clickedButtons[index] && styles.lastButton && styles.buttonClicked,
         ]}
-        onPress={() => handleButtonPress(button.name)}>
+        onPress={() => handleButtonClick(index)}>
         <Image source={button.logo} style={styles.logo} />
         <Text style={styles.buttonText}>{button.name}</Text>
       </TouchableOpacity>
     ));
-  };
-
-  const handleButtonPress = name => {
-    console.log(`Pressed ${name}`);
-    // Perform any desired action based on the pressed button
   };
 
   return (
@@ -71,6 +74,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     borderRadius: 20,
+  },
+  buttonClicked: {
+    backgroundColor: 'red',
+  },
+  buttonUnclick: {
+    backgroundColor: 'white',
   },
   headerImage: {
     width: '100%',
