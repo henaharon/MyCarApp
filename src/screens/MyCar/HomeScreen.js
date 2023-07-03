@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Battery from './Battery';
+import CarPart from './CarPart';
 
 import {Alert, Modal,Button, StyleSheet, Text, Pressable, View} from 'react-native';
 
@@ -37,7 +37,7 @@ const HomeScreen = ({navigation}) => {
       <Button title="Open Modal" onPress={() => setModalVisible(true)} />
 
       {modalVisible && (
-        <Battery
+        <CarPart
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
         />

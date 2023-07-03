@@ -54,11 +54,14 @@ const Summary = props => {
                 אנא בדקו כי כל הפרטים נכונים לפני השליחה
               </Text>
 
-              <View style={styles.BatteryIconContainer}>
-                <Image
-                  source={require('./../../assets/icons/battery.png')}
-                  style={styles.batteryIcon}
-                />
+              <View style={styles.carPartContainer}>
+                <Text style={styles.carPartName}>{props.buttonName.name}</Text>
+                <View style={styles.carPartIconContainer}>
+                  <Image
+                    source={props.buttonName.icon}
+                    style={styles.carPartIcon}
+                  />
+                </View>
               </View>
               <Text style={styles.notesHeader}>תיאור/הערות</Text>
               <Text style={styles.notesContent}>{props.notesInputValue}</Text>
@@ -84,10 +87,10 @@ const Summary = props => {
                 </View>
                 <View style={styles.generalContentDataContainer}>
                   <Text style={styles.generalContentDataHeader}>
-                    (סוג הרכב)
+                    Kia - Picanto
                   </Text>
                   <Text style={styles.generalContentDataContent}>
-                    (מספר הרכב)
+                    52-656-43
                   </Text>
                 </View>
               </View>
@@ -176,10 +179,10 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
   },
-  BatteryIconContainer: {
+  carPartIconContainer: {
     alignItems: 'flex-end',
   },
-  batteryIcon: {
+  carPartIcon: {
     width: 45,
     height: 45,
   },
@@ -346,6 +349,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     color: 'white',
+  },
+  carPartContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  carPartName: {
+    fontSize: 13,
+    margin: 10,
   },
 });
 

@@ -14,19 +14,13 @@ import {
 
 import Summary from './Summary';
 
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker'; // TODO
-
-const Battery = ({modalVisible, setModalVisible}) => {
+const CarPart = ({modalVisible, setModalVisible, buttonName}) => {
   const [notesInputValue, setNotesInputValue] = React.useState('');
   const [locationInputValue, setLocationInputValue] = React.useState('');
   const [imageUris, setImageUris] = React.useState([]);
   const [summaryModalVisible, setSummaryModalVisible] = React.useState(false);
 
-  const handleUploadImage = () => {
-    // Simulating image upload by generating a random image URL
-    const randomImageUrl = `https://picsum.photos/200/300?random=${Math.random()}`;
-    setImageUris([...imageUris, randomImageUrl]);
-  };
+  const ImagePicker = require('react-native-image-picker');
 
   const imagePlaceholder = require('./../../assets/icons/placeholder-image.png');
 
@@ -35,6 +29,28 @@ const Battery = ({modalVisible, setModalVisible}) => {
     setNotesInputValue('');
     setLocationInputValue('');
     setImageUris([]);
+  };
+
+  const handleChoosePhoto = () => {
+    const options = {
+      mediaType: 'photo',
+      quality: 1,
+      includeBase64: false,
+      maxHeight: 500,
+      maxWidth: 500,
+    };
+
+    ImagePicker.launchImageLibrary(options, response => {
+      if (response.didCancel) {
+        setSelectedImage('cancel');
+      } else if (response.error) {
+        setSelectedImage('ImagePicker Error: ' + response.error);
+      } else if (response.assets[0].uri) {
+        setImageUris([...imageUris, response.assets[0].uri]);
+      } else {
+        setImageUris([...imageUris, 'ERROR']);
+      }
+    });
   };
 
   return (
@@ -53,7 +69,7 @@ const Battery = ({modalVisible, setModalVisible}) => {
                 style={styles.arrowIcon}
               />
             </TouchableOpacity>
-            <Text style={styles.headerText}>Battery</Text>
+            <Text style={styles.headerText}>{buttonName.name}</Text>
             <TouchableOpacity onPress={closeModal}>
               <Image
                 source={require('./../../assets/icons/arrow-right.png')}
@@ -63,10 +79,10 @@ const Battery = ({modalVisible, setModalVisible}) => {
           </View>
 
           <View style={styles.content}>
-            <View style={styles.BatteryIconContainer}>
+            <View style={styles.carPartIconContainer}>
               <Image
-                source={require('./../../assets/icons/battery.png')}
-                style={styles.batteryIcon}
+                source={buttonName.icon}
+                style={styles.carPartIcon}
               />
             </View>
             <Text style={styles.detailsHeader}>Details</Text>
@@ -78,19 +94,16 @@ const Battery = ({modalVisible, setModalVisible}) => {
               style={styles.textArea}
             />
 
-            {/* <TouchableOpacity
-              onPress={handleUploadImage}
-              style={styles.uploadButton}>
-              <Text style={styles.buttonText}>Upload Images</Text>
-            </TouchableOpacity> */}
 
             <ScrollView horizontal={true} style={styles.imageContainer}>
               {imageUris.map((uri, index) => (
                 <View key={index} style={styles.imageCard}>
-                  <Image source={{uri}} style={styles.image} />
+                  <Image source={{uri}} style={styles.Image} />
+                  <Image source={uri} style={styles.Image} />
+                  <Text>uri</Text>
                 </View>
               ))}
-              <TouchableOpacity onPress={handleUploadImage}>
+              <TouchableOpacity onPress={handleChoosePhoto}>
                 <Image
                   source={imagePlaceholder}
                   style={styles.imageCardUpload}
@@ -116,6 +129,7 @@ const Battery = ({modalVisible, setModalVisible}) => {
           imageUris={imageUris}
           locationInputValue={locationInputValue}
           notesInputValue={notesInputValue}
+          buttonName={buttonName}
         />
       )}
     </Modal>
@@ -156,10 +170,10 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
   },
-  BatteryIconContainer: {
+  carPartIconContainer: {
     alignItems: 'center',
   },
-  batteryIcon: {
+  carPartIcon: {
     width: 90,
     height: 90,
   },
@@ -208,7 +222,7 @@ const styles = StyleSheet.create({
   imageCard: {
     marginLeft: 8,
     marginTop: 6,
-    transform: [{ scaleX: -1 }]
+    transform: [{scaleX: -1}],
   },
   imageCardUpload: {
     marginLeft: 8,
@@ -216,11 +230,30 @@ const styles = StyleSheet.create({
     height: 100,
     marginTop: 6,
   },
-  image: {
+  Image: {
     width: 80,
     height: 100,
     borderRadius: 6,
   },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+    // marginBottom: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  image: {
+    width: 200,
+    height: 200,
+  },
 });
 
-export default Battery;
+export default CarPart;
