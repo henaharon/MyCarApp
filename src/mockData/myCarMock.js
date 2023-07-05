@@ -1,5 +1,5 @@
 const myCarMock = {
-    myCarMock: require('../locals/data.json')
-  };
+  myCarMock: require('../locals/data.json'),
+};
 
-  export default myCarMock;
+export default myCarMock;
