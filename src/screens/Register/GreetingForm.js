@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import DocumentPicker from 'react-native-document-picker';
 import {RadioButton} from 'react-native-paper';
 import {welcomeIcons} from '../../uiKit/welcomeIcons';
 import {termsIcons} from '../../uiKit/termsIcons';
@@ -17,21 +18,25 @@ import LinearGradient from 'react-native-linear-gradient';
 const window_height = Dimensions.get('window').height;
 const window_width = Dimensions.get('window').width;
 
-const Greeting = ({navigation}) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [addsCheck1, setAddsCheck] = useState(false);
-  const [addsCheck2, setAddsCheck2] = useState(false);
-
-  const move_to_term_use = () => {
-    navigation.navigate('TermofUseapp');
-  };
-
-  const move_to_term_divor = () => {
-    navigation.navigate('TermofDivor');
-  };
-
+const Form = ({navigation}) => {
   const openRegisterForm = () => {
-    navigation.navigate('GreetingForm');
+    navigation.navigate('Register');
+  };
+
+  const uploadPicture = async () => {
+    try {
+      const doc = await DocumentPicker.pick({
+        type: [DocumentPicker.types.images],
+      });
+      console.log(doc);
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        // User cancelled the upload
+        console.log(err);
+      } else {
+        throw err;
+      }
+    }
   };
 
   return (
@@ -44,9 +49,16 @@ const Greeting = ({navigation}) => {
         locations={[0.3, 0.995]}>
         <View style={styles.headerStyle}>
           <View style={styles.header}>
+            <View style={styles.profileBox}>
+              <Text style={styles.profile}>{translate('profile')}</Text>
+            </View>
             <Image style={styles.closeImg} source={termsIcons.close} />
-            <Image style={styles.tinyLogo} source={welcomeIcons.welcome} />
+            <Image style={styles.tinyLogo} source={welcomeIcons.welcomeUser} />
+            <TouchableOpacity onPress={uploadPicture}>
+              <Image style={styles.uploadImg} source={welcomeIcons.upload} />
+            </TouchableOpacity>
             <Text style={styles.text}>{translate('nicetomeetyou')}</Text>
+            <Text style={styles.tinyText}>{translate('aFewDetails')}</Text>
           </View>
         </View>
 
@@ -79,36 +91,49 @@ const styles = StyleSheet.create({
   headerStyle: {
     height: window_height * 0.4,
   },
-
   header: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '100%',
-    marginTop: 30,
+    marginTop: 40,
   },
-
   tinyLogo: {
     marginRight: 5,
     width: 180,
     height: 180,
   },
-
+  profileBox: {
+    position: 'absolute',
+    top: 2,
+  },
+  profile: {
+    color: 'white',
+  },
   gradient_op: {
     height: window_height,
     width: '100%',
   },
-
+  uploadImg: {
+    position: 'absolute',
+    height: 45,
+    width: 45,
+    top: -180,
+    left: -100,
+  },
   text: {
-    justifyContent: 'center',
     alignItems: 'center',
-    color: '#ffffff',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 40,
     marginTop: 15,
   },
-
+  tinyText: {
+    alignItems: 'center',
+    color: 'white',
+    fontSize: 15,
+  },
   body: {
     display: 'flex',
     flexDirection: 'column',
@@ -152,8 +177,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     marginLeft: 280,
-    marginBottom: 20,
+    // marginBottom: 20,
   },
 });
 
-export default Greeting;
+export default Form;

@@ -10,6 +10,7 @@ import Terms from './src/screens/Terms/Terms';
 import TermsofDivor from './src/screens/Terms/TermofDivor';
 import TermsofUseapp from './src/screens/Terms/TermofUseapp';
 import Greeting from './src/screens/Register/Greeting';
+import Form from './src/screens/Register/GreetingForm';
 import RegisterForm from './src/screens/Register/RegisterForm';
 import { I18nManager } from 'react-native';
 I18nManager.forceRTL(false);
@@ -33,6 +34,7 @@ export default function App() {
     <Stack.Screen name="TermofDivor" component={TermsofDivor} />
     <Stack.Screen name="TermofUseapp" component={TermsofUseapp} />
     <Stack.Screen name="Greeting" component={Greeting} />
+    <Stack.Screen name="GreetingForm" component={Form} />
     <Stack.Screen name="Register" component={RegisterForm} />
   </Stack.Navigator>
   </NavigationContainer>

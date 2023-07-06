@@ -80,7 +80,6 @@ const RegisterForm = ({modalState, navigation}) => {
     return (
       <View style={styles.item}>
         <Text style={styles.selectedTextStyle}>{item.label}</Text>
-        {/* <AntDesign style={styles.icon} color="black" name="Safety" size={20} /> */}
       </View>
     );
   };
@@ -245,7 +244,6 @@ const RegisterForm = ({modalState, navigation}) => {
                     onChange={item => {
                       setSelectedLicenseTypes(item);
                     }}
-                    // renderLeftIcon={() => <PlusOutlined twoToneColor="#eb2f96" />}
                     renderItem={renderDataItem}
                     renderSelectedItem={(item, unSelect) => (
                       <TouchableOpacity
@@ -254,9 +252,6 @@ const RegisterForm = ({modalState, navigation}) => {
                           <Text style={styles.textSelectedStyle}>
                             {item.label}
                           </Text>
-                          {/* <DeleteOutlined name="DeleteOutlined" size={17} /> */}
-                          {/* <AntIcon name="minuscircleo" color="green" size={17} /> */}
-                          {/* <AntDesign color="black" name="delete" size={17} /> */}
                         </View>
                       </TouchableOpacity>
                     )}
