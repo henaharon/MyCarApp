@@ -7,6 +7,7 @@ import HomeScreen from '../HomeScreen.js';
 import NotificationsScreen from '../NotificationsScreen.js';
 import DrawerContent from '../DrawerContent.js';
 import MyMessages from '../../MyMessages/MyMessages.js';
+import ElectricVehicle from '../../ElectricVehicle/ElectricVehicle.js';
 
 const Drawer = createDrawerNavigator();
 const Routes = () => {
@@ -29,6 +30,7 @@ const Routes = () => {
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Notifications" component={NotificationsScreen} />
       <Drawer.Screen name="MyMessages" component={MyMessages} />
+      <Drawer.Screen name="ElectricVehicle" component={ElectricVehicle} />
     </Drawer.Navigator>
   );
 };
