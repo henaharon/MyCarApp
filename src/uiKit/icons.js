@@ -1,5 +1,5 @@
 const loginIcons = {
-  loginButtonArrow: require('../assets/icons/login-button-arrow.png')
+  loginButtonArrow: require('../assets/icons/login-button-arrow.png'),
 };
 
 const SideMenuIcons = {
@@ -14,7 +14,7 @@ const SideMenuIcons = {
   AAG_Mobile: require('../assets/icons/LogosAagWhite.png'),
   GeneralMessage: require('../assets/icons/GeneralMessage.png'),
   ServiceIconsGeneral: require('../assets/icons/ServiceIconsGeneral.png'),
-  ProfilePhotoUser: require('../assets/icons/ProfilePhotoUser.png')
+  ProfilePhotoUser: require('../assets/icons/ProfilePhotoUser.png'),
 };
 
 const CarDetailsIcons = {
@@ -32,8 +32,20 @@ const CarDetailsIcons = {
   shareIcon: require('../assets/icons/CarDetailsIcons/share.png'),
   lightIcon: require('../assets/icons/CarDetailsIcons/light.png'),
   infocon: require('../assets/icons/CarDetailsIcons/info.png'),
-  airPerssure: require('../assets/icons/CarDetailsIcons/airPerssure.jpeg')
+  airPerssure: require('../assets/icons/CarDetailsIcons/airPerssure.jpeg'),
 };
 
+const myMessagesIcons = {
+  arrowRight: require('../assets/J1-icons/arrowRight.png'),
+  image1: require('../assets/J1-icons/Image1.png'),
+  image2: require('../assets/J1-icons/Image2.png'),
+  image3: require('../assets/J1-icons/Image3.png'),
+  image4: require('../assets/J1-icons/Image4.png'),
+  image5: require('../assets/J1-icons/Image5.png'),
+  image6: require('../assets/J1-icons/Image6.png'),
+  image7: require('../assets/J1-icons/Image7.png'),
+  selectedStar: require('../assets/J1-icons/selectedStar.png'),
+  unSelectedStar: require('../assets/J1-icons/unSelectedStar.png'),
+};
 
-export {loginIcons, SideMenuIcons, CarDetailsIcons};
+export {loginIcons, SideMenuIcons, CarDetailsIcons, myMessagesIcons};
