@@ -6,21 +6,18 @@ import ChargerImage from '../components/ChargerImage';
 import ItemWithIcon from '../components/ItemWithIcon';
 import CustomButton from '../components/CustomButton';
 
-const SummaryPage = () => {
+const SummaryPage = ({ onModalClose }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
 
   const handleButtonPress = () => {
     setModalVisible(false);
+    onModalClose(); 
     navigation.navigate('Home');
   };
 
   const openModal = () => {
     setModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setModalVisible(false);
   };
 
   return (
@@ -74,7 +71,7 @@ const SummaryPage = () => {
         </View>
       </ScrollView>
 
-      <Modal visible={isModalVisible} animationType="slide" transparent={true}>
+      <Modal visible={isModalVisible} animationType="slide" transparent={true} >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalHeadline}>תודה</Text>

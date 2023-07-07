@@ -1,13 +1,21 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const leftImage = require('../assets/icons/leftArrow.png');
 const rightImage = require('../assets/icons/rightArrow.png');
 
-const HeaderScreen = ({ isSummary }) => {
+const HeaderScreen = ({ isSummary, onLeftArrowPress }) => {
   const title = isSummary ? 'סיכום קריאה' : 'עמדת טעינה';
-  const renderLeftArrow = isSummary ? null : <Image source={leftImage} style={styles.leftImage} />;
-  const renderRightArrow = isSummary ? <Image source={rightImage} style={styles.rightImage} /> : <Image source={rightImage} style={styles.rightImage} />;
+  const renderLeftArrow = isSummary ? null : (
+    <TouchableOpacity onPress={onLeftArrowPress}>
+      <Image source={leftImage} style={styles.leftImage} />
+    </TouchableOpacity>
+  );
+  const renderRightArrow = isSummary ? (
+    <Image source={rightImage} style={styles.rightImage} />
+  ) : (
+    <Image source={rightImage} style={styles.rightImage} />
+  );
 
   return (
     <View style={styles.container}>
@@ -36,7 +44,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center', // Add this line to center-align the text horizontally
+    textAlign: 'center',
   },
   rightImage: {
     width: 50,
