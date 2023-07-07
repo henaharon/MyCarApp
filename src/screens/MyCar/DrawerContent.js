@@ -16,7 +16,7 @@ const DrawerContent = props => {
     index => {
       switch (index) {
         case 0:
-          props.navigation.navigate('Home');
+          props.navigation.navigate('CarDetailsScreen');
           break;
         case 1:
           props.navigation.navigate('Notifications');
