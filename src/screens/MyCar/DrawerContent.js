@@ -53,7 +53,7 @@ const DrawerContent = props => {
         <DrawerContentScrollView {...props}>
           <View style={styles.drawerContent}>
             <Userinfo />
-            <Notifcaion />
+            <Notifcaion navigation={props.navigation} />
           </View>
           {sideMenuMock.slice(0, 4).map((item, index) => (
             <CommonCard

@@ -25,7 +25,6 @@ const Routes = () => {
         headerTitleStyle: {
           marginLeft: 'auto',
         },
-        headerShown: false,
       }}>
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="Notifications" component={NotificationsScreen} />
