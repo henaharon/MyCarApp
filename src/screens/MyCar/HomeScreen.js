@@ -1,15 +1,24 @@
-import React from 'react';
-import {View, Button} from 'react-native';
-const HomeScreen=({ navigation })=> {
-    
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-          onPress={() => navigation.navigate('Notifications')}
-          title="Go to notifications"
-        />
-      </View>
-    );
-  }
+import React, { useCallback } from 'react';
+import { View, Button, StyleSheet } from 'react-native';
+
+const HomeScreen = ({ navigation }) => {
+  const navigateToNotifications = useCallback(() => {
+    navigation.navigate('Notifications');
+  }, [navigation]);
+
+  return (
+    <View style={styles.RootHomeScreen}>
+      <Button onPress={navigateToNotifications} title="Go to notifications" />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  RootHomeScreen: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default HomeScreen;
