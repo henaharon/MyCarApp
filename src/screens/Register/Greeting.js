@@ -18,18 +18,6 @@ const window_height = Dimensions.get('window').height;
 const window_width = Dimensions.get('window').width;
 
 const Greeting = ({navigation}) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [addsCheck1, setAddsCheck] = useState(false);
-  const [addsCheck2, setAddsCheck2] = useState(false);
-
-  const move_to_term_use = () => {
-    navigation.navigate('TermofUseapp');
-  };
-
-  const move_to_term_divor = () => {
-    navigation.navigate('TermofDivor');
-  };
-
   const openRegisterForm = () => {
     navigation.navigate('GreetingForm');
   };

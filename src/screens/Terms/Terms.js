@@ -19,12 +19,11 @@ const window_height = Dimensions.get('window').height;
 const window_width = Dimensions.get('window').width;
 
 const Terms = ({navigation}) => {
-  const [isLoading, setIsLoading] = useState(false);
   const [addsCheck1, setAddsCheck] = useState(false);
   const [addsCheck2, setAddsCheck2] = useState(false);
   const [modal, setModal] = useState(<></>);
 
-  const check_term_use = () => {
+  const checkTermUse = () => {
     if (addsCheck2) {
       navigation.navigate('Greeting');
     } else {
@@ -106,7 +105,7 @@ const Terms = ({navigation}) => {
         colors={['#A9333A', '#E1578A', '#FAE98F']}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 1}}>
-        <TouchableOpacity onPress={() => check_term_use()}>
+        <TouchableOpacity onPress={() => checkTermUse()}>
           <Text style={styles.text_appr_con}>
             {translate('approveAndContinue')}
           </Text>

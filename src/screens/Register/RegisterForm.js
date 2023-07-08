@@ -1,29 +1,24 @@
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {MultiSelect} from 'react-native-element-dropdown';
-import {PlusOutlined, DeleteOutlined} from '@ant-design/icons';
-import AntIcon from 'react-native-vector-icons/AntDesign';
 import {formIcons} from '../../uiKit/formIcons';
-import DocumentPicker from 'react-native-document-picker';
 import DefaultModal from '../Modals/DefaultModal';
+import RegisterFormMethods from './RegisterFormMethods';
 import {
   Dimensions,
   ScrollView,
   StyleSheet,
   TextInput,
   Text,
-  StatusBar,
   View,
   Modal,
   TouchableOpacity,
   Image,
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Linking,
 } from 'react-native';
 import {translate} from '../../locals/index';
-import {loginIcons} from '../../uiKit/icons';
+
+const {closeFormModal, hideModal, submitForm, renderDataItem, uploadDocs} =
+  RegisterFormMethods;
 
 const licenseTypes = [
   {label: 'A', value: 1},
@@ -54,50 +49,31 @@ const RegisterForm = ({modalState, navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const closeFormModal = () => {
-    setIsFormOpen(false);
+    RegisterFormMethods.closeFormModal(setIsFormOpen);
   };
 
   const hideModal = () => {
-    setModalVisible(false);
+    RegisterFormMethods.hideModal(setModalVisible);
   };
 
   const submitForm = () => {
-    if (
-      firstName.trim() === '' ||
-      lastName.trim() === '' ||
-      employeeNumber === null ||
-      email.trim() === ''
-    ) {
-      setInputError('All required fields must be filled.');
-    } else {
-      setInputError(null);
-      setIsFormOpen(false);
-      setModalVisible(true); //Render Experience Modal
-    }
-  };
-
-  const renderDataItem = item => {
-    return (
-      <View style={styles.item}>
-        <Text style={styles.selectedTextStyle}>{item.label}</Text>
-      </View>
+    RegisterFormMethods.submitForm(
+      firstName,
+      lastName,
+      employeeNumber,
+      email,
+      setInputError,
+      setIsFormOpen,
+      setModalVisible,
     );
   };
 
+  const renderDataItem = item => {
+    return RegisterFormMethods.renderDataItem(item, styles);
+  };
+
   const uploadDocs = async () => {
-    try {
-      const doc = await DocumentPicker.pick({
-        type: [DocumentPicker.types.images],
-      });
-      console.log(doc);
-    } catch (err) {
-      if (DocumentPicker.isCancel(err)) {
-        // User cancelled the upload
-        console.log(err);
-      } else {
-        throw err;
-      }
-    }
+    await RegisterFormMethods.uploadDocs();
   };
 
   return (

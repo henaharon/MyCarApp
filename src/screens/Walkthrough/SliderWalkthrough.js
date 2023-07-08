@@ -105,13 +105,6 @@ const styles = StyleSheet.create({
   sliderContainer: {
     height: 550,
   },
-  item: {
-    // flex: 1,
-    // backgroundColor: item.backgroundColor,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // paddingBottom: 100,
-  },
   titleStyle: {
     padding: 10,
     textAlign: 'center',
@@ -167,31 +160,31 @@ const slides = [
     key: 's1',
     title: 'ברוכים הבאים',
     text: 'ברוכים הבאים לאפליקציית הרכב החדשה והמתקדמת של אמדוקס.\n\nכאן תוכלו לקבל את כל השירותים, המידע והכלים שיאפשרו לכם לנסוע בראש שקט.',
-    image: require('./icons/hand_wave.png'),
+    image: sliderIcons.wave,
   },
   {
     key: 's2',
     title: 'מזמינים תור בקליק',
     text: 'מהיום תוכלו להזמין תור למרכזי השירות במהירות ובקלות ישירות מהאפליקציה.\n\nפשוט נכנסים מתאמים ומגיעים.',
-    image: require('./icons/calendar.png'),
+    image: sliderIcons.calendar,
   },
   {
     key: 's3',
     title: 'בכל מקום ובכל שעה',
     text: 'אנחנו כאן עבורך 24/7 בכל תקלה שתפגוש בדרך. נעניק סיוע והכוונה אפילו אם רק נדלקה נורית חיווי.',
-    image: require('./icons/location.png'),
+    image: sliderIcons.location,
   },
   {
     key: 's4',
     title: 'צריכים רכב לכמה ימים?',
     text: 'מהיום ניתן להשאיל רכב ישירות דרך האפליקציה.\n\nפשוט נכנסים בוחרים ונוסעים.',
-    image: require('./icons/taxi.png'),
+    image: sliderIcons.taxi,
   },
   {
     key: 's5',
     title: 'יותר מאובטח יותר פרטי!',
     text: 'אנחנו עושים את כל המאמצים כדי לשמור עליך.\nהחזון שלנו הוא לתת לך שירות ללא מעקב או שימוש לא ראוי במידע שנמצא בידינו.',
-    image: require('./icons/lock.png'),
+    image: sliderIcons.lock,
   },
 ];
 

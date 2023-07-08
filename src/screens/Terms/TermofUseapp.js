@@ -18,7 +18,7 @@ const window_width = Dimensions.get('window').width;
 const TermofUseapp = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
   const {t} = useTranslation();
-  const back_to_terms = () => {
+  const backToTerms = () => {
     navigation.navigate('Terms');
   };
 
@@ -36,7 +36,7 @@ const TermofUseapp = ({navigation}) => {
         <LinearGradient
           style={styles.gradient_op}
           colors={['rgba(253,42,249,0.7)', 'rgba(253,42,211,0.52)']}>
-          <TouchableOpacity onPress={() => back_to_terms()}>
+          <TouchableOpacity onPress={() => backToTerms()}>
             <Text style={styles.text_appr_con}>{t('approveandcontinue')}</Text>
           </TouchableOpacity>
         </LinearGradient>
