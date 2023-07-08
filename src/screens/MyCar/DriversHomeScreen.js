@@ -46,7 +46,7 @@ const DriversHomeScreen = ({navigation}) => {
           {/* Transparent Logo */}
           <View style={styles.logoContainer}>
             <Image
-              source={require('../../assets/B1-assets/elementsLogosMyCarFullVerticalColorBlack.png')}
+              source={require('../../uiKit/icons/elementsLogosMyCarFullVerticalColorBlack.png')}
               style={styles.logo}
               resizeMode="contain"
             />
