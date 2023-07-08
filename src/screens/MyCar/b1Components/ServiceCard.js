@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 
-const ServiceCard = ({title, image, goToPath = null}) => {
+const ServiceCard = ({navigation, title, image, goToPath = null}) => {
   const handlePress = () => {
     if (goToPath) {
       navigation.navigate(goToPath);

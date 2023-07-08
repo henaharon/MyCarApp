@@ -28,6 +28,7 @@ const galleryData = [
     id: '6',
     title: 'רכב חשמלי',
     image: require('../uiKit/icons/elementsServiceIconsEv.png'),
+    goToPath: 'ElectricVehicle',
   },
   {
     id: '7',

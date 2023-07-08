@@ -19,7 +19,12 @@ import messagesGalleryData from '../../assets/messagesGalleryData';
 
 const DriversHomeScreen = ({navigation}) => {
   const renderCard = ({item}) => (
-    <ServiceCard title={item.title} image={item.image} />
+    <ServiceCard
+      navigation={navigation}
+      title={item.title}
+      image={item.image}
+      goToPath={item.goToPath}
+    />
   );
 
   const renderMessageCard = ({item}) => (
@@ -31,7 +36,7 @@ const DriversHomeScreen = ({navigation}) => {
   );
 
   const handleNavPress = () => {
-//    return;
+    navigation.openDrawer();
   };
 
   return (
@@ -101,7 +106,7 @@ const DriversHomeScreen = ({navigation}) => {
             <TouchableOpacity
               style={styles.buttonUpdateAndNews}
               onPress={() => {
-                // Handle button press
+                navigation.navigate('MyMessages');
               }}>
               <Text style={styles.buttonText}>
                 {DriversHomeScreenText.updateAndNews}
