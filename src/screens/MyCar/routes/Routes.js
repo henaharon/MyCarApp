@@ -8,6 +8,7 @@ import MyMessages from '../../MyMessages/MyMessages.js';
 import ElectricVehicle from '../../ElectricVehicle/ElectricVehicle.js';
 import {CarDetailsScreen} from '../../CarDetails/CarDetailsScreen.js';
 import DriversHomeScreen from '../DriversHomeScreen.js';
+import DriverProfileScreen from '../DriverProfileScreen.js';
 
 const Drawer = createDrawerNavigator();
 const Routes = () => {
@@ -43,6 +44,11 @@ const Routes = () => {
         component={ElectricVehicle}
       />
       <Drawer.Screen name="CarDetailsScreen" component={CarDetailsScreen} />
+      <Drawer.Screen
+        options={{headerShown: false}}
+        name="DriverProfileScreen"
+        component={DriverProfileScreen}
+      />
     </Drawer.Navigator>
   );
 };
