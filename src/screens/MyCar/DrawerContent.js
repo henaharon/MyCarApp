@@ -52,7 +52,9 @@ const DrawerContent = props => {
         style={{flex: 1}}>
         <DrawerContentScrollView {...props}>
           <View style={styles.drawerContent}>
-            <Userinfo />
+            <Userinfo
+              onPress={() => props.navigation.navigate('DriverProfileScreen')}
+            />
             <Notifcaion navigation={props.navigation} />
           </View>
           {sideMenuMock.slice(0, 4).map((item, index) => (

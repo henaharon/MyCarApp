@@ -1,14 +1,5 @@
 import React, {useState} from 'react';
-import {
-  Modal,
-  StyleSheet,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-  Text,
-  Dimensions,
-} from 'react-native';
+import {Modal, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import BaseView from '../../uiKit/BaseView';
 import {myMessagesIcons} from '../../uiKit/icons';
 import {myMessages} from '../../locals/he.json';
