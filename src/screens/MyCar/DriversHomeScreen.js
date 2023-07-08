@@ -18,7 +18,6 @@ import MessageCard from './b1Components/MessageCard';
 import messagesGalleryData from '../../assets/messagesGalleryData';
 
 const DriversHomeScreen = ({navigation}) => {
-
   const renderCard = ({item}) => (
     <ServiceCard title={item.title} image={item.image} />
   );
@@ -31,6 +30,10 @@ const DriversHomeScreen = ({navigation}) => {
     />
   );
 
+  const handleNavPress = () => {
+    return;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.backgroundContainer}>
@@ -42,6 +45,17 @@ const DriversHomeScreen = ({navigation}) => {
         />
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {/* Nav Bar top right corner */}
+        <View style={styles.topRightNavContainer}>
+          <TouchableOpacity onPress={handleNavPress} activeOpacity={0.8}>
+            <Image
+              source={require('../../uiKit/icons/componentsNavBarXButtonsRoundedWhiteAlpha.png')}
+              style={styles.topRightNav}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.content}>
           {/* Transparent Logo */}
           <View style={styles.logoContainer}>
@@ -166,6 +180,16 @@ const styles = StyleSheet.create({
     marginTop: 100,
     width: '100%',
     paddingVertical: 20,
+  },
+  topRightNavContainer: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    zIndex: 1,
+  },
+  topRightNav: {
+    width: 50,
+    height: 50,
   },
   logoContainer: {
     position: 'absolute',

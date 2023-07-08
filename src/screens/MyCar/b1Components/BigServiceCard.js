@@ -16,7 +16,7 @@ const BigServiceCard = ({title, imagePath, goToPath = null}) => {
         <View style={styles.topRow}>
           <View style={styles.leftColumn}>
             <Image
-              source={require('../../../assets/B1-assets/elements24PxIconsNavigationIcHeaderLeft2.png')}
+              source={require('../../../uiKit/icons/elements24PxIconsNavigationIcHeaderLeft2.png')}
               style={styles.logo}
               resizeMode="contain"
             />

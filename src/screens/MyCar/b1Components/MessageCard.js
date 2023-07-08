@@ -3,7 +3,7 @@ import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 
 const MessageCard = ({title, description, image = null, goToPath = null}) => {
   const MAX_DESCRIPTION_WORDS = 6;
-  const DEFAULT_IMAGE = require('../../../assets/B1-assets/elementsLogosMyCarFullVerticalColorBlack.png');
+  const DEFAULT_IMAGE = require('../../../uiKit/icons/elementsLogosMyCarFullVerticalColorBlack.png');
 
   const truncateDescription = text => {
     const words = text.split(' ');
