@@ -12,6 +12,7 @@ import {
   View,
 } from 'react-native';
 import RadioButtons from './RadioButtons';
+import {accidentReport} from '../../../uiKit/icons';
 
 const includeExtra = true;
 
@@ -43,7 +44,7 @@ export function CameraButton({style, onAddImage}) {
       grantedcamera === PermissionsAndroid.RESULTS.GRANTED &&
       grantedstorage === PermissionsAndroid.RESULTS.GRANTED
     ) {
-      console.log('Camera & storage permission given');
+    
 
       var options = {
         mediaType: 'photo', //to allow only photo to select ...no video
@@ -52,7 +53,7 @@ export function CameraButton({style, onAddImage}) {
       };
 
       ImagePicker.launchCamera(options, res => {
-        console.log('Response = ', res);
+
 
         if (res.didCancel) {
           console.log('User cancelled image picker');
@@ -106,12 +107,12 @@ export function CameraButton({style, onAddImage}) {
         onPress={() => setModalVisible(true)}>
         <View>
           <Image
-            source={require('../../../assets/accidentReport/icon3.png')}
+            source={accidentReport.icon3}
             style={styles.cameraIcon}
           />
         </View>
       </Pressable>
-      {/* <Text>{JSON.stringify(response)}</Text> */}
+
       <View style={styles.centeredView}>
         <Modal
           animationType="slide"

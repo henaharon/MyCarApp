@@ -15,6 +15,9 @@ import Form from './Form';
 import HelpModal from './HelpModal';
 import ImportantNote from './ImportantNote';
 import { isSearchBarAvailableForCurrentPlatform } from 'react-native-screens';
+import textData from "../he.json"
+
+
 
 export default AccidentReportScreen = () => {
   const [formOpen, setFormOpen] = useState(false);
@@ -25,12 +28,10 @@ export default AccidentReportScreen = () => {
   }
 
   const reportAccident = () => {
-    console.log('report accident');
     setFormOpen(true);
   };
 
   const reportDamage = () => {
-    console.log('report damage');
     setFormOpen(true);
     setStartPage(4);
   };
@@ -46,7 +47,7 @@ export default AccidentReportScreen = () => {
               <HelpModal></HelpModal>
 
               <Text style={[styles.whiteText, styles.textHeaderFirst]}>
-                דיווח תאונה
+              {textData.report}
               </Text>
               <Pressable>
                 <Image
@@ -81,8 +82,7 @@ export default AccidentReportScreen = () => {
                 <Text style={styles.subHeader}>לפני מילוי הדוח חשוב לדעת:</Text>
                 <View style={styles.innerMessageContainer}>
                   <Text style={styles.text}>
-                    דוח תאונת הדרכים נשלח למספר גורמים בקבוצת אמדוקס ולגורמים
-                    חיצוניים כמו חברת הביטוח.
+                   {textData.reportSent}
                   </Text>
                   <Text style={styles.text}>
                     נא להקפיד על מילוי מדוייק ונכון של דוח התאונה.

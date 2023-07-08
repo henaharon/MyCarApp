@@ -28,18 +28,18 @@ const FormWizard = ({ children, startPage }) => {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-      <Pressable style={styles.button} title="Next" onPress={goToNextPage} disabled={currentPage > (children.length -1) && true}>
+      <Pressable style={styles.pinkButton} title="Next" onPress={goToNextPage} disabled={currentPage > (children.length -1) && true}>
             <Image source={loginIcons.loginButtonArrow}></Image>
       </Pressable>
       <View>
-          <Text style={{color:'white', textAlign:"center"}}>
+          <Text style={styles.one}>
             {titles[currentPage]}
           </Text>   
           <View style={{flexDirection:'row-reverse', gap:5}}> 
             {
                 children.map((child, index) => {
                     return(
-                        <View key ={parseInt(index)} style={{width:10,height:10, borderWidth:1, borderRadius:100,backgroundColor: index === currentPage ? 'blue' :'gray'}}></View>
+                        <View key ={parseInt(index)} style={[{backgroundColor: index === currentPage ? 'blue' :'gray'},styles.two]}></View>
                     )
             })
         }
@@ -95,9 +95,16 @@ const styles = StyleSheet.create({
     padding:5,
     borderRadius:15,
   },
+  pinkButton:{
+    backgroundColor:"#EA1B62",
+    padding:5,
+    borderRadius:15,
+  },
   rightArrow:{
     transform: [{ rotate: '180deg'}]
-  }
+  },
+  one:{color:'white', textAlign:"center"},
+  two:{width:10,height:10, borderWidth:1, borderRadius:100}
 });
 
 export { FormWizard, WizardSection };

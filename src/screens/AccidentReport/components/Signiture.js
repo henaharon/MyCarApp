@@ -31,7 +31,7 @@ import SignatureScreen from 'react-native-signature-canvas'
 
   // Called after ref.current.getData()
   const handleData = (data) => {
-    //console.log(data);
+
   };
 
   return (

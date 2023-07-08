@@ -30,6 +30,8 @@ const accidentReport = {
   backgroundImage: require('../assets/accidentReport/bgImg.png'),
   message: require('../assets/accidentReport/wraning.png'),
   phoneIcon: require('../assets/accidentReport/phoneIcon.png'),
+  icon3:require('../assets/accidentReport/icon3.png'),
+  icon6:require('../assets/accidentReport/icon6.png'),
 };
 
 const SideMenuIcons = {

@@ -70,10 +70,8 @@ const HelpModal = () => {
 
 const styles = StyleSheet.create({
   centeredView: {
-    // display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    // marginTop: 22,
   },
   modalView: {
     backgroundColor: 'white',
@@ -123,7 +121,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    // gap: 3,
     borderRadius: 20,
     backgroundColor: '#DF6666',
     padding: 4,

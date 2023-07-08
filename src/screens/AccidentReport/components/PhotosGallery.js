@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {Image, ScrollView, StyleSheet, View} from 'react-native';
 import SVG from 'react-native-svg';
-// import MySVG from '../../../assets/accidentReport/icon6.svg';
 import {CameraButton} from './CameraButton';
+import { accidentReport } from '../../../uiKit/icons';
 
 export function PhotosGallery() {
   const [imagesArr, setImages] = useState([]);
@@ -26,7 +26,7 @@ export function PhotosGallery() {
               <Image source={{uri: currImage}} style={styles.image} />
               <View style={styles.iconContainer}>
                 <Image
-                  source={require('../../../assets/accidentReport/icon6.png')}
+                  source={accidentReport.icon6}
                   style={styles.icon}
                 />
               </View>
