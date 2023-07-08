@@ -12,9 +12,11 @@ import {
 import BaseView from '../../uiKit/BaseView';
 import {myMessagesIcons} from '../../uiKit/icons';
 import {myMessages} from '../../locals/he.json';
-import ExpandCard from './ExpandCard';
-import UpdateCard from './UpdateCard';
-const MyMessages = () => {
+import ExpandCard from './components/ExpandCard';
+import UpdateCard from './components/UpdateCard';
+import Header from './components/Header';
+
+const MyMessages = ({navigation}) => {
   const [mesContent, setMesContent] = useState(null);
 
   const handleCardPress = content => {
@@ -25,8 +27,13 @@ const MyMessages = () => {
     setMesContent(null);
   };
 
+  const onRightArrowPress = () => {
+    navigation.goBack();
+  };
+
   return (
     <BaseView>
+      <Header onRightArrowPress={onRightArrowPress} />
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <UpdateCard
           image={myMessagesIcons.image1}

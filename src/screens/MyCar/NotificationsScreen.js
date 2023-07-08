@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import React, {useCallback} from 'react';
+import {View, Button, StyleSheet} from 'react-native';
 
-const NotificationsScreen = ({ navigation }) => {
+const NotificationsScreen = ({navigation}) => {
   const goBackHome = useCallback(() => {
     navigation.goBack();
   }, [navigation]);

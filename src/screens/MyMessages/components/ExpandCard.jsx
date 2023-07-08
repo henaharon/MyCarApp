@@ -7,7 +7,7 @@ import {
   Text,
   Dimensions, 
 } from 'react-native';
-import {myMessagesIcons} from '../../uiKit/icons';
+import {myMessagesIcons} from '../../../uiKit/icons';
 import Video from 'react-native-video';
 import { Thumbnail } from 'react-native-thumbnail-video';
 
