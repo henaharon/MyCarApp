@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import CarPart from './CarPart';
 
 const CustomButton = () => {
-  const buttons = [
+  const [buttons, setButtons] = useState([
     {name: 'נורית אזהרה', logo: require('../../../assets/icons/Lights.png')},
     {name: 'החלפת מגבים', logo: require('../../../assets/icons/Wipers.png')},
     {name: 'בלמים', logo: require('../../../assets/icons/Brakes.png')},
@@ -26,7 +26,7 @@ const CustomButton = () => {
       name: 'אחר / תקלה משביתה',
       logo: require('../../../assets/icons/Other.png'),
     },
-  ];
+  ]);
   const navigation = useNavigation();
 
   const [clickedButtons, setClickedButtons] = useState([]);
@@ -49,12 +49,13 @@ const CustomButton = () => {
   };
 
   const closeModal = () => {
-    setModalVisible(false);
+    setModalVisible(false); // closing our part of the project and returns to the main screen.
+    navigation.goBack(); // Navigate back to the previous screen
   };
 
-  const handleClose = () => {
-    navigation.goBack(); // Navigate back to the previous screen
-  }; // closing our part of the project and returns to the main screen.
+  // const handleClose = () => {
+  //   navigation.goBack(); // Navigate back to the previous screen
+  // }; // closing our part of the project and returns to the main screen.
 
   const renderButtons = () => {
     return buttons.map((button, index) => (
@@ -70,7 +71,7 @@ const CustomButton = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
+      <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
         <Image
           source={require('../../../assets/icons/XButton.png')}
           style={styles.exitPhoto}
@@ -87,22 +88,16 @@ const CustomButton = () => {
           <View style={styles.buttonRow}>{renderButtons()}</View>
         </View>
       </View>
-      <Modal visible={modalVisible} onRequestClose={closeModal}>
+      <Modal visible={modalVisible} onPresse={closeModal}>
         <CarPart />
         <View style={styles.modalContainer}>
           <Text style={styles.explanationText}>{}</Text>
-
-          <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
-            <Image
-              source={require('../../../assets/icons/XButton.png')}
-              style={styles.exitPhoto}
-            />
-          </TouchableOpacity>
         </View>
       </Modal>
       {modalVisible && (
         <CarPart
           modalVisible={modalVisible}
+          onRequestClose={closeModal}
           setModalVisible={setModalVisible}
           buttonName={buttons[buttonIndex].name}
           buttonLogo={buttons[buttonIndex].logo}

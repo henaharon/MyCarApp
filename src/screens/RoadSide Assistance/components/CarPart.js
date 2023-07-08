@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {TextInput as MaterialTextInput} from '@react-native-material/core';
 import {
   View,
@@ -16,6 +16,8 @@ import Summary from './Summary';
 
 const CarPart = ({modalVisible, setModalVisible, buttonName, buttonLogo}) => {
   console.log(buttonName);
+  // console.log(buttonLogo);
+  const [name, setName] = React.useState('');
   const [notesInputValue, setNotesInputValue] = React.useState('');
   const [locationInputValue, setLocationInputValue] = React.useState('');
   const [imageUris, setImageUris] = React.useState([]);
@@ -24,6 +26,12 @@ const CarPart = ({modalVisible, setModalVisible, buttonName, buttonLogo}) => {
   const ImagePicker = require('react-native-image-picker');
 
   const imagePlaceholder = require('../../../assets/icons/placeholder-image.png');
+
+  useEffect(() => {
+    if (modalVisible) {
+      setName(buttonName);
+    }
+  }, [modalVisible, buttonName]);
 
   const closeModal = () => {
     setModalVisible(false);
@@ -70,7 +78,7 @@ const CarPart = ({modalVisible, setModalVisible, buttonName, buttonLogo}) => {
                 style={styles.arrowIcon}
               />
             </TouchableOpacity>
-            <Text style={styles.headerText}>{buttonName}</Text>
+            <Text style={styles.headerText}>{name}</Text>
             <TouchableOpacity onPress={closeModal}>
               <Image
                 source={require('../../../assets/icons/arrow-right.png')}
