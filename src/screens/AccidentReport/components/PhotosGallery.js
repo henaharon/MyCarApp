@@ -8,8 +8,6 @@ export function PhotosGallery() {
   const [imagesArr, setImages] = useState([]);
 
   function addImage(image) {
-    console.log('image', image);
-
     setImages(prevImages => [image, ...prevImages]);
   }
 
