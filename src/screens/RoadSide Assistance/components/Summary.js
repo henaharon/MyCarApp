@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TextInput as MaterialTextInput} from '@react-native-material/core';
 import {
   View,
@@ -11,14 +11,24 @@ import {
   ScrollView,
   Dimensions,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
+import SuccessPage from './SuccessPage';
 
 const Summary = props => {
-  const imagePlaceholder = require('./../../assets/icons/placeholder-image.png');
+  const imagePlaceholder = require('../../../assets/icons/placeholder-image.png');
 
   const closeModal = () => {
     props.setSummaryModalVisible(false);
   };
+  const navigation = useNavigation();
 
+  const [clickedButton, setClickedButton] = useState([]);
+
+  const handleButtonClick = index => {
+    navigation.navigate('SuccessPage');
+    setClickedButton(true);
+  };
   return (
     <Modal
       visible={props.summaryModalVisible}
@@ -41,7 +51,7 @@ const Summary = props => {
               </View>
               <TouchableOpacity onPress={closeModal}>
                 <Image
-                  source={require('./../../assets/icons/arrow-right.png')}
+                  source={require('../../../assets/icons/arrow-right.png')}
                   style={styles.arrowIcon}
                 />
               </TouchableOpacity>
@@ -55,10 +65,10 @@ const Summary = props => {
               </Text>
 
               <View style={styles.carPartContainer}>
-                <Text style={styles.carPartName}>{props.buttonName.name}</Text>
+                <Text style={styles.carPartName}>{props.buttonNames.name}</Text>
                 <View style={styles.carPartIconContainer}>
                   <Image
-                    source={props.buttonName.icon}
+                    source={props.buttonNames.icon}
                     style={styles.carPartIcon}
                   />
                 </View>
@@ -81,7 +91,7 @@ const Summary = props => {
               <View style={styles.generalContentContainer}>
                 <View style={styles.generalContentIconContainer}>
                   <Image
-                    source={require('./../../assets/icons/car-icon.png')}
+                    source={require('../../../assets/icons/car-icon.png')}
                     style={styles.generalContentIconImage}
                   />
                 </View>
@@ -98,7 +108,7 @@ const Summary = props => {
               <View style={styles.generalContentContainer}>
                 <View style={styles.generalContentIconContainer}>
                   <Image
-                    source={require('./../../assets/icons/car-location.png')}
+                    source={require('../../../assets/icons/car-location.png')}
                     style={styles.generalContentIconImage}
                   />
                 </View>
@@ -113,7 +123,7 @@ const Summary = props => {
               <View style={styles.fyiContainer}>
                 <View style={styles.fyiIconContainer}>
                   <Image
-                    source={require('./../../assets/icons/fyi-icon.png')}
+                    source={require('../../../assets/icons/fyi-icon.png')}
                     style={styles.fyiIconImage}
                   />
                 </View>
@@ -127,7 +137,7 @@ const Summary = props => {
               </View>
 
               <TouchableOpacity
-                // onPress={handleUploadImage}
+                onPress={handleButtonClick}
                 style={styles.sendButtonStyle}>
                 <Text style={styles.sendButtonText}>אישור ושליחה</Text>
               </TouchableOpacity>

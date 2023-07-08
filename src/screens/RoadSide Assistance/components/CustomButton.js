@@ -9,9 +9,10 @@ import {
   Modal,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import CarPart from './CarPart';
 
-const ButtonContainer = () => {
-  const buttonNames = [
+const CustomButton = () => {
+  const buttons = [
     {name: 'נורית אזהרה', logo: require('../../../assets/icons/Lights.png')},
     {name: 'החלפת מגבים', logo: require('../../../assets/icons/Wipers.png')},
     {name: 'בלמים', logo: require('../../../assets/icons/Brakes.png')},
@@ -31,8 +32,11 @@ const ButtonContainer = () => {
   const [clickedButtons, setClickedButtons] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
+  const [buttonIndex, setButtonIndex] = useState(-1);
+
   const handleButtonClick = index => {
     const updatedClickedButtons = [...clickedButtons];
+    setButtonIndex(index);
     updatedClickedButtons[index] = !updatedClickedButtons[index];
     setClickedButtons(updatedClickedButtons);
     setModalVisible(true);
@@ -53,7 +57,7 @@ const ButtonContainer = () => {
   }; // closing our part of the project and returns to the main screen.
 
   const renderButtons = () => {
-    return buttonNames.map((button, index) => (
+    return buttons.map((button, index) => (
       <TouchableOpacity
         key={index}
         style={[styles.button, getButtonStyle(index)]}
@@ -84,6 +88,7 @@ const ButtonContainer = () => {
         </View>
       </View>
       <Modal visible={modalVisible} onRequestClose={closeModal}>
+        <CarPart />
         <View style={styles.modalContainer}>
           <Text style={styles.explanationText}>{}</Text>
 
@@ -95,6 +100,14 @@ const ButtonContainer = () => {
           </TouchableOpacity>
         </View>
       </Modal>
+      {modalVisible && (
+        <CarPart
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          buttonName={buttons[buttonIndex].name}
+          buttonLogo={buttons[buttonIndex].logo}
+        />
+      )}
     </ScrollView>
   );
 };
@@ -186,4 +199,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ButtonContainer;
+export default CustomButton;

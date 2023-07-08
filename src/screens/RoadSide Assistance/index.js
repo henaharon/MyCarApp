@@ -1,7 +1,6 @@
 import React from 'react';
 // import {Header} from 'react-native';
 import {View, Button, SafeAreaView, StyleSheet, Text} from 'react-native';
-import Model from './components/CustomButton';
 import CustomButton from './components/CustomButton';
 
 const RoadSideScreen = ({}) => {

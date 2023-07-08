@@ -14,7 +14,8 @@ import {
 
 import Summary from './Summary';
 
-const CarPart = ({modalVisible, setModalVisible, buttonName}) => {
+const CarPart = ({modalVisible, setModalVisible, buttonName, buttonLogo}) => {
+  console.log(buttonName);
   const [notesInputValue, setNotesInputValue] = React.useState('');
   const [locationInputValue, setLocationInputValue] = React.useState('');
   const [imageUris, setImageUris] = React.useState([]);
@@ -22,7 +23,7 @@ const CarPart = ({modalVisible, setModalVisible, buttonName}) => {
 
   const ImagePicker = require('react-native-image-picker');
 
-  const imagePlaceholder = require('./../../assets/icons/placeholder-image.png');
+  const imagePlaceholder = require('../../../assets/icons/placeholder-image.png');
 
   const closeModal = () => {
     setModalVisible(false);
@@ -65,14 +66,14 @@ const CarPart = ({modalVisible, setModalVisible, buttonName}) => {
           <View style={styles.header}>
             <TouchableOpacity onPress={() => setSummaryModalVisible(true)}>
               <Image
-                source={require('./../../assets/icons/arrow-left.png')}
+                source={require('../../../assets/icons/arrow-left.png')}
                 style={styles.arrowIcon}
               />
             </TouchableOpacity>
-            <Text style={styles.headerText}>{buttonName.name}</Text>
+            <Text style={styles.headerText}>{buttonName}</Text>
             <TouchableOpacity onPress={closeModal}>
               <Image
-                source={require('./../../assets/icons/arrow-right.png')}
+                source={require('../../../assets/icons/arrow-right.png')}
                 style={styles.arrowIcon}
               />
             </TouchableOpacity>
@@ -80,10 +81,7 @@ const CarPart = ({modalVisible, setModalVisible, buttonName}) => {
 
           <View style={styles.content}>
             <View style={styles.carPartIconContainer}>
-              <Image
-                source={buttonName.icon}
-                style={styles.carPartIcon}
-              />
+              <Image source={buttonLogo} style={styles.carPartIcon} />
             </View>
             <Text style={styles.detailsHeader}>Details</Text>
             <TextInput
@@ -93,7 +91,6 @@ const CarPart = ({modalVisible, setModalVisible, buttonName}) => {
               onChangeText={setNotesInputValue}
               style={styles.textArea}
             />
-
 
             <ScrollView horizontal={true} style={styles.imageContainer}>
               {imageUris.map((uri, index) => (

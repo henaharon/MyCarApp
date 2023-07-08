@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Button, Text, StyleSheet} from 'react-native';
+import Summary from './Summary';
 
-const successPage = () => {
+const SuccessPage = () => {
   return (
     <View>
       <Text style={styles.tnkTitle}> תודה</Text>
@@ -21,3 +22,5 @@ const styles = StyleSheet.create({
     height: '15%',
   },
 });
+
+export default SuccessPage;

@@ -1,11 +1,21 @@
 import React, {useState} from 'react';
-import CarPart from './CarPart';
+import CarPart from '../RoadSide Assistance/components/CarPart';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import {Alert, Modal,Button, StyleSheet, Text, Pressable, View} from 'react-native';
+import {
+  Alert,
+  Modal,
+  Button,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+} from 'react-native';
 
 const HomeScreen = ({navigation}) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  
+  // const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Button
@@ -14,7 +24,7 @@ const HomeScreen = ({navigation}) => {
       />
 
       {/* Modal */}
-      
+
       {/* <Modal
         animationType="slide"
         transparent={true}
@@ -34,14 +44,14 @@ const HomeScreen = ({navigation}) => {
           </View>
         </View>
       </Modal> */}
-      <Button title="Open Modal" onPress={() => setModalVisible(true)} />
+      {/* <Button title="Open Modal" onPress={() => setModalVisible(true)} /> */}
 
-      {modalVisible && (
+      {/* {modalVisible && (
         <CarPart
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
         />
-      )}
+      )} */}
     </View>
   );
 };
@@ -89,7 +99,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-
 
 export default HomeScreen;
