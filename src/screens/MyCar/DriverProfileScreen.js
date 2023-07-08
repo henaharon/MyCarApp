@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  Dimensions,
   View,
   Pressable,
   StyleSheet,
@@ -21,6 +22,8 @@ const DriverProfileScreen = ({navigation}) => {
     useState(false);
   const [addFilesModalVisible, setAddFilesModalVisible] = useState(false);
   const [driverLicenceTypes, setDriverLicenceTypes] = useState([]);
+  const [addedFiles, setAddedFiles] = useState([]);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const openAddFilesModal = () => {
     setAddFilesModalVisible(true);
@@ -36,6 +39,10 @@ const DriverProfileScreen = ({navigation}) => {
 
   const closeSaveModal = () => {
     setSaveModalVisible(false);
+  };
+
+  const handleFileAdded = file => {
+    setAddedFiles(prevFiles => [...prevFiles, file]);
   };
 
   const openDriverLicenceTypeModal = () => {
@@ -59,7 +66,7 @@ const DriverProfileScreen = ({navigation}) => {
   };
 
   const handleFilesAdded = files => {
-    // setUploadedFiles(files);
+    setUploadedFiles(files);
   };
 
   const goBackToHomePage = () => {
@@ -199,8 +206,8 @@ const DriverProfileScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  xButtonContainer: {flex: 1, paddingLeft: 10},
-  saveButtonContainer: {flex: 1, paddingLeft: 10},
+  xButtonContainer: {flex: 1, paddingRight: 15, alignItems: 'flex-end'},
+  saveButtonContainer: {flex: 1, paddingLeft: 15},
   headerTitleContainer: {
     flex: 2,
     justifyContent: 'center',
@@ -246,16 +253,12 @@ const styles = StyleSheet.create({
   },
   SavebuttonText: {
     color: 'white',
-    // marginLeft: 15,
-    // paddingTop: 10,
   },
   saveButton: {
     flex: 1,
     borderRadius: 20,
     elevation: 2,
-    // marginVertical: 5,
     backgroundColor: 'blue',
-    // alignSelf: 'flex-start',
     paddingVertical: 10,
     paddingHorizontal: 20, // Add margin to the right
     alignItems: 'center',
@@ -267,8 +270,6 @@ const styles = StyleSheet.create({
   textTitleProfileStyle: {
     alignSelf: 'center',
     color: 'white',
-    // paddingBottom: 10,
-    // marginBottom: 3,
   },
   textMainProfileStyle: {
     textAlign: 'center',
@@ -288,9 +289,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   profileXImage: {
-    // position: 'absolute',
-    // top: 10,
-    // right: 10,
     width: 24,
     height: 24,
   },
