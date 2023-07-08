@@ -14,6 +14,7 @@ const FormWizard = ({ children, startPage }) => {
   };
 
   const goToNextPage = () => {
+    console.log("got to next")
     if(currentPage < (children.length -1)) {
       setCurrentPage(currentPage + 1);
     }
@@ -31,10 +32,10 @@ const FormWizard = ({ children, startPage }) => {
             <Image source={loginIcons.loginButtonArrow}></Image>
       </Pressable>
       <View>
-          <Text style={styles.titleStyle}>
+          <Text style={{color:'white', textAlign:"center"}}>
             {titles[currentPage]}
           </Text>   
-          <View style={styles.nextDot}> 
+          <View style={{flexDirection:'row-reverse', gap:5}}> 
             {
                 children.map((child, index) => {
                     return(
@@ -96,15 +97,7 @@ const styles = StyleSheet.create({
   },
   rightArrow:{
     transform: [{ rotate: '180deg'}]
-  },
-  titleStyle:{
-    color:'white', 
-    textAlign:"center",
-  },
-  nextDot:{
-     flexDirection:'row-reverse',
-     gap:5
-    }
+  }
 });
 
 export { FormWizard, WizardSection };

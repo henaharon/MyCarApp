@@ -25,10 +25,12 @@ export default AccidentReportScreen = () => {
   }
 
   const reportAccident = () => {
+    console.log('report accident');
     setFormOpen(true);
   };
 
   const reportDamage = () => {
+    console.log('report damage');
     setFormOpen(true);
     setStartPage(4);
   };
