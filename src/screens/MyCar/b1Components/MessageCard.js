@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 
-const MessageCard = ({title, description, image = null, goToPath = null}) => {
+const MessageCard = ({title, description, image = false, goToPath = null}) => {
   const MAX_DESCRIPTION_WORDS = 6;
   const DEFAULT_IMAGE = require('../../../uiKit/icons/elementsLogosMyCarFullVerticalColorBlack.png');
 

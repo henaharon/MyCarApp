@@ -31,7 +31,7 @@ const DriversHomeScreen = ({navigation}) => {
   );
 
   const handleNavPress = () => {
-    return;
+//    return;
   };
 
   return (
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
   topRightNavContainer: {
     position: 'absolute',
-    top: 5,
+    top: 10,
     right: 5,
     zIndex: 1,
   },
