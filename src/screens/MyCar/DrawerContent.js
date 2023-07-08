@@ -19,7 +19,7 @@ const DrawerContent = props => {
           props.navigation.navigate('CarDetailsScreen');
           break;
         case 1:
-          props.navigation.navigate('Notifications');
+          props.navigation.navigate('DriversHomeScreen');
           break;
         case 2:
           props.navigation.closeDrawer();
@@ -28,10 +28,10 @@ const DrawerContent = props => {
           props.navigation.closeDrawer();
           break;
         case 4:
-          props.navigation.navigate('Home');
+          props.navigation.navigate('DriversHomeScreen');
           break;
         case 5:
-          props.navigation.navigate('Notifications');
+          props.navigation.navigate('DriversHomeScreen');
           break;
         case 6:
           props.navigation.closeDrawer();
@@ -52,9 +52,7 @@ const DrawerContent = props => {
         style={{flex: 1}}>
         <DrawerContentScrollView {...props}>
           <View style={styles.drawerContent}>
-            <Userinfo
-              onPress={() => props.navigation.navigate('DriverProfileScreen')}
-            />
+            <Userinfo />
             <Notifcaion navigation={props.navigation} />
           </View>
           {sideMenuMock.slice(0, 4).map((item, index) => (

@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, Modal } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Image, ScrollView, Modal} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import TextBox from '../components/TextBox';
 import ChargerImage from '../components/ChargerImage';
 import ItemWithIcon from '../components/ItemWithIcon';
 import CustomButton from '../components/CustomButton';
 
-const SummaryPage = ({ onModalClose }) => {
+const SummaryPage = ({onModalClose}) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
 
   const handleButtonPress = () => {
     setModalVisible(false);
-    onModalClose(); 
-    navigation.navigate('Home');
+    onModalClose();
+    navigation.navigate('DriversHomeScreen');
   };
 
   const openModal = () => {
@@ -27,18 +27,27 @@ const SummaryPage = ({ onModalClose }) => {
           <View style={styles.headerContainer}>
             <Text style={styles.headline}>עמדת טעינה</Text>
             <TextBox isSummaryPage={true} style={styles.textBox}>
-              <Text>לפניכם פרטי הקריאה אנא בדקו שכל הפרטים נכונים לפני השליחה.</Text>
+              <Text>
+                לפניכם פרטי הקריאה אנא בדקו שכל הפרטים נכונים לפני השליחה.
+              </Text>
             </TextBox>
             <View style={styles.imageContainer}>
               <ChargerImage isSummaryPage={true} text="עמדת טעינה" />
               <Text style={styles.secondaryHeadlineRight}>תיאור / הערות</Text>
               <Text style={styles.secondaryText}>
-                יש בעיה עם עמדת טעינה מספר 3. כשמנסים להטעין העמדה לא מתחילה להטעין ורושמת שדרוש טיפול
+                יש בעיה עם עמדת טעינה מספר 3. כשמנסים להטעין העמדה לא מתחילה
+                להטעין ורושמת שדרוש טיפול
               </Text>
               <Text style={styles.anotherHeadline}>תמונות</Text>
               <View style={styles.imagesContainer}>
-                <Image source={require('../assets/icons/fuel.png')} style={styles.image} />
-                <Image source={require('../assets/icons/fuel2.png')} style={styles.image} />
+                <Image
+                  source={require('../assets/icons/fuel.png')}
+                  style={styles.image}
+                />
+                <Image
+                  source={require('../assets/icons/fuel2.png')}
+                  style={styles.image}
+                />
               </View>
               <View style={styles.line} />
               <Text style={styles.thirdHeadlineRight}>פרטים כללים</Text>
@@ -50,16 +59,20 @@ const SummaryPage = ({ onModalClose }) => {
               <ItemWithIcon
                 imageSource={require('../assets/icons/position.png')}
                 text1="מיקום"
-                text2="עמדת טעינה בשער המערבי"           
+                text2="עמדת טעינה בשער המערבי"
               />
               <View style={styles.newSectionBackground}>
                 <View style={styles.newSectionImageContainer}>
-                  <Image source={require('../assets/icons/mark.png')} style={styles.newSectionImage} />
+                  <Image
+                    source={require('../assets/icons/mark.png')}
+                    style={styles.newSectionImage}
+                  />
                 </View>
                 <View style={styles.newSectionContent}>
                   <Text style={styles.newSectionHeadline}>לידיעך</Text>
                   <Text style={styles.newSectionText}>
-                    ניתן להתעדכן בכל רגע נתון בסטטוס הבקשה שלך ישירות מהאפליקציה דרך מסך סטטוס הקריאות שלי.
+                    ניתן להתעדכן בכל רגע נתון בסטטוס הבקשה שלך ישירות מהאפליקציה
+                    דרך מסך סטטוס הקריאות שלי.
                   </Text>
                 </View>
               </View>
@@ -71,13 +84,18 @@ const SummaryPage = ({ onModalClose }) => {
         </View>
       </ScrollView>
 
-      <Modal visible={isModalVisible} animationType="slide" transparent={true} >
+      <Modal visible={isModalVisible} animationType="slide" transparent={true}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalHeadline}>תודה</Text>
             <Text style={styles.modalText}>קריאה נשלחה בהצלחה!</Text>
-            <CustomButton text="צפיה בסטטוס הקריאה" onPress={handleButtonPress} />
-            <Text style={styles.modalLink} onPress={handleButtonPress}>אישור</Text>
+            <CustomButton
+              text="צפיה בסטטוס הקריאה"
+              onPress={handleButtonPress}
+            />
+            <Text style={styles.modalLink} onPress={handleButtonPress}>
+              אישור
+            </Text>
           </View>
         </View>
       </Modal>

@@ -1,27 +1,13 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const leftImage = require('../assets/icons/leftArrow.png');
-const rightImage = require('../assets/icons/rightArrow.png');
+const rightImage = require('../../../assets/J1-icons/arrowRight.png');
 
-const HeaderScreen = ({
-  isSummary,
-  onLeftArrowPress,
-  onRightArrowPressInSummery,
-  onRightArrowPressNoSummery,
-}) => {
-  const title = isSummary ? 'סיכום קריאה' : 'עמדת טעינה';
-  const renderLeftArrow = isSummary ? null : (
-    <TouchableOpacity onPress={onLeftArrowPress}>
-      <Image source={leftImage} style={styles.leftImage} />
-    </TouchableOpacity>
-  );
-  const renderRightArrow = isSummary ? (
-    <TouchableOpacity onPress={onRightArrowPressInSummery}>
-      <Image source={rightImage} style={styles.rightImage} />
-    </TouchableOpacity>
-  ) : (
-    <TouchableOpacity onPress={onRightArrowPressNoSummery}>
+const HeaderScreen = ({onRightArrowPress}) => {
+  const title = 'ההודעות שלי';
+  const renderLeftArrow = <View style={styles.leftImage} />;
+  const renderRightArrow = (
+    <TouchableOpacity onPress={onRightArrowPress}>
       <Image source={rightImage} style={styles.rightImage} />
     </TouchableOpacity>
   );
