@@ -12,9 +12,9 @@ import {
 } from 'react-native';
 import DriversHomeScreenText from '../../assets/DriversHomeScreenText';
 import galleryData from '../../assets/serviceGalleryData';
-import ServiceCard from './Components/serviceCard';
-import BigServiceCard from './Components/BigServiceCard';
-import MessageCard from './Components/MessageCard';
+import ServiceCard from './b1Components/ServiceCard';
+import BigServiceCard from './b1Components/BigServiceCard';
+import MessageCard from './b1Components/MessageCard';
 import messagesGalleryData from '../../assets/messagesGalleryData';
 
 const DriversHomeScreen = ({navigation}) => {
