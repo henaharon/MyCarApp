@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
-import { Dimensions, View, Button, Pressable, StyleSheet, Text, ScrollView, Image } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Pressable,
+  StyleSheet,
+  Text,
+  ScrollView,
+  Image,
+} from 'react-native';
 import ModalPopup from './components/ModalPopup';
 import InputField from './components/InputField';
 import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
@@ -7,14 +14,13 @@ import AddFilesModal from './components/AddFilesModal';
 import LinearGradient from 'react-native-linear-gradient';
 import SaveModal from './components/SaveModal';
 
-const DriverProfileScreen = ({ navigation }) => {
+const DriverProfileScreen = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [saveModalVisible, setSaveModalVisible] = useState(false);
-  const [driverLicenceTypeModalVisible, setDriverLicenceTypeModalVisible] = useState(false);
+  const [driverLicenceTypeModalVisible, setDriverLicenceTypeModalVisible] =
+    useState(false);
   const [addFilesModalVisible, setAddFilesModalVisible] = useState(false);
   const [driverLicenceTypes, setDriverLicenceTypes] = useState([]);
-  const [addedFiles, setAddedFiles] = useState([]);
-  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const openAddFilesModal = () => {
     setAddFilesModalVisible(true);
@@ -30,10 +36,6 @@ const DriverProfileScreen = ({ navigation }) => {
 
   const closeSaveModal = () => {
     setSaveModalVisible(false);
-  };
-
-  const handleFileAdded = (file) => {
-    setAddedFiles((prevFiles) => [...prevFiles, file]);
   };
 
   const openDriverLicenceTypeModal = () => {
@@ -52,142 +54,184 @@ const DriverProfileScreen = ({ navigation }) => {
     setModalVisible(false);
   };
 
-  const handleDriverLicenceTypesSelect = (selectedTypes) => {
+  const handleDriverLicenceTypesSelect = selectedTypes => {
     setDriverLicenceTypes(selectedTypes);
   };
 
-  const handleFilesAdded = (files) => {
-    setUploadedFiles(files);
+  const handleFilesAdded = files => {
+    // setUploadedFiles(files);
+  };
+
+  const goBackToHomePage = () => {
+    navigation.goBack();
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.header}>
-        <LinearGradient
-          colors={['#E50075', '#F05C62']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.headerGradient}
-        />
-        <Pressable onPress={openSaveModal} style={styles.saveButton}>
-          <Text style={styles.SavebuttonText}>שׁמירה</Text>
-        </Pressable>
-        <Image
-          source={require('./components/images/componentsNavBarXButtonsRoundedWhiteAlpha3x.png')}
-          style={styles.profileXImage}
-        />
-        <Text style={styles.textTitleProfileStyle}>הפרופיל שלי</Text>
-        <View style={styles.profileImageContainer}>
-  <Pressable onPress={openAddFilesModal} style={styles.profileEditButton}>
-    <Image
-      source={require('./components/images/ImagePlaceholder.png')}
-      style={styles.profileEditPhoto}
-    />
-  </Pressable>
-</View>
+      <LinearGradient
+        colors={['#E50075', '#F05C62']}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        style={styles.headerGradient}>
+        <View style={styles.topView}>
+          <View style={styles.header}>
+            <View style={styles.saveButtonContainer}>
+              <Pressable onPress={openSaveModal} style={[styles.saveButton]}>
+                <Text style={styles.SavebuttonText}>שׁמירה</Text>
+              </Pressable>
+            </View>
+            <View style={styles.headerTitleContainer}>
+              <Text style={styles.textTitleProfileStyle}>הפרופיל שלי</Text>
+            </View>
+            <View style={styles.xButtonContainer}>
+              <Pressable onPress={goBackToHomePage}>
+                <Image
+                  source={require('./components/images/componentsNavBarXButtonsRoundedWhiteAlpha3x.png')}
+                  style={styles.profileXImage}
+                />
+              </Pressable>
+            </View>
+          </View>
+
+          <View style={styles.profileImageContainer}>
+            <Pressable
+              onPress={openAddFilesModal}
+              style={styles.profileEditButton}>
+              <Image
+                source={require('./components/images/ImagePlaceholder.png')}
+                style={styles.profileEditPhoto}
+              />
+            </Pressable>
+          </View>
           <Image
             source={require('./components/images/elementsProfilePhotoUserDefault3x.png')}
             style={styles.profileImage}
             resizeMode="contain"
           />
-        
-        <Text style={styles.textMainProfileStyle}>אביב שרון</Text>
-        <Text style={styles.textSubProfileStyle}>מספר עובד: 537 221</Text>
-      </View>
 
-      <View style={styles.mainContainer}>
-        <Text style={styles.textStyle}>פרטים כלליים</Text>
-        <View style={styles.inputContainer}>
-          <InputField label="שם פרטי" placeholder="אביב" />
-          <InputField label="שם משפחה" placeholder="שרון" />
-          <InputField label="מספר עובד" placeholder="537 221" />
-          <InputField label="תאריך לידה" placeholder="23.04.1990" />
+          <Text style={styles.textMainProfileStyle}>אביב שרון</Text>
+          <Text style={styles.textSubProfileStyle}>מספר עובד: 537 221</Text>
         </View>
 
-        <Text style={styles.textStyle}>פרטי תקשורת</Text>
-        <View style={styles.inputContainer}>
-          <InputField label="כתובת מייל" placeholder="AvivS@gmail.com" />
-          <InputField label="טלפון" placeholder="0547883115" />
-        </View>
+        <View style={styles.mainContainer}>
+          <Text style={styles.textStyle}>פרטים כלליים</Text>
+          <View style={styles.inputContainer}>
+            <InputField label="שם פרטי" placeholder="אביב" />
+            <InputField label="שם משפחה" placeholder="שרון" />
+            <InputField label="מספר עובד" placeholder="537 221" />
+            <InputField label="תאריך לידה" placeholder="23.04.1990" />
+          </View>
 
-        <Text style={styles.textStyle}>פרטי רישיון נהיגה</Text>
-        <View style={styles.inputContainer}>
-          <InputField label="מספר רישיון נהיגה" placeholder="84277081" />
-          <InputField label="תוקף רישיון נהיגה" placeholder="23.05.2025" />
+          <Text style={styles.textStyle}>פרטי תקשורת</Text>
+          <View style={styles.inputContainer}>
+            <InputField label="כתובת מייל" placeholder="AvivS@gmail.com" />
+            <InputField label="טלפון" placeholder="0547883115" />
+          </View>
 
-          <View style={styles.driverLicenceTypeContainer}>
-            <Pressable onPress={openDriverLicenceTypeModal} style={styles.driverLicenceTypeButton}>
+          <Text style={styles.textStyle}>פרטי רישיון נהיגה</Text>
+          <View style={styles.inputContainer}>
+            <InputField label="מספר רישיון נהיגה" placeholder="84277081" />
+            <InputField label="תוקף רישיון נהיגה" placeholder="23.05.2025" />
+
+            <View style={styles.driverLicenceTypeContainer}>
+              <Pressable
+                onPress={openDriverLicenceTypeModal}
+                style={styles.driverLicenceTypeButton}>
+                <Image
+                  source={require('./components/images/elements24PxIconsNavigationIcHeaderLeftSmall3x.png')}
+                  style={styles.openDriverLicenceTypeButton}
+                />
+              </Pressable>
+              <Text style={styles.driverLicenceTypeTextStyle}>
+                {driverLicenceTypes.join(', ')}
+              </Text>
+              <Text style={styles.textStyle}>סוג רשיון נהיגה</Text>
+            </View>
+          </View>
+
+          <Text style={styles.textStyle}>מסמכים</Text>
+          <View style={styles.rowContainer}>
+            <Pressable
+              style={styles.addDocumentButton}
+              onPress={openAddFilesModal}>
               <Image
                 source={require('./components/images/elements24PxIconsNavigationIcHeaderLeftSmall3x.png')}
-                style={styles.openDriverLicenceTypeButton}
+                style={styles.documentIcon}
               />
             </Pressable>
-            <Text style={styles.driverLicenceTypeTextStyle}>{driverLicenceTypes.join(', ')}</Text>
-            <Text style={styles.textStyle}>סוג רשיון נהיגה</Text>
+            <Text style={styles.documentText}>צילום רישיון נהיגה</Text>
           </View>
-        </View>
 
-        <Text style={styles.textStyle}>מסמכים</Text>
-        <View style={styles.rowContainer}>
-          <Pressable style={styles.addDocumentButton} onPress={openAddFilesModal}>
-            <Image
-              source={require('./components/images/elements24PxIconsNavigationIcHeaderLeftSmall3x.png')}
-              style={styles.documentIcon}
+          <Text>קבצים שנוספו:</Text>
+          <View>
+            <AddFilesModal
+              visible={addFilesModalVisible}
+              onClose={closeAddFilesModal}
+              onFilesAdded={handleFilesAdded}
             />
+          </View>
+          <Pressable
+            style={[styles.fullWidthButton, styles.whiteButton]}
+            onPress={openModal}>
+            <View style={styles.buttonContent}>
+              <Text style={[styles.textStyle, styles.whiteButtonText]}>
+                התנתק
+              </Text>
+              <Image
+                source={require('./components/images/elements24PxIconsExit3x.png')}
+                style={styles.buttonIcon}
+              />
+            </View>
           </Pressable>
-          <Text style={styles.documentText}>צילום רישיון נהיגה</Text>
         </View>
 
-        <Text>קבצים שנוספו:</Text>
-        <View>
-          <AddFilesModal visible={addFilesModalVisible} onClose={closeAddFilesModal} onFilesAdded={handleFilesAdded} />
-        </View>
-      </View>
+        <DriverLicenceTypeModal
+          visible={driverLicenceTypeModalVisible}
+          onClose={closeDriverLicenceTypeModal}
+          onSelect={handleDriverLicenceTypesSelect}
+        />
 
-      <DriverLicenceTypeModal
-        visible={driverLicenceTypeModalVisible}
-        onClose={closeDriverLicenceTypeModal}
-        onSelect={handleDriverLicenceTypesSelect}
-      />
-
-      <ModalPopup visible={modalVisible} onClose={closeModal} />
-      <SaveModal visible={saveModalVisible} onClose={closeSaveModal} />
-
-      <Pressable style={[styles.button, styles.fullWidthButton, styles.whiteButton]} onPress={openModal}>
-        <View style={styles.buttonContent}>
-        <Text style={[styles.textStyle, styles.whiteButtonText]}>התנתק</Text>
-          <Image source={require('./components/images/elements24PxIconsExit3x.png')} style={styles.buttonIcon} />
-        </View>
-      </Pressable>
+        <ModalPopup visible={modalVisible} onClose={closeModal} />
+        <SaveModal visible={saveModalVisible} onClose={closeSaveModal} />
+      </LinearGradient>
     </ScrollView>
   );
 };
 
-const windowHeight = Dimensions.get('window').height;
-
 const styles = StyleSheet.create({
+  xButtonContainer: {flex: 1, paddingLeft: 10},
+  saveButtonContainer: {flex: 1, paddingLeft: 10},
+  headerTitleContainer: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flexGrow: 1,
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingHorizontal: 20,
   },
   header: {
-    position: 'relative',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 15,
+  },
+  topView: {
     alignSelf: 'center',
     marginBottom: 20,
   },
   headerGradient: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    borderRadius: 10,
+    height: '100%',
+    width: '100%',
   },
   mainContainer: {
+    paddingVertical: 20,
     alignItems: 'flex-end',
-    marginBottom: 20,
+    paddingHorizontal: 20,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    backgroundColor: 'white',
   },
   profileImage: {
     width: '100%',
@@ -200,39 +244,31 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: 'right',
   },
-  button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-    marginBottom: 10,
-  },
   SavebuttonText: {
     color: 'white',
-    marginLeft: 15,
-    paddingTop: 10,
-   
+    // marginLeft: 15,
+    // paddingTop: 10,
   },
   saveButton: {
+    flex: 1,
     borderRadius: 20,
     elevation: 2,
-    marginVertical: 5,
+    // marginVertical: 5,
     backgroundColor: 'blue',
-    alignSelf: 'flex-start',
-    paddingRight: 10, // Add margin to the right
+    // alignSelf: 'flex-start',
+    paddingVertical: 10,
+    paddingHorizontal: 20, // Add margin to the right
+    alignItems: 'center',
   },
-  
+
   centeredText: {
     textAlign: 'center',
   },
   textTitleProfileStyle: {
     alignSelf: 'center',
     color: 'white',
-    paddingBottom: 10,
-    marginBottom: 3,
-    
+    // paddingBottom: 10,
+    // marginBottom: 3,
   },
   textMainProfileStyle: {
     textAlign: 'center',
@@ -252,9 +288,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   profileXImage: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
+    // position: 'absolute',
+    // top: 10,
+    // right: 10,
     width: 24,
     height: 24,
   },
@@ -306,16 +342,12 @@ const styles = StyleSheet.create({
     height: 12,
   },
   whiteButton: {
-    backgroundColor: 'transparent', // Set the background color to transparent
-    borderWidth: 1, // Add border width for the black border
-    borderColor: 'red', // Set the border color to black
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     borderWidth: 1,
     borderColor: 'red',
-    borderRadius: 20,
+    borderRadius: 60,
     padding: 10,
-    elevation: 2,
-    marginBottom: 10,
+    marginVertical: 30,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -329,7 +361,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center', // Align content in the middle
   },
-  
+
   whiteButtonText: {
     color: 'red',
     alignItems: 'center',
@@ -340,22 +372,17 @@ const styles = StyleSheet.create({
   profileImageContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-   
   },
   profileEditButton: {
     backgroundColor: 'blue',
     borderRadius: 10,
     padding: 5,
-    marginRight: 130 , // Add margin to the left
-    
+    marginRight: 130, // Add margin to the left
   },
   profileEditPhoto: {
     width: 24,
     height: 24,
-    
   },
-  
-  
 });
 
 export default DriverProfileScreen;

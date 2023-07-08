@@ -35,6 +35,7 @@ const Routes = () => {
       <Drawer.Screen name="ElectricVehicle" component={ElectricVehicle} />
       <Drawer.Screen name="CarDetailsScreen" component={CarDetailsScreen} />
       <Drawer.Screen
+        options={{headerShown: false}}
         name="DriverProfileScreen"
         component={DriverProfileScreen}
       />
