@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 import LoginScreen from './Login';
