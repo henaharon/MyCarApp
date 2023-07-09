@@ -2,6 +2,38 @@ const loginIcons = {
   loginButtonArrow: require('../assets/icons/login-button-arrow.png'),
 };
 
+const accidentReport = {
+  exitBtn: require('../assets/accidentReport/exit.png'),
+  listIcons: [
+    {
+      icon: require('../assets/accidentReport/icon1.png'),
+      text: 'במקרה של תאונה עם נפגעים, יש לדווח למוקד 100 של המשטרה.',
+    },
+    {
+      icon: require('../assets/accidentReport/icon2.png'),
+      text: 'אין לתת התחייבות כלשהי בכתב או בע"פ.',
+    },
+    {
+      icon: require('../assets/accidentReport/icon3.png'),
+      text: 'יש למלא ולצלם את הפרטים בעזרת האפליקציה.',
+    },
+    {
+      icon: require('../assets/accidentReport/icon4.png'),
+      text: 'תיקון הרכב יעשה אחרי קבלת אישור חברת הביטוח.',
+    },
+    {
+      icon: require('../assets/accidentReport/icon5.png'),
+      text: 'נא להודיע למוקד השרות על התאונה בהקדם האפשרי.',
+    },
+  ],
+  help: require('../assets/accidentReport/help.png'),
+  backgroundImage: require('../assets/accidentReport/bgImg.png'),
+  message: require('../assets/accidentReport/wraning.png'),
+  phoneIcon: require('../assets/accidentReport/phoneIcon.png'),
+  icon3: require('../assets/accidentReport/icon3.png'),
+  icon6: require('../assets/accidentReport/icon6.png'),
+};
+
 const SideMenuIcons = {
   mycar: require('../assets/icons/MyCar.png'),
   search: require('../assets/icons/Navigtion.png'),
@@ -48,4 +80,10 @@ const myMessagesIcons = {
   unSelectedStar: require('../assets/J1-icons/unSelectedStar.png'),
 };
 
-export {loginIcons, SideMenuIcons, CarDetailsIcons, myMessagesIcons};
+export {
+  loginIcons,
+  SideMenuIcons,
+  CarDetailsIcons,
+  myMessagesIcons,
+  accidentReport,
+};

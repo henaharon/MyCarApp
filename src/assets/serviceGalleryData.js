@@ -8,6 +8,7 @@ const galleryData = [
     id: '2',
     title: 'תקלות בדרך',
     image: require('../uiKit/icons/elementsServiceIconsRoadsideAssistance.png'),
+    goToPath: 'AccidentReport',
   },
   {
     id: '3',

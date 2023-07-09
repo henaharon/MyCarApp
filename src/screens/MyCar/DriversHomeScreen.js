@@ -9,6 +9,7 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import DriversHomeScreenText from '../../assets/DriversHomeScreenText';
 import galleryData from '../../assets/serviceGalleryData';
@@ -40,7 +41,7 @@ const DriversHomeScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.backgroundContainer}>
         {/* Background Image */}
         <Image
@@ -154,7 +155,7 @@ const DriversHomeScreen = ({navigation}) => {
           </View>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -9,6 +9,7 @@ import ElectricVehicle from '../../ElectricVehicle/ElectricVehicle.js';
 import {CarDetailsScreen} from '../../CarDetails/CarDetailsScreen.js';
 import DriversHomeScreen from '../DriversHomeScreen.js';
 import DriverProfileScreen from '../DriverProfileScreen.js';
+import AccidentReport from '../../AccidentReport';
 
 const Drawer = createDrawerNavigator();
 const Routes = () => {
@@ -48,6 +49,11 @@ const Routes = () => {
         options={{headerShown: false}}
         name="DriverProfileScreen"
         component={DriverProfileScreen}
+      />
+      <Drawer.Screen
+        options={{headerShown: false}}
+        name="AccidentReport"
+        component={AccidentReport}
       />
     </Drawer.Navigator>
   );
