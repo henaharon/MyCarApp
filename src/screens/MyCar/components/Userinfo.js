@@ -1,12 +1,12 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, Pressable, StyleSheet, View} from 'react-native';
 import {Title, Caption} from 'react-native-paper';
 import {translate} from '../../../locals/index';
 import {SideMenuIcons} from '../../../uiKit/icons';
 
-const Userinfo = () => {
+const Userinfo = ({onPress}) => {
   return (
-    <View style={styles.userInfoSection}>
+    <Pressable onPress={onPress} style={styles.userInfoSection}>
       <View style={styles.profile}>
         <View style={styles.UserInfo}>
           <Caption style={styles.caption}>
@@ -20,7 +20,7 @@ const Userinfo = () => {
           source={SideMenuIcons.ProfilePhotoUser}
         />
       </View>
-    </View>
+    </Pressable>
   );
 };
 const styles = StyleSheet.create({

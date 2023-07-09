@@ -3,17 +3,20 @@ import {
   createDrawerNavigator,
   DrawerToggleButton,
 } from '@react-navigation/drawer';
-import HomeScreen from '../HomeScreen.js';
-import NotificationsScreen from '../NotificationsScreen.js';
 import DrawerContent from '../DrawerContent.js';
-import {AccidentReport} from '../../AccidentReport';
+import MyMessages from '../../MyMessages/MyMessages.js';
+import ElectricVehicle from '../../ElectricVehicle/ElectricVehicle.js';
+import {CarDetailsScreen} from '../../CarDetails/CarDetailsScreen.js';
+import DriversHomeScreen from '../DriversHomeScreen.js';
+import DriverProfileScreen from '../DriverProfileScreen.js';
+import AccidentReport from '../../AccidentReport';
 
 const Drawer = createDrawerNavigator();
 const Routes = () => {
   return (
     <Drawer.Navigator
       drawerContent={props => <DrawerContent {...props} />}
-      initialRouteName="Home"
+      initialRouteName="DriversHomeScreen"
       screenOptions={{
         drawerStyle: {
           backgroundColor: 'transparent',
@@ -26,9 +29,32 @@ const Routes = () => {
           marginLeft: 'auto',
         },
       }}>
-      <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-      <Drawer.Screen name="AccidentReport" component={AccidentReport} />
+      <Drawer.Screen
+        options={{headerShown: false}}
+        name="DriversHomeScreen"
+        component={DriversHomeScreen}
+      />
+      <Drawer.Screen
+        options={{headerShown: false}}
+        name="MyMessages"
+        component={MyMessages}
+      />
+      <Drawer.Screen
+        options={{headerShown: false}}
+        name="ElectricVehicle"
+        component={ElectricVehicle}
+      />
+      <Drawer.Screen name="CarDetailsScreen" component={CarDetailsScreen} />
+      <Drawer.Screen
+        options={{headerShown: false}}
+        name="DriverProfileScreen"
+        component={DriverProfileScreen}
+      />
+      <Drawer.Screen
+        options={{headerShown: false}}
+        name="AccidentReport"
+        component={AccidentReport}
+      />
     </Drawer.Navigator>
   );
 };

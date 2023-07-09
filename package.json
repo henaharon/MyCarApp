@@ -7,9 +7,11 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "prettier": "prettier --write \"src/**/*.js\""
   },
   "dependencies": {
+    "@expo/vector-icons": "^13.0.0",
     "@react-navigation/drawer": "^6.6.2",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.12",
@@ -21,6 +23,7 @@
     "react": "18.2.0",
     "react-i18next": "^12.3.1",
     "react-native": "0.71.7",
+    "react-native-document-picker": "^9.0.1",
     "react-native-gesture-handler": "^2.12.0",
     "react-native-image-picker": "^5.4.2",
     "react-native-paper": "^5.9.1",
@@ -34,7 +37,11 @@
     "react-native-vector-icons": "^9.2.0",
     "react-native-svg-transformer": "^1.0.0",
     "react-native-webview": "^13.2.2",
-    "rn-fetch-blob": "^0.12.0"
+    "rn-fetch-blob": "^0.12.0",
+    "react-native-image-crop-picker": "^0.40.0",
+    "react-native-multiple-select": "^0.5.12",
+    "react-native-thumbnail-video": "^0.1.2",
+    "react-native-video": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

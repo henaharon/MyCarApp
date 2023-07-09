@@ -14,21 +14,24 @@ import {accidentReport} from '../../../uiKit/icons';
 import Form from './Form';
 import HelpModal from './HelpModal';
 import ImportantNote from './ImportantNote';
-import { isSearchBarAvailableForCurrentPlatform } from 'react-native-screens';
-import textData from "../he.json"
+import {isSearchBarAvailableForCurrentPlatform} from 'react-native-screens';
+import textData from '../he.json';
 
-
-
-export default AccidentReportScreen = () => {
+const AccidentReportScreen = ({navigation}) => {
   const [formOpen, setFormOpen] = useState(false);
   const [startPage, setStartPage] = useState(0);
 
   const closeForm = () => {
+    console.log('called');
     setFormOpen(false);
-  }
+  };
 
   const reportAccident = () => {
     setFormOpen(true);
+  };
+
+  const goBack = () => {
+    navigation.goBack();
   };
 
   const reportDamage = () => {
@@ -47,9 +50,9 @@ export default AccidentReportScreen = () => {
               <HelpModal></HelpModal>
 
               <Text style={[styles.whiteText, styles.textHeaderFirst]}>
-              {textData.report}
+                {textData.report}
               </Text>
-              <Pressable>
+              <Pressable onPress={goBack}>
                 <Image
                   style={styles.exitImage}
                   source={accidentReport.exitBtn}></Image>
@@ -81,9 +84,7 @@ export default AccidentReportScreen = () => {
               <View style={styles.messageText}>
                 <Text style={styles.subHeader}>לפני מילוי הדוח חשוב לדעת:</Text>
                 <View style={styles.innerMessageContainer}>
-                  <Text style={styles.text}>
-                   {textData.reportSent}
-                  </Text>
+                  <Text style={styles.text}>{textData.reportSent}</Text>
                   <Text style={styles.text}>
                     נא להקפיד על מילוי מדוייק ונכון של דוח התאונה.
                   </Text>
@@ -121,6 +122,8 @@ export default AccidentReportScreen = () => {
     </SafeAreaView>
   );
 };
+
+export default AccidentReportScreen;
 
 const styles = StyleSheet.create({
   headerContainer: {

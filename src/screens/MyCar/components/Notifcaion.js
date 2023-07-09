@@ -1,15 +1,16 @@
-import React, { useCallback, useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { translate } from '../../../locals/index';
-import { SideMenuIcons } from '../../../uiKit/icons';
+import React, {useCallback, useState} from 'react';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {translate} from '../../../locals/index';
+import {SideMenuIcons} from '../../../uiKit/icons';
 
-const Notifcaion = () => {
+const Notifcaion = ({navigation}) => {
   const [counter, setCounter] = useState(1);
   const [counter2, setCounter2] = useState(3);
 
   const handleFirstComponentPress = useCallback(() => {
     // Handle onPress action for the first component
-  }, []);
+    navigation.navigate('MyMessages');
+  }, [navigation]);
 
   const handleSecondComponentPress = useCallback(() => {
     // Handle onPress action for the second component
@@ -17,7 +18,9 @@ const Notifcaion = () => {
 
   return (
     <View style={styles.mainNotification}>
-      <TouchableOpacity style={styles.SmS_notif} onPress={handleFirstComponentPress}>
+      <TouchableOpacity
+        style={styles.SmS_notif}
+        onPress={handleFirstComponentPress}>
         <View style={styles.notification}>
           <View style={styles.notificationContainer}>
             <Text style={styles.notificationText}>{counter}</Text>
@@ -29,10 +32,14 @@ const Notifcaion = () => {
             resizeMode="contain"
             source={SideMenuIcons.GeneralMessage}
           />
-          <Text style={styles.TextMessage}>{translate('sideMenu.MyMessage')}</Text>
+          <Text style={styles.TextMessage}>
+            {translate('sideMenu.MyMessage')}
+          </Text>
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.SmS_notif} onPress={handleSecondComponentPress}>
+      <TouchableOpacity
+        style={styles.SmS_notif}
+        onPress={handleSecondComponentPress}>
         <View style={styles.notification}>
           <View style={styles.notificationContainer}>
             <Text style={styles.notificationText}>{counter2}</Text>
@@ -44,7 +51,9 @@ const Notifcaion = () => {
             resizeMode="contain"
             source={SideMenuIcons.ServiceIconsGeneral}
           />
-          <Text style={styles.TextMessage}>{translate('sideMenu.MyReadings')}</Text>
+          <Text style={styles.TextMessage}>
+            {translate('sideMenu.MyReadings')}
+          </Text>
         </View>
       </TouchableOpacity>
     </View>

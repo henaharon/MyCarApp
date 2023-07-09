@@ -30,8 +30,8 @@ const accidentReport = {
   backgroundImage: require('../assets/accidentReport/bgImg.png'),
   message: require('../assets/accidentReport/wraning.png'),
   phoneIcon: require('../assets/accidentReport/phoneIcon.png'),
-  icon3:require('../assets/accidentReport/icon3.png'),
-  icon6:require('../assets/accidentReport/icon6.png'),
+  icon3: require('../assets/accidentReport/icon3.png'),
+  icon6: require('../assets/accidentReport/icon6.png'),
 };
 
 const SideMenuIcons = {
@@ -67,4 +67,23 @@ const CarDetailsIcons = {
   airPerssure: require('../assets/icons/CarDetailsIcons/airPerssure.jpeg'),
 };
 
-export {loginIcons, SideMenuIcons, CarDetailsIcons, accidentReport};
+const myMessagesIcons = {
+  arrowRight: require('../assets/J1-icons/arrowRight.png'),
+  image1: require('../assets/J1-icons/Image1.png'),
+  image2: require('../assets/J1-icons/Image2.png'),
+  image3: require('../assets/J1-icons/Image3.png'),
+  image4: require('../assets/J1-icons/Image4.png'),
+  image5: require('../assets/J1-icons/Image5.png'),
+  image6: require('../assets/J1-icons/Image6.png'),
+  image7: require('../assets/J1-icons/Image7.png'),
+  selectedStar: require('../assets/J1-icons/selectedStar.png'),
+  unSelectedStar: require('../assets/J1-icons/unSelectedStar.png'),
+};
+
+export {
+  loginIcons,
+  SideMenuIcons,
+  CarDetailsIcons,
+  myMessagesIcons,
+  accidentReport,
+};
