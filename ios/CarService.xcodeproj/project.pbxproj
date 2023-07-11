@@ -490,8 +490,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7RGS4CR34F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CarService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CarService;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -517,7 +519,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7RGS4CR34F;
 				INFOPLIST_FILE = CarService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CarService;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

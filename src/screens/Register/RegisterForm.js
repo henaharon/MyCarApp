@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {MultiSelect} from 'react-native-element-dropdown';
 import {formIcons} from '../../uiKit/formIcons';
@@ -16,6 +16,7 @@ import {
   Image,
 } from 'react-native';
 import {translate} from '../../locals/index';
+import {AuthContext} from '../../../App';
 
 const {closeFormModal, hideModal, submitForm, renderDataItem, uploadDocs} =
   RegisterFormMethods;
@@ -35,6 +36,8 @@ const licenseTypes = [
 ];
 
 const RegisterForm = ({modalState, navigation}) => {
+  const currentState = useContext(AuthContext);
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [employeeNumber, setEmployeeNumber] = useState(null);
@@ -53,6 +56,7 @@ const RegisterForm = ({modalState, navigation}) => {
   };
 
   const hideModal = () => {
+    currentState.signIn();
     RegisterFormMethods.hideModal(setModalVisible);
   };
 
