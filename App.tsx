@@ -1,100 +1,100 @@
-/*
-import React, {useState} from 'react';
-import {
-  Dimensions,
-  Image,
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Router from './src/screens/MyCar/routes/Routes';
 import LoginScreen from './src/screens/Login';
 import TimerScreen from './src/screens/Timer';
+import SliderWalkthrough from './src/screens/Walkthrough/SliderWalkthrough';
+import DefaultModal from './src/screens/Modals/DefaultModal';
+import SendCode from './src/screens/AuthCode/SendCode';
+import Terms from './src/screens/Terms/Terms';
+import TermsofDivor from './src/screens/Terms/TermofDivor';
+import TermsofUseapp from './src/screens/Terms/TermofUseapp';
+import Greeting from './src/screens/Register/Greeting';
+import Form from './src/screens/Register/GreetingForm';
+import RegisterForm from './src/screens/Register/RegisterForm';
+import {I18nManager} from 'react-native';
+I18nManager.forceRTL(false);
+
+export const AuthContext = React.createContext();
+
 function App(): JSX.Element {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const Stack = createNativeStackNavigator();
+
+  const [state, dispatch] = React.useReducer(
+    (prevState, action) => {
+      switch (action.type) {
+        case 'SIGN_IN':
+          return {
+            ...prevState,
+            isSignIn: true,
+            // userToken: action.token,
+          };
+        case 'SIGN_OUT':
+          return {
+            ...prevState,
+            isSignIn: false,
+            // userToken: null,
+          };
+      }
+    },
+    {
+      isSignIn: true,
+      // userToken: null,
+    },
+  );
+
+  const authContext = React.useMemo(
+    () => ({
+      signIn: async data => {
+        // In a production app, we need to send some data (usually username, password) to server and get a token
+        // We will also need to handle errors if sign in failed
+        // After getting token, we need to persist the token using `SecureStore`
+        // In the example, we'll use a dummy token
+
+        dispatch({type: 'SIGN_IN', token: 'dummy-auth-token'});
+      },
+      signOut: async data => {
+        // In a production app, we need to send some data (usually username, password) to server and get a token
+        // We will also need to handle errors if sign in failed
+        // After getting token, we need to persist the token using `SecureStore`
+        // In the example, we'll use a dummy token
+
+        dispatch({type: 'SIGN_OUT', token: 'dummy-auth-token'});
+      },
+    }),
+    [],
+  );
 
   return (
-    <SafeAreaView style={styles.safeAreaViewBase}>
-      <View style={styles.rootContainer}>
-        <View style={styles.headerContainer}>
-          <View style={styles.logoContainer}>
-            <Image
-              style={styles.logo}
-              resizeMode={'contain'}
-              source={require('./src/assets/icons/logo.png')}
+    <AuthContext.Provider value={authContext}>
+      <NavigationContainer>
+        {state.isSignIn ? (
+          <Router />
+        ) : (
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false, // Hide the header/title for all screens
+            }}>
+            <Stack.Screen
+              name="SliderWalkthrough"
+              component={SliderWalkthrough}
             />
-          </View>
-          <Pressable
-            onPress={() => isAuthorized && setIsAuthorized(false)}
-            style={styles.headerTextContainer}>
-            <Text style={styles.logoText}>{'My Timer'}</Text>
-          </Pressable>
-          <View style={styles.rightContainer} />
-        </View>
-        <View style={styles.bodyContainer}>
-          {isAuthorized ? (
-            <TimerScreen />
-          ) : (
-            <LoginScreen setIsAuthorized={setIsAuthorized} />
-          )}
-        </View>
-      </View>
-    </SafeAreaView>
+            <Stack.Screen name="Modal" component={DefaultModal} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="AuthCode" component={SendCode} />
+            <Stack.Screen name="Terms" component={Terms} />
+            <Stack.Screen name="Timer" component={TimerScreen} />
+            <Stack.Screen name="TermofDivor" component={TermsofDivor} />
+            <Stack.Screen name="TermofUseapp" component={TermsofUseapp} />
+            <Stack.Screen name="Greeting" component={Greeting} />
+            <Stack.Screen name="GreetingForm" component={Form} />
+            <Stack.Screen name="Register" component={RegisterForm} />
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
+    </AuthContext.Provider>
   );
 }
 
-const windowHeight = Dimensions.get('window').height;
-
-const styles = StyleSheet.create({
-  bodyContainer: {flex: 9},
-  safeAreaViewBase: {
-    flex: 1,
-  },
-  rootContainer: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  headerContainer: {
-    width: '100%',
-    height: windowHeight * 0.1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    borderColor: 'white',
-    backgroundColor: 'white',
-  },
-  headerTextContainer: {
-    flex: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  rightContainer: {
-    flex: 1,
-  },
-  logoText: {
-    color: 'black',
-    fontSize: 35,
-    fontWeight: '900',
-  },
-  logo: {
-    width: '100%',
-    height: '100%',
-  },
-  logoContainer: {
-    flex: 1,
-    width: 50,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
 export default App;
-*/
