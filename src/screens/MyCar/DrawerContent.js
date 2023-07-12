@@ -22,7 +22,7 @@ const DrawerContent = props => {
           props.navigation.navigate('DriversHomeScreen');
           break;
         case 2:
-          props.navigation.closeDrawer();
+          props.navigation.navigate('Gudies_and_tipsScreen');
           break;
         case 3:
           props.navigation.closeDrawer();

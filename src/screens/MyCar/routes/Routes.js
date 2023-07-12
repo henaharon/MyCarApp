@@ -10,6 +10,7 @@ import {CarDetailsScreen} from '../../CarDetails/CarDetailsScreen.js';
 import DriversHomeScreen from '../DriversHomeScreen.js';
 import DriverProfileScreen from '../DriverProfileScreen.js';
 import AccidentReport from '../../AccidentReport';
+import Gudies_and_tipsScreen from '../../Gudies_and_tips/Gudies_and_tipsScreen.js';
 
 const Drawer = createDrawerNavigator();
 const Routes = () => {
@@ -54,6 +55,12 @@ const Routes = () => {
         options={{headerShown: false}}
         name="AccidentReport"
         component={AccidentReport}
+      />
+
+      <Drawer.Screen
+        options={{headerShown: false}}
+        name="Gudies_and_tipsScreen"
+        component={Gudies_and_tipsScreen}
       />
     </Drawer.Navigator>
   );
