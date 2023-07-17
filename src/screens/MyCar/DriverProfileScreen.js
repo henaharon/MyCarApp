@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Dimensions,
   View,
@@ -14,8 +14,11 @@ import DriverLicenceTypeModal from './components/DriverLicenceTypeModal';
 import AddFilesModal from './components/AddFilesModal';
 import LinearGradient from 'react-native-linear-gradient';
 import SaveModal from './components/SaveModal';
+import {AuthContext} from '../../../App';
 
 const DriverProfileScreen = ({navigation}) => {
+  const currentState = useContext(AuthContext);
+
   const [modalVisible, setModalVisible] = useState(false);
   const [saveModalVisible, setSaveModalVisible] = useState(false);
   const [driverLicenceTypeModalVisible, setDriverLicenceTypeModalVisible] =
@@ -59,6 +62,7 @@ const DriverProfileScreen = ({navigation}) => {
 
   const closeModal = () => {
     setModalVisible(false);
+    currentState.signOut();
   };
 
   const handleDriverLicenceTypesSelect = selectedTypes => {

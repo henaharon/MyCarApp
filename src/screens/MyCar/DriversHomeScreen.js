@@ -141,6 +141,8 @@ const DriversHomeScreen = ({navigation}) => {
             />
             <View style={styles.sectionDivider} />
             <BigServiceCard
+              navigation={navigation}
+              goToPath={'AccidentReport'}
               title={DriversHomeScreenText.AccidentsAndEmergency}
               imagePath={require('../../assets/B1-assets/photosAccident.png')}
             />
