@@ -17,7 +17,7 @@ const CustomButton = () => {
     {name: 'החלפת מגבים', logo: require('../../../assets/icons/Wipers.png')},
     {name: 'בלמים', logo: require('../../../assets/icons/Brakes.png')},
     {name: 'מנוע', logo: require('../../../assets/icons/Engine.png')},
-    {name: 'מצבר', logo: require('../../../assets/icons/Battery.png')},
+    {name: 'מצבר', logo: require('../../../assets/icons/battery.png')},
     {
       name: 'תיבת הילוכים / גיר',
       logo: require('../../../assets/icons/Gear.png'),

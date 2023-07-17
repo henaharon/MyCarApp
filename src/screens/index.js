@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import * as React from 'react';
 import LoginScreen from './Login';
 import TimerScreen from './Timer';
-import RoadSideScreen from './RoadSide Assistance';
+import RoadSideScreen from './RoadSideAssistance';
 const Stack = createNativeStackNavigator();
 
 const Screens = () => {

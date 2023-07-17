@@ -134,7 +134,7 @@ const CarPart = ({modalVisible, setModalVisible, buttonName, buttonLogo}) => {
           imageUris={imageUris}
           locationInputValue={locationInputValue}
           notesInputValue={notesInputValue}
-          buttonName={buttonName}
+          buttonNames={buttonName}
         />
       )}
     </Modal>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import CarPart from '../RoadSide Assistance/components/CarPart';
+import CarPart from '../RoadSideAssistance/components/CarPart';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
