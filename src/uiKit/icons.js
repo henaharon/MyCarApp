@@ -84,10 +84,27 @@ const myMessagesIcons = {
   unSelectedStar: require('../assets/J1-icons/unSelectedStar.png'),
 };
 
+const gudiesIcons = {
+  image1: require('../assets/p2/Image1.png'),
+  image2: require('../assets/p2/Image2.png'),
+  image3: require('../assets/p2/Image3.png'),
+  image4: require('../assets/p2/Image4.png'),
+  image5: require('../assets/p2/Image5.png'),
+  image6: require('../assets/p2/Image6.png'),
+  image7: require('../assets/p2/Image7.png'),
+  image8: require('../assets/p2/Image8.jpg'),
+  image9: require('../assets/p2/Image9.jpg'),
+  image10: require('../assets/p2/Image10.jpg'),
+  image11: require('../assets/p2/Image11.jpg'),
+  arrowRight: require('../assets/p2/arrowRight.png'),
+  exitImg: require('../assets/p2/exit.png'),
+};
+
 export {
   loginIcons,
   SideMenuIcons,
   CarDetailsIcons,
   myMessagesIcons,
   accidentReport,
+  gudiesIcons,
 };
