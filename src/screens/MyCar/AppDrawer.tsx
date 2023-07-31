@@ -19,29 +19,47 @@ import {
   Pressable,
   View,
 } from 'react-native';
-//import LinearGradient from 'react-native-linear-gradient';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
-//import Ionicons from 'react-native-vector-icons/Ionicons';
+import {NavigationContainer} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Router from './routes/Routes';
 import HomeScreen from './HomeScreen.js';
 import NotificationsScreen from './NotificationsScreen.js';
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
- 
+import LoginScreen from './src/screens/Login';
+import TimerScreen from './src/screens/Timer';
+import SliderWalkthrough from './src/screens/WalkThrough/SliderWalkthrough';
+import DefaultModal from './src/screens/Modals/DefaultModal';
+import SendCode from './src/screens/AuthCode/SendCode';
+import Terms from './src/screens/Terms/Terms';
+import TermsofDivor from './src/screens/Terms/TermofDivor';
+import TermsofUseapp from './src/screens/Terms/TermofUseapp';
+import Greeting from './src/screens/Register/Greeting';
+import Form from './src/screens/Register/GreetingForm';
+import RegisterForm from './src/screens/Register/RegisterForm';
+import { I18nManager } from 'react-native';
+I18nManager.forceRTL(false);
 
-const Drawer = createDrawerNavigator();
-function AppDrawer(): JSX.Element {
+function App(): JSX.Element {
+const Stack = createNativeStackNavigator();
+
   return (
-    <NavigationContainer >
-      <Drawer.Navigator initialRouteName="Home" screenOptions={{drawerPosition: 'right'}} id="RightDrawer">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-      </Drawer.Navigator>
+    <NavigationContainer>
+      {true ? <Router /> : 
+      (<Stack.Navigator
+        screenOptions={{
+          headerShown: false, // Hide the header/title for all screens
+        }}>
+      <Stack.Screen name="SliderWalkthrough" component={SliderWalkthrough} />
+      <Stack.Screen name="Modal" component={DefaultModal} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="AuthCode" component={SendCode} />
+      <Stack.Screen name="Terms" component={Terms} />
+      <Stack.Screen name="Timer" component={TimerScreen} />
+      <Stack.Screen name="TermofDivor" component={TermsofDivor} />
+      <Stack.Screen name="TermofUseapp" component={TermsofUseapp} />
+      <Stack.Screen name="Greeting" component={Greeting} />
+      <Stack.Screen name="GreetingForm" component={Form} />
+      <Stack.Screen name="Register" component={RegisterForm} />
+    </Stack.Navigator>)}
     </NavigationContainer>
   );
 }
@@ -49,35 +67,6 @@ function AppDrawer(): JSX.Element {
 
 
 const windowsHight = Dimensions.get('window').height;
-const styles = StyleSheet.create({
-  backgroundStyle: {
-    backgroundColor: '#F6FAF6',
-    flex: 1,
-    padding: 10,
-    borderColor: 'black',
-  },
-  rootContainer: {
-    flex: 1,
-    width: '100%',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    justifyContent: 'center',
-  },
-  headerContainer: {
-    width: '100%',
-    height: windowsHight * 0.2,
-    flexDirection: 'row',
-    alignItems: 'center',
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    borderColor: 'white',
-    backgroundColor: 'white',
-    justifyContent: 'flex-end',
 
-  },
-});
 
-export default AppDrawer;
+export default App;
