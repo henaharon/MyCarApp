@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './src/screens/Login';
 import TimerScreen from './src/screens/Timer';
-import SliderWalkthrough from './src/screens/WalkThrough/SliderWalkthrough';
+import SliderWalkthrough from './src/screens/Walkthrough/SliderWalkthrough';
 import DefaultModal from './src/screens/Modals/DefaultModal';
 import SendCode from './src/screens/AuthCode/SendCode';
 import Terms from './src/screens/Terms/Terms';
